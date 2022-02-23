@@ -1,0 +1,405 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none !important;
+    scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #000000cc;
+    border-radius: 20px;
+  }
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+header{
+    position: relative;
+    z-index: 1000000;
+}
+
+p{
+    font-size: 1.15rem;
+}
+
+.navbar{
+    background: transparent !important;
+    transition: 0.5s;
+}
+
+.navbar-brand img{
+    width: 150px;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: #000;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.navbar-light .navbar-nav .active>.nav-link:hover{
+    color: #000;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(255,255,255,.8);
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus{
+    color: rgba(255,255,255,1);
+
+}
+
+.navbar.scrolled{
+    background: #000 !important;
+    transition: 0.5s;
+}
+
+.banner{
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('');
+    background-size: cover;
+    margin-bottom: 0;
+}
+
+.banner::before,
+.sec2::before,
+.contato::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(#000, transparent);
+    pointer-events: none;
+}
+
+.banner::after,
+.sec2::after,
+.contato::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(360deg,#000, transparent);
+    pointer-events: none;
+}
+
+.height100p{
+    height: 100vh;
+}
+
+.h100{
+    height: 100%;
+}
+
+.contentBox{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+}
+
+.contentBox h1{
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+    font-size: 5rem;
+}
+
+.contentBox p{
+    color: white;
+    font-size: 1.3rem;
+}
+
+.sec1{
+    padding: 100px 0;
+    background: #000;
+}
+
+.headertexto{
+    color: white;
+}
+
+.headertexto h2{
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.placebox{
+    position: relative;
+    max-width: 300px;
+    height: 400px;
+    margin: 0 auto;
+    background: #000;
+    margin-top: 30px;
+}
+
+.placebox .imgbx{
+    width: 100%;
+    height: 100%;
+}
+
+.placebox .imgbx img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.placebox .content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: baseline;
+    align-items: flex-end;
+}
+
+
+.placebox .content h3{
+    position: relative;
+    margin: 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.274);
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.sec2{
+    position: relative;
+    background: url('');
+    background-size: cover;
+    height: 100vh;
+}
+
+.prop .container2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.prop .container2 h2{
+    color: white;
+    font-size: 50px;
+    z-index: 100;
+}
+
+.prop .container2 .mvv div img{
+    height: 250px;
+    width: 250px;
+}
+
+.prop .container2 .mvv{
+    margin-top: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 10;
+}
+
+
+.prop .container2 .mvv div{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.prop .container2 .mvv div h3{
+    color: white;
+    margin-bottom: 12%;
+}
+
+.prop .container2 .mvv div p{
+    color: white;
+}
+
+#flor{
+    width: 170px;
+    height: 150px;
+}
+
+#mao{
+    width: 170px;
+    height: 170px;
+}
+
+#plant{
+    width: 170px;
+    height: 150px;
+}
+
+#mis{
+    margin-top: 10%;
+}
+
+#val{
+    margin-top: 10%;
+}
+
+#vis{
+    margin-top: 7%;
+}
+
+.space{
+    width: 100%;
+    height: 10vh;
+    background: #000;
+}
+
+.contato{
+    position: relative;
+    padding: 100px 0;
+    background: url('');
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.contato form{
+    position: relative;
+    z-index: 1000;
+}
+
+.contato .form-control{
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.63);
+    height: 50px;
+    border-radius: 30px;
+    color: white;
+    font-size: 1.25rem;
+}
+
+.contato .form-control:focus,
+.contato .form-control:hover{
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255, 1);
+    box-shadow: none;
+}
+
+.contato .textarea{
+    min-height: 100px;
+}
+
+.contato label{
+    color: white;
+    font-size: 1.25rem;
+}
+
+footer{
+    background: #000;
+    padding: 50px 0 0;
+}
+
+.sci{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sci li{
+    list-style: none;
+    margin: 0 20px;
+}
+
+.sci li a{
+    color: #777;
+    font-size: 2em;
+    transition: 0.5s;
+}
+
+.sci li a:hover{
+    color: white;
+}
+
+.crypt{
+    margin-top: 20px;
+    text-align: center;
+    color: #777;
+}
+
+.crypt a,
+.crypt a:hover{
+    color: #777;
+}
+
+/* Parte Login */
+
+.body::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(#000, transparent);
+    pointer-events: none;
+}
+
+.body::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(360deg,#000, transparent);
+    pointer-events: none;
+}
+
+.body{
+    background: url('');
+    background-size: cover;
+}
+
+.h3, h3 {
+    font-size: 1.4rem;
+}
+
+.container_avaliacao {
+    margin: 10px;
+    padding: 10px;
+    word-wrap: break-word;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    width: 500px;
+    height: auto;
+    background-color: rgba(243, 240, 235, 0.315);
+    z-index: 10000;
+}
+
+.avaliacao_estrela {
+    width: 20px;
+    height: 20px;
+    z-index: 10000;
+}
