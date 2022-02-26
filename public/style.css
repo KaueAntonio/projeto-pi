@@ -1,38 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Shizuru&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Shizuru&display=swap");
 
-*{
-    margin: 0;
-    padding: 0;
-    font-family: 'Bebas Neue', cursive;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Bebas Neue", cursive;
 }
 
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.formulario{
-    margin-top: 10%;
+.formulario {
+  margin-top: 10%;
 }
 
 .formulario form {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 20px;
 }
 
-.formulario form input{
-    padding: 10px;
-    margin: 5px;
+.formulario form input {
+  padding: 10px;
+  margin: 5px;
 }
 
-.formulario form input:focus{
-    padding: 15px;
-    transition: 80ms;
+.formulario form input:focus {
+  padding: 15px;
+  transition: 80ms;
 }
 
-.titulo{
-    margin: 10px;
+.titulo {
+  margin: 10px;
 }
