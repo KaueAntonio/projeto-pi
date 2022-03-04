@@ -1,12 +1,14 @@
 var database = require("../database/config");
 
-function listar() {
+function cadastrar(nome, email, senha) {
   var instrucao = `
-    select * from [dbo].[usuario_kaue] left join equipe on fkEquipe = idEquipe;
+    insert into tabela(nome, email, senha) values
+    ('${nome}', '${email}', '${senha}');
     `;
   console.log("Listando Usuários");
   return database.executar(instrucao);
 }
+
 module.exports = {
-  listar,
+  cadastrar,
 };

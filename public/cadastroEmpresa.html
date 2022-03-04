@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="qualquer">
+
+      <h1>Cadastro</h1>
+      <form
+    
+      id="form_cadastro"
+      method="post"
+      onsubmit="return cadastrar()"
+      >
+      <input class="margem" name="nome" type="text" placeholder="Usuario" />
+      <br />
+      <input class="margem" name="senha" type="password" placeholder="******" />
+      <br />
+      <input class="margem" name="confirmacao-senha" type="password" placeholder="******" />
+      <br />
+      <input class="margem" name="email" type="text" placeholder="email" />
+      <br />
+      <button class="botao">Cadastrar</button>
+      <p>Ja é registrado? <a href="login.html">Faça login!</a></p>
+    </form>
+  </div>
+  </body>
+</html>
+<script>
+  function cadastrar() {
+    var formulario = new URLSearchParams(
+      new FormData(document.getElementById("form_cadastro"))
+      );
+
+    var nome = formulario.get("nome");
+    var email = formulario.get("email");
+    var senha = formulario.get("senha");
+    var confirmacaoSenha = formulario.get("confirmacao-senha");
+
+    if (nome == "" || email == "" || senha == "" || confirmacaoSenha == "") {
+      window.alert("Preencha todos os campos para prosseguir!");
+      if (nome == "") {
+        console.log("nome está em branco");
+      }
+      if (email == "") {
+        console.log("email está em branco");
+      }
+      if (senha == "") {
+        console.log("senha está em branco");
+      }
+      if (confirmacaoSenha == "") {
+        console.log("confirmacaoSenha está em branco");
+      }
+      return false;
+    }
+
+    if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+      window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+      return false;
+    }
+
+    if (senha != confirmacaoSenha) {
+      window.alert("As senhas inseridas devem ser iguais para prosseguir!");
+      return false;
+    }
+
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      body: formulario,
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          window.alert("Cadastro realizado com sucesso!");
+          window.location = "login.html";
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+  }
+</script>
