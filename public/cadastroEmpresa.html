@@ -12,7 +12,7 @@
       class="register-form"
       id="form_cadastro"
       method="post"
-      onsubmit="return cadastrar()"
+      onsubmit="cadastrar()"
     >
       <input name="nome" type="text" placeholder="Usuario" />
       <br />
@@ -31,7 +31,7 @@
   function cadastrar() {
     var formulario = new URLSearchParams(
       new FormData(document.getElementById("form_cadastro"))
-    );
+      );
 
     var nome = formulario.get("nome");
     var email = formulario.get("email");

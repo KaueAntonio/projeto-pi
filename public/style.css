@@ -3,7 +3,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Bebas Neue", cursive;
+  /* font-family: "Bebas Neue", cursive; */
 }
 
 body {
@@ -35,4 +35,20 @@ body {
 
 .titulo {
   margin: 10px;
+}
+
+.qualquer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.botao{
+  width: 100%;
+}
+
+.margem{
+  margin-bottom: 7px;
 }
