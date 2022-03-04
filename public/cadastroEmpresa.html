@@ -4,31 +4,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
     <title>Document</title>
   </head>
   <body>
-    <div class="qualquer">
-
-      <h1>Cadastro</h1>
-      <form
-    
+    <h1>Cadastro</h1>
+    <form
+      class="register-form"
       id="form_cadastro"
       method="post"
-      onsubmit="return cadastrar()"
-      >
-      <input class="margem" name="nome" type="text" placeholder="Usuario" />
+      onsubmit="cadastrar()"
+    >
+      <input name="nome" type="text" placeholder="Usuario" />
       <br />
-      <input class="margem" name="senha" type="password" placeholder="******" />
+      <input name="senha" type="password" placeholder="******" />
       <br />
-      <input class="margem" name="confirmacao-senha" type="password" placeholder="******" />
+      <input name="confirmacao-senha" type="password" placeholder="******" />
       <br />
-      <input class="margem" name="email" type="text" placeholder="email" />
+      <input name="email" type="text" placeholder="email" />
       <br />
-      <button class="botao">Cadastrar</button>
+      <button class="btnin">Cadastrar</button>
       <p>Ja é registrado? <a href="login.html">Faça login!</a></p>
     </form>
-  </div>
   </body>
 </html>
 <script>
