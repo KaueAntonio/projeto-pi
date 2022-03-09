@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <button onclick="qualquer()">
+        ASAIJSAISA
+    </button>
     <h1>Cadastro</h1>
     <form class="register-form" id="form_cadastro" method="post" onsubmit="cadastrar()">
         <input name="nome" type="text" placeholder="Usuario" />
@@ -26,6 +29,25 @@
 
 </html>
 <script>
+    function qualquer(){
+        fetch("/empresa/listar", {
+                method: "GET",
+            })
+            .then(function(resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    window.alert("Cadastro realizado com sucesso!");
+                    window.location = "login.html";
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function(resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
+
     function cadastrar() {
         var formulario = new URLSearchParams(
             new FormData(document.getElementById("form_cadastro"))

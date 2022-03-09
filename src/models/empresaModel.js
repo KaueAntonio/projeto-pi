@@ -25,7 +25,13 @@ function excluir(){
 
 function login(){
   var instrucao = 
-  `SELECT FROM TABELA where id = ${2}`;
+  `SELECT * FROM TABELA where id = ${2}`;
+  return database.executar(instrucao);
+}
+
+function listar(){
+  var instrucao =
+  `SELECT * FROM empresa;`
   return database.executar(instrucao);
 }
 
@@ -33,4 +39,6 @@ module.exports = {
   cadastrar,
   editar,
   excluir,
+  listar,
+  login
 };
