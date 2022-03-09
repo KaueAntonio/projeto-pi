@@ -23,6 +23,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  background-color: rgb(105, 17, 17);
 }
 
 header {
@@ -50,14 +51,17 @@ p {
   color: #000;
   background: #fff;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .navbar-light .navbar-nav .active > .nav-link:hover {
   color: #000;
+  
 }
 
 .navbar-light .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
@@ -66,7 +70,7 @@ p {
 }
 
 .navbar.scrolled {
-  background: #000 !important;
+  background: rgba(0, 0, 0, 0.295) !important;
   transition: 0.5s;
 }
 
