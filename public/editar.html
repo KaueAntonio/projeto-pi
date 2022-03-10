@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro</title>
+    <title>Editar</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous" />
     <script src="https://kit.fontawesome.com/ea8cfd2902.js" crossorigin="anonymous"></script>
@@ -58,10 +58,10 @@
                 <div class="col-sm-12">
                     <div class="headertextoCadastro text-center">
                         <h2 data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000">
-                            Cadastro
+                            Editar
                         </h2>
                         <p data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-                            Insira suas informações abaixo:
+                            Altere seus dados de conta.
                         </p>
                     </div>
                 </div>
@@ -85,11 +85,8 @@
                             <label for="">Confirmar senha</label>
                             <input name="confirmacao-senha" type="password" placeholder="******" class="form-control" />
                         </div>
-                        <div class="login">
-                            <p>Já possui cadastro? <a href="login.html">Faça login!</a></p>
-                        </div>
                         <div class="form-group text-center">
-                            <button class="btn">Cadastrar</button>
+                            <button class="btn">Confirmar</button>
                         </div>
                     </form>
                 </div>
@@ -149,25 +146,6 @@
 
 </html>
 <script>
-    function qualquer(){
-        fetch("/empresa/listar", {
-                method: "GET",
-            })
-            .then(function(resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    window.alert("Cadastro realizado com sucesso!");
-                    window.location = "login.html";
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
-            })
-            .catch(function(resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-    }
-
     function cadastrar() {
         var formulario = new URLSearchParams(
             new FormData(document.getElementById("form_cadastro"))
