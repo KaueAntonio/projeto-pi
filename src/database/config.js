@@ -20,9 +20,9 @@ var sqlServerConfig = {
 // (LOCAL)
 var mySqlConfig = {
   host: "localhost",
-  user: "",
-  password: "",
-  database: "",
+  user: "aluno",
+  password: "sptech",
+  database: "smart_sac",
   port: "3306",
 };
 

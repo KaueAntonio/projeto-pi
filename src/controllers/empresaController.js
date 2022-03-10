@@ -28,6 +28,11 @@ function cadastrar(req, res) {
   }
 }
 
+function listar(req, res){
+  empresaModel.listar();
+}
+
 module.exports = {
   cadastrar,
+  listar
 };
