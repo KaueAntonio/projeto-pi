@@ -9,23 +9,23 @@ function cadastrar(nome, email, senha) {
   return database.executar(instrucao);
 }
 
-function editar(){
+function editar(nome, email, senha){
   var instrucao = 
-  `UPDATE tabela SET email = "";
-  UPDATE tabela SET senha = "";
-  UPDATE tabela SET usuario = "";`;
+  `UPDATE tabela SET email = "${email}";
+  UPDATE tabela SET senha = "${senha}";
+  UPDATE tabela SET usuario = "${nome}";`;
   return database.executar(instrucao);
 }
 
-function excluir(){
+function excluir(email, senha){
   var instrucao =
-  `DELETE FROM tabela WHERE id = ${2}`;
+  `DELETE FROM tabela WHERE email = ${email} AND senha = ${senha}`;
   return database.executar(instrucao);
 }
 
-function login(){
+function login(email, senha){
   var instrucao = 
-  `SELECT * FROM TABELA where id = ${2}`;
+  `SELECT * FROM TABELA WHERE email = ${email} AND senha = ${senha}`;
   return database.executar(instrucao);
 }
 
