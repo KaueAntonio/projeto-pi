@@ -1,9 +1,9 @@
 var database = require("../database/config");
 
-function cadastrar(nome, email, senha) {
+function cadastrar(nome, cnpj, senha) {
   var instrucao = `
-    insert into tabela(nome, email, senha) values
-    ('${nome}', '${email}', '${senha}');
+    insert into empresa(nome, cnpj, senha) values
+    ('${nome}', '${cnpj}', '${senha}');
     `;
   console.log("Listando Usuários");
   return database.executar(instrucao);
@@ -23,9 +23,9 @@ function excluir(email, senha){
   return database.executar(instrucao);
 }
 
-function login(email, senha){
+function login(nome, senha){
   var instrucao = 
-  `SELECT * FROM TABELA WHERE email = ${email} AND senha = ${senha}`;
+  `SELECT * FROM empresa WHERE nome = '${nome}' AND senha = '${senha}'`;
   return database.executar(instrucao);
 }
 

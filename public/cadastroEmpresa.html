@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="validarSessao()">
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container">
@@ -77,10 +77,10 @@
             </div>
             <div class="row clearfix">
                 <div class="offset-sm-2 col-sm-8">
-                    <form action="" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000" class="register-form" id="form_cadastro" method="post" onsubmit="cadastrar()">
+                    <form data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000" class="register-form" id="form_cadastro" method="post" onsubmit="cadastrar()">
                         <div class="form-group">
-                            <label for="">E-mail</label>
-                            <input name="email" type="text" placeholder="email" class="form-control" />
+                            <label for="">CNPJ</label>
+                            <input name="cnpj" type="text" placeholder="cnpj" class="form-control" />
                         </div>
                         <div class="form-group">
                             <label for="">Nome</label>
@@ -97,10 +97,10 @@
                         <div class="login">
                             <p>Já possui cadastro? <a href="login.html">Faça login!</a></p>
                         </div>
-                        <div class="form-group text-center">
-                            <button class="btn">Cadastrar</button>
-                        </div>
                     </form>
+                    <div class="form-group text-center">
+                        <button class="btn" onclick="cadastrar()">Cadastrar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -158,79 +158,52 @@
 
 </html>
 <script>
-    function qualquer() {
-        fetch("/empresa/listar", {
-                method: "GET",
-            })
-            .then(function(resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    window.alert("Cadastro realizado com sucesso!");
-                    window.location = "login.html";
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
-            })
-            .catch(function(resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-    }
-
     function cadastrar() {
-        var formulario = new URLSearchParams(
-            new FormData(document.getElementById("form_cadastro"))
-        );
+
+        var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastro")));
 
         var nome = formulario.get("nome");
-        var email = formulario.get("email");
+        var cnpj = formulario.get("cnpj");
         var senha = formulario.get("senha");
         var confirmacaoSenha = formulario.get("confirmacao-senha");
 
-        if (nome == "" || email == "" || senha == "" || confirmacaoSenha == "") {
+        if (nome == "" || senha == "" || confirmacaoSenha == "") {
+
             window.alert("Preencha todos os campos para prosseguir!");
             if (nome == "") {
-                console.log("nome está em branco");
-            }
-            if (email == "") {
-                console.log("email está em branco");
+                console.log('nome está em branco')
             }
             if (senha == "") {
-                console.log("senha está em branco");
+                console.log('senha está em branco')
             }
             if (confirmacaoSenha == "") {
-                console.log("confirmacaoSenha está em branco");
+                console.log('confirmacaoSenha está em branco')
             }
-            return false;
-        }
-
-        if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
-            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
             return false;
         }
 
         if (senha != confirmacaoSenha) {
             window.alert("As senhas inseridas devem ser iguais para prosseguir!");
+            finalizarAguardar();
             return false;
         }
 
-        fetch("/usuarios/cadastrar", {
-                method: "POST",
-                body: formulario,
-            })
-            .then(function(resposta) {
-                console.log("resposta: ", resposta);
+        fetch("/empresa/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function(resposta) {
 
-                if (resposta.ok) {
-                    window.alert("Cadastro realizado com sucesso!");
-                    window.location = "login.html";
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
-            })
-            .catch(function(resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Cadastro realizado com sucesso!");
+                window.location = "login.html";
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function(resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
 
         return false;
     }
