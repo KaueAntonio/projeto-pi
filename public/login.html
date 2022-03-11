@@ -68,10 +68,10 @@
             </div>
             <div class="row clearfix">
                 <div class="offset-sm-2 col-sm-8">
-                    <form action="" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000" class="register-form" id="form_cadastro" method="post" onsubmit="cadastrar()">
+                    <form action="" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000" class="register-form" id="form_cadastro" method="post" onsubmit="login()">
                         <div class="form-group">
-                            <label for="">E-mail</label>
-                            <input name="email" type="text" placeholder="email" class="form-control" />
+                            <label for="">Usuário</label>
+                            <input name="nome" type="text" placeholder="Usuário" class="form-control" />
                         </div>
                         <div class="form-group">
                             <label for="">Senha</label>
@@ -80,10 +80,10 @@
                         <div class="login">
                             <p>Não possui conta? <a href="cadastroEmpresa.html">Faça o cadastro!</a></p>
                         </div>
-                        <div class="form-group text-center">
-                            <button class="btn">Logar</button>
-                        </div>
                     </form>
+                    <div class="form-group text-center">
+                        <button onclick="login()" class="btn">Logar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -141,60 +141,62 @@
 
 </html>
 <script>
-    function cadastrar() {
+    function login() {
         var formulario = new URLSearchParams(
             new FormData(document.getElementById("form_cadastro"))
         );
 
         var nome = formulario.get("nome");
-        var email = formulario.get("email");
         var senha = formulario.get("senha");
-        var confirmacaoSenha = formulario.get("confirmacao-senha");
 
-        if (nome == "" || email == "" || senha == "" || confirmacaoSenha == "") {
+        if (nome == "" || senha == "") {
             window.alert("Preencha todos os campos para prosseguir!");
             if (nome == "") {
                 console.log("nome está em branco");
             }
-            if (email == "") {
-                console.log("email está em branco");
-            }
             if (senha == "") {
                 console.log("senha está em branco");
             }
-            if (confirmacaoSenha == "") {
-                console.log("confirmacaoSenha está em branco");
+            return false;
+        }
+
+        fetch("/empresa/login", {
+            method: "POST",
+            body: formulario
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    var teste = JSON.stringify(json);
+
+                    sessionStorage.EMAIL_USUARIO = json[0].cnpj;
+                    sessionStorage.NOME_USUARIO = json[0].nome;
+                    sessionStorage.ID_USUARIO = json[0].idEmpresa;
+                    sessionStorage.ESTADO_PAGE = "logado";
+         
+                    setTimeout(function () {
+                        alert (`Olá ${sessionStorage.NOME_USUARIO}, seja bem vindo!`);
+                       window.location = "./index.html";
+                    }, 1000);
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
             }
-            return false;
-        }
 
-        if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
-            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-            return false;
-        }
-
-        if (senha != confirmacaoSenha) {
-            window.alert("As senhas inseridas devem ser iguais para prosseguir!");
-            return false;
-        }
-
-        fetch("/usuarios/cadastrar", {
-                method: "POST",
-                body: formulario,
-            })
-            .then(function(resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    window.alert("Cadastro realizado com sucesso!");
-                    window.location = "login.html";
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
-            })
-            .catch(function(resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
+        }).catch(function (erro) {
+            console.log(erro);
+        })
 
         return false;
     }

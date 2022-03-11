@@ -17,7 +17,9 @@
     "fs": "^0.0.1-security",
     "mssql": "^7.1.3",
     "mysql2": "^2.2.5",
-    "nodemon": "^2.0.14",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
