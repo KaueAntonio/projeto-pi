@@ -44,7 +44,16 @@
                                 <a class="nav-link" href="./index.html#resultados">Avaliações</a>
                             </li>
                             <li class="nav-item">
-                                <a id="loginCadastro" onclick="botaoCadastro(sessionStorage.ESTADO_PAGE)" class="nav-link"></a>
+                                <div class="dropdown">
+                                    <button class="btn-conta dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Conta
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="./login.html">Login</a>
+                                        <a class="dropdown-item" href="./cadastroEmpresa.html">Cadastro</a>
+                                        <a class="dropdown-item" href="./editar.html">Editar</a>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -159,20 +168,20 @@
         var confirmacaoSenha = formulario.get("confirmacao-senha");
 
         if (nome == "" || senha == "" || confirmacaoSenha == "") {
-            
+
             window.alert("Preencha todos os campos para prosseguir!");
-            if (nome == "")  {
+            if (nome == "") {
                 console.log('nome está em branco')
             }
-            if (senha == "" )  {
+            if (senha == "") {
                 console.log('senha está em branco')
             }
-            if (confirmacaoSenha == "" )  {
+            if (confirmacaoSenha == "") {
                 console.log('confirmacaoSenha está em branco')
             }
             return false;
         }
-        
+
         if (senha != confirmacaoSenha) {
             window.alert("As senhas inseridas devem ser iguais para prosseguir!");
             finalizarAguardar();
@@ -182,17 +191,17 @@
         fetch("/empresa/cadastrar", {
             method: "POST",
             body: formulario
-        }).then(function (resposta) {
+        }).then(function(resposta) {
 
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
                 window.alert("Cadastro realizado com sucesso!");
-               window.location = "login.html";
+                window.location = "login.html";
             } else {
-                throw("Houve um erro ao tentar realizar o cadastro!");
+                throw ("Houve um erro ao tentar realizar o cadastro!");
             }
-        }).catch(function (resposta) {
+        }).catch(function(resposta) {
             console.log(`#ERRO: ${resposta}`);
         });
 

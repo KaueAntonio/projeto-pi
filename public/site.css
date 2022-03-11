@@ -31,10 +31,22 @@ body {
     background-color: rgb(188, 215, 255);
 }
 
+.dropdown-menu {
+    border-radius: 15px;
+    border-color: transparent;
+}
+
 .dropdown-item {
     color: #000;
     font-size: medium;
     font-weight: bold;
+}
+
+.dropdown-item:hover {
+    background-color: transparent;
+    border-radius: 10px;
+    margin-left: 10px;
+    width: 138px;
 }
 
 .btn-conta {
@@ -526,7 +538,35 @@ h3 {
     font-size: 1.4rem;
 }
 
-.btn {
+.botoes {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.btn-excluir {
+    width: 200px;
+    height: 50px;
+    background-color: rgb(89, 182, 199);
+    color: black;
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 40px;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.63);
+    padding: 0.375rem 0.75rem;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn,
+.btn-editar {
     width: 200px;
     height: 50px;
     margin-top: 50px;

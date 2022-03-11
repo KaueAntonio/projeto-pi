@@ -1,56 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Página Principal</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
-      integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/ea8cfd2902.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/ea8cfd2902.js" crossorigin="anonymous"></script>
     <link rel="icon" href="./Imagens/logo.png" />
     <link rel="stylesheet" href="site.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  </head>
+</head>
 
-  <body
-    data-spy="scroll"
-    data-target=".navbar"
-    data-offset="50"
-    onload="validarSessao()"
-  >
+<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="validarSessao()">
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-          <img
-            id="iconesumir"
-            class="icone"
-            src="./Imagens/Icone-depositphotos-bgremover.png"
-            alt=""
-          />
-          <a class="navbar-brand" href="#"><img src="" alt="" /></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+                <img id="iconesumir" class="icone" src="./Imagens/Icone-depositphotos-bgremover.png" alt="" />
+                <a class="navbar-brand" href="#"><img src="" alt="" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <img
               class="icone"
               src="./Imagens/Icone-depositphotos-bgremover.png"
@@ -83,9 +53,9 @@
                                       Conta
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Login</a>
-                                        <a class="dropdown-item" href="#">Cadastro</a>
-                                        <a class="dropdown-item" href="#">Editar</a>
+                                        <a class="dropdown-item" href="./login.html">Login</a>
+                                        <a class="dropdown-item" href="./cadastroEmpresa.html">Cadastro</a>
+                                        <a class="dropdown-item" href="./editar.html">Editar</a>
                                     </div>
                                 </div>
                             </li>
@@ -93,89 +63,61 @@
                     </div>
                 </div>
             </div>
-          </div>
-        </div>
-      </nav>
+            </div>
+            </div>
+        </nav>
     </header>
     <div class="jumbotron jumbotron-fluid height100p banner" id="home">
-      <div class="container h100">
-        <div class="contentBox h100">
-          <div>
-            <h1 data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000">
-              Smart SAC
-            </h1>
-            <p data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
-              Construímos confiança.
-            </p>
-          </div>
+        <div class="container h100">
+            <div class="contentBox h100">
+                <div>
+                    <h1 data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000">
+                        Smart SAC
+                    </h1>
+                    <p data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
+                        Construímos confiança.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <section class="sec1" id="quemsomos">
-      <div class="container">
-        <div class="row">
-          <div class="offset-sm-2 col-sm-8">
-            <div class="headertexto text-center">
-              <h2
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="1000"
-              >
-                Quem Somos
-              </h2>
-              <p
-                data-aos="fade-up"
-                data-aos-delay="500"
-                data-aos-duration="1000"
-              >
-                Somos uma empresa de monitoramento inteligente que transformará
-                a sua empresa, trazendo mais lucrarividade. De forma inteligente
-                iremos monitorar a produtividade e a performance de seus
-                funcionários.
-              </p>
+        <div class="container">
+            <div class="row">
+                <div class="offset-sm-2 col-sm-8">
+                    <div class="headertexto text-center">
+                        <h2 data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000">
+                            Quem Somos
+                        </h2>
+                        <p data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
+                            Somos uma empresa de monitoramento inteligente que transformará a sua empresa, trazendo mais lucrarividade. De forma inteligente iremos monitorar a produtividade e a performance de seus funcionários.
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div
-              class="placebox"
-              data-aos="fade-up"
-              data-aos-delay="100"
-              data-aos-duration="1000"
-            >
-              <div class="imgbx">
-                <img src="./Imagens/Analyze-amico.png" class="img-fluid" />
-              </div>
-              <div class="content">
-                <h3>
-                  Lorem ipsum<br /><span
-                    style="color: black; font-size: 16px; font-weight: lighter"
-                  >
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="placebox" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+                        <div class="imgbx">
+                            <img src="./Imagens/Analyze-amico.png" class="img-fluid" />
+                        </div>
+                        <div class="content">
+                            <h3>
+                                Lorem ipsum<br /><span style="color: black; font-size: 16px; font-weight: lighter">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   </span>
-                </h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div
-              class="placebox"
-              data-aos="fade-up"
-              data-aos-delay="500"
-              data-aos-duration="1000"
-            >
-              <div class="imgbx">
-                <img
-                  src="./Imagens/Research paper-amico.png"
-                  class="img-fluid"
-                />
-              </div>
-              <div class="content">
-                <h3>
-                  Lorem ipsum<br /><span
-                    style="color: black; font-size: 16px; font-weight: lighter"
-                  >
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="placebox" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
+                        <div class="imgbx">
+                            <img src="./Imagens/Research paper-amico.png" class="img-fluid" />
+                        </div>
+                        <div class="content">
+                            <h3>
+                                Lorem ipsum<br /><span style="color: black; font-size: 16px; font-weight: lighter">
                     Lorem ipsum dolor sit amet, consectetur adipiscing
                     elit.</span
                   >
@@ -321,7 +263,8 @@
           display: flex;
           flex-direction: row;
           flex-wrap: wrap;
-          margin-top: 30px;
+          margin-top: 20px;
+          justify-content: center;
         "
         data-aos="fade-up"
         data-aos-delay="500"
@@ -430,7 +373,8 @@
       estrelas[j] = "./Imagens/stary.png";
     }
 
-    resultados.innerHTML += `<div class="container_avaliacao">
+    resultados.innerHTML += `
+    <div class="container_avaliacao">
     <div class="container_estrelas" style="display: flex; align-items: center; flex-direction: row;">
     <img class="avaliacao_estrela" src="${estrelas[0]}" alt="">
     <img class="avaliacao_estrela" src="${estrelas[1]}" alt="">
@@ -441,7 +385,7 @@
     <br>
     <b style="padding: 6px;">${arquivo.titulo}</b><br><br>
     ${arquivo.mensagem}<br><br>
-    <h4 style="margin-left: 20px; ">${arquivo.usuario} - ${arquivo.nomeempresa}
+    <h5>${arquivo.usuario} - ${arquivo.nomeempresa}
      ${arquivo.dia}/${arquivo.mes}/${arquivo.ano}</h4>
     </div><br><br>`;
   }
