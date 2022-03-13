@@ -9,17 +9,23 @@ function cadastrar(nome, cnpj, senha) {
   return database.executar(instrucao);
 }
 
-function editar(nome, email, senha){
+function editar(nome, cnpj, senha, idEmpresa){
   var instrucao = 
-  `UPDATE tabela SET email = "${email}";
-  UPDATE tabela SET senha = "${senha}";
-  UPDATE tabela SET usuario = "${nome}";`;
+  `UPDATE empresa SET cnpj = "${cnpj}" WHERE idEmpresa = ${idEmpresa};`;
+  database.executar(instrucao);
+
+  instrucao = `
+  UPDATE empresa SET senha = "${senha}" WHERE idEmpresa = ${idEmpresa};`;
+  database.executar(instrucao);
+
+  instrucao = `
+  UPDATE empresa SET nome = "${nome}" WHERE idEmpresa = ${idEmpresa};`;
   return database.executar(instrucao);
 }
 
-function excluir(email, senha){
+function excluir(nome, cnpj, senha, idEmpresa){
   var instrucao =
-  `DELETE FROM tabela WHERE email = ${email} AND senha = ${senha}`;
+  `DELETE FROM empresa WHERE idEmpresa = ${idEmpresa};`;
   return database.executar(instrucao);
 }
 

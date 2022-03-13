@@ -53,9 +53,9 @@
                                       Conta
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="./login.html">Login</a>
-                                        <a class="dropdown-item" href="./cadastroEmpresa.html">Cadastro</a>
-                                        <a class="dropdown-item" href="./editar.html">Editar</a>
+                                        <a id="hrefLogin" style="display: none;" class="dropdown-item" href="./login.html">Login</a>
+                                        <a id="hrefEditar" style="display: none;" class="dropdown-item" href="./editar.html">Editar</a>
+                                        <a id="hrefSair" style="display: none;" class="dropdown-item" onclick="botaoCadastro(sessionStorage.ESTADO_PAGE)" href="./index.html">Sair</a>
                                     </div>
                                 </div>
                             </li>
@@ -390,9 +390,13 @@
 
   function validarSessao() {
     if (sessionStorage.ESTADO_PAGE == "logado") {
-      loginCadastro.innerHTML = "Sair";
+      hrefLogin.style.display = 'none';
+      hrefSair.style.display = 'block';
+      hrefEditar.style.display = 'block';
     } else {
-      loginCadastro.innerHTML = "Login";
+      hrefLogin.style.display = 'block';
+      hrefSair.style.display = 'none';
+      hrefEditar.style.display = 'none';
     }
   }
 

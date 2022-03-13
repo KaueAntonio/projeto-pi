@@ -611,3 +611,16 @@ h3 {
     height: 20px;
     z-index: 10000;
 }
+
+
+.alinhamentoExcluir{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+
+}
+
+.botaoExcluir:hover{
+    cursor: pointer;
+}

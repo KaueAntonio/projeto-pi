@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="validarSessao()">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container">
@@ -49,9 +49,9 @@
                                       Conta
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="./login.html">Login</a>
-                                        <a class="dropdown-item" href="./cadastroEmpresa.html">Cadastro</a>
-                                        <a class="dropdown-item" href="./editar.html">Editar</a>
+                                        <a id="hrefLogin" style="display: none;" class="dropdown-item" href="./login.html">Login</a>
+                                        <a id="hrefEditar" style="display: none;" class="dropdown-item" href="./editar.html">Editar</a>
+                                        <a id="hrefSair" style="display: none;" class="dropdown-item" onclick="botaoCadastro(sessionStorage.ESTADO_PAGE)" href="./index.html">Sair</a>
                                     </div>
                                 </div>
                             </li>
@@ -207,4 +207,30 @@
 
         return false;
     }
+
+    function validarSessao() {
+    if (sessionStorage.ESTADO_PAGE == "logado") {
+      hrefLogin.style.display = 'none';
+      hrefSair.style.display = 'block';
+      hrefEditar.style.display = 'block';
+    } else {
+      hrefLogin.style.display = 'block';
+      hrefSair.style.display = 'none';
+      hrefEditar.style.display = 'none';
+    }
+  }
+
+  function botaoCadastro(estado) {
+    if (estado == "logado") {
+      sessionStorage.ESTADO_PAGE = "deslogado";
+      sessionStorage.EMAIL_USUARIO = undefined;
+      sessionStorage.NOME_USUARIO = undefined;
+      sessionStorage.ID_USUARIO = undefined;
+      validarSessao();
+      alert('Login Encerrado');
+      window.location.href = "login.html";
+    } else {
+      window.location.href = "login.html";
+    }
+  }
 </script>
