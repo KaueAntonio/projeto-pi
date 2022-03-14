@@ -35,7 +35,18 @@ const dados = [
     for (let j = 0; j < est; j++) {
       estrelas[j] = "./Imagens/stary.png";
     }
-
+    let mesConcatenado;
+    let diaConcatenado;
+    if(arquivo.dia < 10){
+        diaConcatenado = "0" + arquivo.dia;
+    }else{
+        diaConcatenado = arquivo.dia;
+    }
+    if(arquivo.mes < 10){
+        mesConcatenado = "0" + arquivo.mes;
+    }else{
+        mesConcatenado = arquivo.mes;
+    }
     resultados.innerHTML += `
     <div class="container_avaliacao">
     <div class="container_estrelas" style="display: flex; align-items: center; flex-direction: row;">
@@ -49,6 +60,6 @@ const dados = [
     <b style="padding: 6px;">${arquivo.titulo}</b><br><br>
     ${arquivo.mensagem}<br><br>
     <h5>${arquivo.usuario} - ${arquivo.nomeempresa}
-     ${arquivo.dia}/${arquivo.mes}/${arquivo.ano}</h4>
+     ${diaConcatenado}/${mesConcatenado}/${arquivo.ano}</h4>
     </div><br><br>`;
   }
