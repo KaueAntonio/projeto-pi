@@ -3,75 +3,75 @@ var sql = require("mysql2");
 
 // (NUVEM)
 var sqlServerConfig = {
-  user: "",
-  password: "",
-  database: "",
-  server: "",
-  pool: {
-    max: 10,
-    min: 0,
-    idleTimeoutMillis: 30000,
-  },
-  options: {
-    encrypt: true,
-  },
+    user: "",
+    password: "",
+    database: "",
+    server: "",
+    pool: {
+        max: 10,
+        min: 0,
+        idleTimeoutMillis: 30000,
+    },
+    options: {
+        encrypt: true,
+    },
 };
 
 // (LOCAL)
 var mySqlConfig = {
-  host: "localhost",
-  user: "root",
-  password: "kaue4991",
-  database: "smart_sac",
-  port: "3306",
+    host: "localhost",
+    user: "root",
+    password: "urubu100",
+    database: "smart_sac",
+    port: "3306",
 };
 
 function executar(instrucao) {
-  if (process.env.AMBIENTE_PROCESSO == "producao") {
-    return new Promise(function (resolve, reject) {
-      sql
-        .connect(sqlServerConfig)
-        .then(function () {
-          return sql.query(instrucao);
-        })
-        .then(function (resultados) {
-          console.log(resultados);
-          resolve(resultados.recordset);
-        })
-        .catch(function (erro) {
-          reject(erro);
-          console.log("ERRO: ", erro);
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        return new Promise(function(resolve, reject) {
+            sql
+                .connect(sqlServerConfig)
+                .then(function() {
+                    return sql.query(instrucao);
+                })
+                .then(function(resultados) {
+                    console.log(resultados);
+                    resolve(resultados.recordset);
+                })
+                .catch(function(erro) {
+                    reject(erro);
+                    console.log("ERRO: ", erro);
+                });
+            sql.on("error", function(erro) {
+                return "ERRO NO SQL SERVER (Azure): ", erro;
+            });
         });
-      sql.on("error", function (erro) {
-        return "ERRO NO SQL SERVER (Azure): ", erro;
-      });
-    });
-  } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-    return new Promise(function (resolve, reject) {
-      var conexao = mysql.createConnection(mySqlConfig);
-      conexao.connect();
-      conexao.query(instrucao, function (erro, resultados) {
-        conexao.end();
-        if (erro) {
-          reject(erro);
-        }
-        console.log(resultados);
-        resolve(resultados);
-      });
-      conexao.on("error", function (erro) {
-        return "ERRO NO MySQL WORKBENCH (Local): ", erro.sqlMessage;
-      });
-    });
-  } else {
-    return new Promise(function (resolve, reject) {
-      console.log(
-        "\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n"
-      );
-      reject("AMBIENTE NÃO CONFIGURADO EM app.js");
-    });
-  }
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        return new Promise(function(resolve, reject) {
+            var conexao = mysql.createConnection(mySqlConfig);
+            conexao.connect();
+            conexao.query(instrucao, function(erro, resultados) {
+                conexao.end();
+                if (erro) {
+                    reject(erro);
+                }
+                console.log(resultados);
+                resolve(resultados);
+            });
+            conexao.on("error", function(erro) {
+                return "ERRO NO MySQL WORKBENCH (Local): ", erro.sqlMessage;
+            });
+        });
+    } else {
+        return new Promise(function(resolve, reject) {
+            console.log(
+                "\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n"
+            );
+            reject("AMBIENTE NÃO CONFIGURADO EM app.js");
+        });
+    }
 }
 
 module.exports = {
-  executar,
+    executar,
 };
