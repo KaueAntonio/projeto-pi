@@ -144,7 +144,6 @@ p {
     background: url("./Imagens/banner.png");
     background-size: cover;
     margin-bottom: 0;
-    
 }
 
 .sec2::before,
@@ -296,9 +295,8 @@ p {
     color: rgb(0, 0, 0);
     font-size: 20px;
     font-weight: 600;
-    border-bottom-left-radius: 37%;    
-    border-bottom-right-radius: 37%;    
-       
+    border-bottom-left-radius: 37%;
+    border-bottom-right-radius: 37%;
 }
 
 .sec2 {
@@ -391,7 +389,7 @@ p {
     background: url("");
     background-size: cover;
     min-height: 100vh;
-    background-color: white;
+    background-color: rgb(188, 215, 255);
 }
 
 .contato form {
@@ -612,15 +610,13 @@ h3 {
     z-index: 10000;
 }
 
-
-.alinhamentoExcluir{
+.alinhamentoExcluir {
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bolder;
-
 }
 
-.botaoExcluir:hover{
+.botaoExcluir:hover {
     cursor: pointer;
 }
