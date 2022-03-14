@@ -1,50 +1,69 @@
-const dados = [
-    {
-      estrelinhas: 4,
-      titulo: "Muito Bom!!",
-      mensagem: "Achei muito bom o projeto, gostei demais!",
-      usuario: "Kaue",
-      nomeempresa: "SAC Dos Bom",
-      dia: 10,
-      mes: 03,
-      ano: 2022,
+const dados = [{
+        estrelinhas: 5,
+        titulo: "Incredible!",
+        mensagem: "Best solution on the market!!",
+        usuario: "Mark",
+        nomeempresa: "Facebook",
+        dia: 10,
+        mes: 03,
+        ano: 2022,
     },
     {
-      estrelinhas: 2,
-      titulo: "Muito Daora Mesmo!!",
-      mensagem: "Daora Demais Parabéns!",
-      usuario: "Juninho",
-      nomeempresa: "Alguma Qualquer",
-      dia: 30,
-      mes: 01,
-      ano: 2022,
+        estrelinhas: 4,
+        titulo: "Very good!!",
+        mensagem: "My company leveraged too much after product implementation!",
+        usuario: "Jeff Bezos",
+        nomeempresa: "Amazon",
+        dia: 30,
+        mes: 01,
+        ano: 2022,
     },
-  ];
+    {
+        estrelinhas: 4,
+        titulo: "Surpresa!!",
+        mensagem: "Não achei que faria uma diferença tão grande nos resultados da empresa!",
+        usuario: "Luiza Helena",
+        nomeempresa: "Magazine Luiza",
+        dia: 23,
+        mes: 04,
+        ano: 2022,
+    },
+    {
+        estrelinhas: 5,
+        titulo: "Excited!",
+        mensagem: "I just implemented the product in the company, and I'm already seeing results!",
+        usuario: "Bill Gates",
+        nomeempresa: "Microsoft",
+        dia: 17,
+        mes: 04,
+        ano: 2022,
+    },
+];
 
-  let len = dados.length;
-  for (let i = 0; i < len; i++) {
+let len = dados.length;
+for (let i = 0; i < len; i++) {
     let arquivo = dados[i];
     let estrelas = [
-      "./Imagens/star.png",
-      "./Imagens/star.png",
-      "./Imagens/star.png",
-      "./Imagens/star.png",
-      "./Imagens/star.png",
+        "./Imagens/star.png",
+        "./Imagens/star.png",
+        "./Imagens/star.png",
+        "./Imagens/star.png",
+        "./Imagens/star.png",
     ];
     let est = arquivo.estrelinhas;
     for (let j = 0; j < est; j++) {
-      estrelas[j] = "./Imagens/stary.png";
+        estrelas[j] = "./Imagens/stary.png";
     }
     let mesConcatenado;
     let diaConcatenado;
-    if(arquivo.dia < 10){
+    if (arquivo.dia < 10) {
         diaConcatenado = "0" + arquivo.dia;
-    }else{
+    } else {
         diaConcatenado = arquivo.dia;
     }
-    if(arquivo.mes < 10){
+    if (arquivo.mes < 10) {
         mesConcatenado = "0" + arquivo.mes;
-    }else{
+    } else {
         mesConcatenado = arquivo.mes;
     }
     resultados.innerHTML += `
@@ -62,4 +81,4 @@ const dados = [
     <h5>${arquivo.usuario} - ${arquivo.nomeempresa}
      ${diaConcatenado}/${mesConcatenado}/${arquivo.ano}</h4>
     </div><br><br>`;
-  }
+}
