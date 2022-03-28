@@ -1,0 +1,14 @@
+/home/aluno/Desktop/looca-api/src/main/java/com/github/britooo/looca/api/group/discos/Disco.java
+/home/aluno/Desktop/looca-api/src/main/java/com/github/britooo/looca/api/group/discos/Volume.java
+/home/aluno/Desktop/looca-api/src/main/java/com/github/britooo/looca/api/group/sistema/Sistema.java
+/home/aluno/Desktop/looca-api/src/main/java/com/github/britooo/looca/api/group/temperatura/Temperatura.java
+/home/aluno/Desktop/looca-api/src/main/java/com/github/britooo/looca/api/core/Classe.java
+/home/aluno/Desktop/looca-api/src/main/java/com/github/britooo/looca/api/group/processador/Processador.java
+/home/aluno/Desktop/looca-api/src/main/java/com/github/britooo/looca/api/group/memoria/Memoria.java
+/home/aluno/Desktop/looca-api/src/main/java/com/github/britooo/looca/api/group/processos/Processo.java
+/home/aluno/Desktop/looca-api/src/main/java/com/github/britooo/looca/api/util/Conversor.java
+/home/aluno/Desktop/looca-api/src/main/java/com/github/britooo/looca/api/group/processos/ProcessosGroup.java
+/home/aluno/Desktop/looca-api/src/main/java/com/github/britooo/looca/api/group/servicos/Servico.java
+/home/aluno/Desktop/looca-api/src/main/java/com/github/britooo/looca/api/group/servicos/ServicosGroup.java
+/home/aluno/Desktop/looca-api/src/main/java/com/github/britooo/looca/api/core/Looca.java
+/home/aluno/Desktop/looca-api/src/main/java/com/github/britooo/looca/api/group/discos/DiscosGroup.java
