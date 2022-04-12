@@ -14,9 +14,7 @@ public class Aplicacao {
 
     public static void main(String[] args) {
         Looca looca = new Looca();
-
         Connection config = new Connection();
-
         JdbcTemplate template = new JdbcTemplate(config.getDataSource());
 
         List internet = new SystemInfo().getHardware().getNetworkIFs();
