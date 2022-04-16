@@ -9,7 +9,7 @@ import oshi.hardware.GlobalMemory;
 import java.util.Timer;
 import java.util.TimerTask;
 import org.springframework.jdbc.core.JdbcTemplate;
-
+import com.sptech.testeprojeto.tela.login.Login;
 
 public class Aplicacao {
 
@@ -28,7 +28,7 @@ public class Aplicacao {
         GlobalMemory memoria = new SystemInfo().getHardware().getMemory();
         
         
-        
+        Login login = new Login();
 
         int delay = 500;
         int interval = 500;
