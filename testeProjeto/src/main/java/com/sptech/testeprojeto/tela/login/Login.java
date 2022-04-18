@@ -31,6 +31,7 @@ import java.awt.Point;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
+import java.util.List;
 import javax.swing.JOptionPane;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -259,12 +260,18 @@ public class Login extends javax.swing.JFrame {
                         + " WHERE email_gerente = '%s'"
                         + "AND senha_gerente = '%s'", loginGerente, senhaGerente);
 
+        List lista = template.queryForList(query);
+        if (lista.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Sem registros no banco de dados");
+                    
+        } else {
+            
+        
         SelectLogin autenticar
                 = template.queryForObject(query, new LoginMapper());
 
         if (!(autenticar.getNome() == txtLogin.getText()
                 && autenticar.getSenha() == txtSenha.getText())) {
-
             JOptionPane.showMessageDialog(this, "Login efetuado");
             timer.scheduleAtFixedRate(new TimerTask() {
                 public void run() {
@@ -277,6 +284,7 @@ public class Login extends javax.swing.JFrame {
         }
 
     }
+}
 
 //    
 //    
