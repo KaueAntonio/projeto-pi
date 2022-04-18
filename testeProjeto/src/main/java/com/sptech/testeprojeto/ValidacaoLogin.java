@@ -14,9 +14,10 @@ import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.GlobalMemory;
 import oshi.hardware.Sensors;
-import java.util.Timer;
+
 import java.util.TimerTask;
 import com.sptech.testeprojeto.tela.login.Login;
+import javax.xml.transform.Templates;
 
 
 /**
@@ -27,6 +28,7 @@ import com.sptech.testeprojeto.tela.login.Login;
 // INSERIR TIMER E DELAY PARA CAPTURA DE DADOS A CADA 5
 public class ValidacaoLogin { 
 
+    
     Looca looca = new Looca();
     Connection config = new Connection();
     JdbcTemplate template = new JdbcTemplate(config.getDataSource());
@@ -44,8 +46,7 @@ public class ValidacaoLogin {
 
     List discos = disk.getHardware().getDiskStores();
 
-    int delay = 500;
-    int interval = 500;
+    
 
     //        informações CPU
     String nomeCPU = looca.getProcessador().getNome();
@@ -54,9 +55,11 @@ public class ValidacaoLogin {
 
     String sistemaOperacional = looca.getSistema().getSistemaOperacional();
 
+    int delay = 5000;
+    int interval = 5000;
+    
     Timer timer = new Timer();
     
-
     
     public void run() {
         Double usoCPU = looca.getProcessador().getUso();
@@ -85,19 +88,21 @@ public class ValidacaoLogin {
                 + "\n\nGPU: " + gpu
                 + "\n\nDisco: "
                 + "\nDiskStores: " + disks);
+        
+        
 
 //               insert de log da CPU
-        template.update("INSERT INTO log_registros VALUES (?, ?, ?, ?, ?)",
-                usoCPU,
-                100 - usoCPU,
-                freqCPU,
-                3);
-//              insert de log da RAM
-        template.update("INSERT INTO log_registros VALUES (?, ?, ?, ?, ?)",
-                usoRAM,
-                ramDisponivel,
-                0,
-                4);
+//        template.update("INSERT INTO log_registros VALUES (?, ?, ?, ?, ?)",
+//                usoCPU,
+//                100 - usoCPU,
+//                freqCPU,
+//                3);
+////              insert de log da RAM
+//        template.update("INSERT INTO log_registros VALUES (?, ?, ?, ?, ?)",
+//                usoRAM,
+//                ramDisponivel,
+//                0,
+//                4);
 //               insert de log do disco
 //               template.update("INSERT INTO log_registros VALUES (NULL, ?, ?, ?, NULL, ?",
 //                        usoDisco, discoDisponivel, freqDisco, 5);

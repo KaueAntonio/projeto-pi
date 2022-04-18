@@ -24,6 +24,7 @@
 package com.sptech.testeprojeto.tela.login;
 
 import com.sptech.testeprojeto.Connection;
+import com.sptech.testeprojeto.ValidacaoLogin;
 //import com.sptech.testeprojeto.TesteLogin;
 import java.awt.Color;
 import java.awt.Point;
@@ -35,8 +36,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.dao.EmptyResultDataAccessException;
 import java.util.Map;
-
-
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
@@ -45,7 +46,7 @@ import java.util.Map;
 public class Login extends javax.swing.JFrame {
 
     private final Point point = new Point();
-    
+
     Connection config = new Connection();
     JdbcTemplate template = new JdbcTemplate(config.getDataSource());
 
@@ -229,64 +230,78 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtLoginActionPerformed
 
 //    TesteLogin validaLogin = new TesteLogin();
-    
+
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         String login = txtLogin.getText();
         String senha = txtSenha.getText();
-        
+
         //verifica se ambos os campos estão vazios
-        if (login.isBlank()&& senha.isBlank()) {
+        if (login.isBlank() && senha.isBlank()) {
             JOptionPane.showMessageDialog(this, "Insira seu login e senha!");
-        } 
-        //verifica se apenas o campo de login está vazio
+        } //verifica se apenas o campo de login está vazio
         else if (login.isBlank() && !senha.isBlank()) {
             JOptionPane.showMessageDialog(this, "Insira seu login!");
-        }
-        else if (!login.isBlank() && senha.isBlank()){
+        } else if (!login.isBlank() && senha.isBlank()) {
             JOptionPane.showMessageDialog(this, "Insira a sua senha!");
-        }
-        else {
-              logar(login, senha);
+        } else {
+            logar(login, senha);
+
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
-    public Map<String, Object> logar (String loginGerente, String senhaGerente ) {
-        try { 
-            Map<String, Object> logar = JdbcTemplate.queryForMap("SELECT * FROM"
-                    + " operacoes WHERE email_gerente = ? AND senha_gerente = ?",
-        loginGerente, senhaGerente);
-             JOptionPane.showMessageDialog(this, "Login efetuado");
-        return logar;
-        } 
-        catch (EmptyResultDataAccessException e) {
-             JOptionPane.showMessageDialog(this, "Usuário não encontrado");
-            return null;
-        }
-    }
-    
-    
+    public void logar(String loginGerente, String senhaGerente) {
+        Timer timer = new Timer();
+        ValidacaoLogin login = new ValidacaoLogin();
         
+
+        String query
+                = String.format("SELECT * FROM [dbo].[operacoes]"
+                        + " WHERE email_gerente = '%s'"
+                        + "AND senha_gerente = '%s'", loginGerente, senhaGerente);
+
+        SelectLogin autenticar
+                = template.queryForObject(query, new LoginMapper());
+
+        if (!(autenticar.getNome() == txtLogin.getText()
+                && autenticar.getSenha() == txtSenha.getText())) {
+
+            JOptionPane.showMessageDialog(this, "Login efetuado");
+            timer.scheduleAtFixedRate(new TimerTask() {
+                public void run() {
+                    login.run();
+                }
+            }, 5000, 5000);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro de autenticação");
+        }
+
+    }
+
+//    
+//    
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnEntrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseEntered
         btnEntrar.setBackground(new Color(235, 235, 235));
-        btnEntrar.setForeground(new Color(60,161,195));// TODO add your handling code here:
+        btnEntrar.setForeground(new Color(60, 161, 195));// TODO add your handling code here:
     }//GEN-LAST:event_btnEntrarMouseEntered
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
         jButton2.setBackground(new Color(235, 235, 235));
-        jButton2.setForeground(new Color(255,166,0));// TODO add your handling code here:
+        jButton2.setForeground(new Color(255, 166, 0));// TODO add your handling code here:
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void btnEntrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseExited
-        btnEntrar.setBackground(new Color(60,161,195));
+        btnEntrar.setBackground(new Color(60, 161, 195));
         btnEntrar.setForeground(Color.WHITE);        // TODO add your handling code here:
     }//GEN-LAST:event_btnEntrarMouseExited
 
     private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
-        jButton2.setBackground(new Color(255,166,0));
+        jButton2.setBackground(new Color(255, 166, 0));
         jButton2.setForeground(Color.WHITE);         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2MouseExited
 
@@ -325,18 +340,19 @@ public class Login extends javax.swing.JFrame {
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new Login().setVisible(true);
-            new Login().setLayout(new FlowLayout(1));
-            Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
-            new Login().setSize(size);
-            new Login().setUndecorated(true);
-            new Login().setVisible(true);
-            new Login().setDefaultCloseOperation(EXIT_ON_CLOSE);
+            Login tela = new Login();
+            
+            tela.setLayout(new FlowLayout(1));
+//            Dimension size = Toolkit.getDefaultToolkit();
+//            tela.setSize(size);
+//            tela.setUndecorated(true);
+            tela.setVisible(true);
+            tela.setDefaultCloseOperation(EXIT_ON_CLOSE);
         });
     }
 
