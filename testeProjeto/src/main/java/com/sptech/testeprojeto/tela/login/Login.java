@@ -23,12 +23,20 @@
  */
 package com.sptech.testeprojeto.tela.login;
 
+import com.sptech.testeprojeto.Connection;
+//import com.sptech.testeprojeto.TesteLogin;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.dao.EmptyResultDataAccessException;
+import java.util.Map;
+
+
 
 /**
  *
@@ -37,6 +45,9 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     private final Point point = new Point();
+    
+    Connection config = new Connection();
+    JdbcTemplate template = new JdbcTemplate(config.getDataSource());
 
     /**
      * Creates new form Login
@@ -217,23 +228,44 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLoginActionPerformed
 
+//    TesteLogin validaLogin = new TesteLogin();
+    
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         String login = txtLogin.getText();
         String senha = txtSenha.getText();
         
         //verifica se ambos os campos estão vazios
-        if (login.equals("") && senha.equals("")) {
+        if (login.isBlank()&& senha.isBlank()) {
             JOptionPane.showMessageDialog(this, "Insira seu login e senha!");
         } 
         //verifica se apenas o campo de login está vazio
-        else if (login.equals("") && !senha.equals("")) {
+        else if (login.isBlank() && !senha.isBlank()) {
             JOptionPane.showMessageDialog(this, "Insira seu login!");
         }
-        else if (!login.equals("") && senha.equals("")){
+        else if (!login.isBlank() && senha.isBlank()){
             JOptionPane.showMessageDialog(this, "Insira a sua senha!");
+        }
+        else {
+              logar(login, senha);
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
+    public Map<String, Object> logar (String loginGerente, String senhaGerente ) {
+        try { 
+            Map<String, Object> logar = JdbcTemplate.queryForMap("SELECT * FROM"
+                    + " operacoes WHERE email_gerente = ? AND senha_gerente = ?",
+        loginGerente, senhaGerente);
+             JOptionPane.showMessageDialog(this, "Login efetuado");
+        return logar;
+        } 
+        catch (EmptyResultDataAccessException e) {
+             JOptionPane.showMessageDialog(this, "Usuário não encontrado");
+            return null;
+        }
+    }
+    
+    
+        
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
