@@ -1,49 +1,17 @@
-/*
- * The MIT License
- *
- * Copyright 2022 LEONARDO.
- *
- * Permission is hereby granted, free Sof charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
 package com.sptech.testeprojeto.tela.login;
 
 import com.sptech.testeprojeto.Connection;
 import com.sptech.testeprojeto.ValidacaoLogin;
-//import com.sptech.testeprojeto.TesteLogin;
+import com.sptech.testeprojeto.tela.monitoramento.Tela;
 import java.awt.Color;
 import java.awt.Point;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Toolkit;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.dao.EmptyResultDataAccessException;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-/**
- *
- * @author LEONARDO
- */
 public class Login extends javax.swing.JFrame {
 
     private final Point point = new Point();
@@ -51,11 +19,18 @@ public class Login extends javax.swing.JFrame {
     Connection config = new Connection();
     JdbcTemplate template = new JdbcTemplate(config.getDataSource());
 
-    /**
-     * Creates new form Login
-     */
-    public Login() {
-        initComponents();
+    public Login(Boolean estado) {
+        if (estado) {
+            initComponents();
+        } else {
+            Timer timer = new Timer();
+            ValidacaoLogin login = new ValidacaoLogin();
+            timer.scheduleAtFixedRate(new TimerTask() {
+                public void run() {
+                    login.run();
+                }
+            }, 5000, 5000);
+        }
     }
 
     /**
@@ -126,7 +101,7 @@ public class Login extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Sair");
         jButton2.setBorderPainted(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.setFocusPainted(false);
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -147,7 +122,7 @@ public class Login extends javax.swing.JFrame {
         btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
         btnEntrar.setText("Entrar");
         btnEntrar.setBorderPainted(false);
-        btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEntrar.setFocusPainted(false);
         btnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -253,7 +228,6 @@ public class Login extends javax.swing.JFrame {
     public void logar(String loginGerente, String senhaGerente) {
         Timer timer = new Timer();
         ValidacaoLogin login = new ValidacaoLogin();
-        
 
         String query
                 = String.format("SELECT * FROM [dbo].[operacoes]"
@@ -263,28 +237,28 @@ public class Login extends javax.swing.JFrame {
         List lista = template.queryForList(query);
         if (lista.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Sem registros no banco de dados");
-                    
-        } else {
-            
-        
-        SelectLogin autenticar
-                = template.queryForObject(query, new LoginMapper());
-
-        if (!(autenticar.getNome() == txtLogin.getText()
-                && autenticar.getSenha() == txtSenha.getText())) {
-            JOptionPane.showMessageDialog(this, "Login efetuado");
-            timer.scheduleAtFixedRate(new TimerTask() {
-                public void run() {
-                    login.run();
-                }
-            }, 5000, 5000);
 
         } else {
-            JOptionPane.showMessageDialog(this, "Erro de autenticação");
+
+            SelectLogin autenticar
+                    = template.queryForObject(query, new LoginMapper());
+
+            if (!(autenticar.getNome() == txtLogin.getText()
+                    && autenticar.getSenha() == txtSenha.getText())) {
+                JOptionPane.showMessageDialog(this, "Login efetuado");
+
+                timer.scheduleAtFixedRate(new TimerTask() {
+                    public void run() {
+                        login.run();
+                    }
+                }, 5000, 5000);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro de autenticação");
+            }
+
         }
-
     }
-}
 
 //    
 //    
@@ -353,14 +327,24 @@ public class Login extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            Login tela = new Login();
-            
-            tela.setLayout(new FlowLayout(1));
+            String maquina = "DESKTOP-2D4ULK6";
+            String query
+                    = String.format("SELECT * FROM [dbo].[maquinas]"
+                            + " WHERE hostname = '%s'", maquina);
+            JdbcTemplate template = new JdbcTemplate(new Connection().getDataSource());
+            List lista = template.queryForList(query);
+            if (lista.isEmpty()) {
+                Login tela = new Login(true);
+
+                tela.setLayout(new FlowLayout(1));
 //            Dimension size = Toolkit.getDefaultToolkit();
 //            tela.setSize(size);
 //            tela.setUndecorated(true);
-            tela.setVisible(true);
-            tela.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                tela.setVisible(true);
+                tela.setDefaultCloseOperation(EXIT_ON_CLOSE);
+            } else {
+                new Login(false);
+            }
         });
     }
 

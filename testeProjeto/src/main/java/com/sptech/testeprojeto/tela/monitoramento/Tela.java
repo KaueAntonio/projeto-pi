@@ -1,15 +1,12 @@
-package tela.monitoramento;
+package com.sptech.testeprojeto.tela.monitoramento;
 
 import com.github.britooo.looca.api.core.Looca;
 import java.awt.Color;
 
-/**
- *
- * @author diego
- */
+
 public class Tela extends javax.swing.JFrame {
 
-    public Tela() {
+    public void Tela() {
         initComponents();
         this.setUpOs();
     }
