@@ -8,16 +8,11 @@ package com.sptech.testeprojeto;
 import com.github.britooo.looca.api.core.Looca;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.GlobalMemory;
 import oshi.hardware.Sensors;
-
-import java.util.TimerTask;
-import com.sptech.testeprojeto.tela.login.Login;
-import javax.xml.transform.Templates;
 
 
 /**
