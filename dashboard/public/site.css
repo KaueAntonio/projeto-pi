@@ -30,9 +30,6 @@ body {
     font-family: 'Quicksand', sans-serif;
     background-color: #fff;
 }
-.nav-item:hover {
-    cursor: pointer;
-}
 
 .dropdown-menu {
     border-radius: 15px;
