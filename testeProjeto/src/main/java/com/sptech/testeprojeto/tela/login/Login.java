@@ -1,6 +1,5 @@
 package com.sptech.testeprojeto.tela.login;
 
-import com.github.britooo.looca.api.core.Looca;
 import com.sptech.testeprojeto.Connection;
 import com.sptech.testeprojeto.ValidacaoLogin;
 import java.awt.Color;
@@ -12,10 +11,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.Timer;
 import java.util.TimerTask;
 import oshi.SystemInfo;
-import oshi.hardware.Baseboard;
-import oshi.hardware.CentralProcessor;
 
 public class Login extends javax.swing.JFrame {
+        
 
     private final Point point = new Point();
 

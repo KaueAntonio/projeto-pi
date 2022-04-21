@@ -3,7 +3,7 @@
  *
  * Biblioteca auxiliar para minimizar programas para o Tray
  */
-package com.sptech.testeprojeto.trayicon;
+package com.sptech.testeprojeto.tela.trayicon;
 
 import java.awt.AWTException;
 import java.awt.MenuItem;
