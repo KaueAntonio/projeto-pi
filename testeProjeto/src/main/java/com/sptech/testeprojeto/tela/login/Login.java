@@ -262,7 +262,7 @@ public class Login extends javax.swing.JFrame {
                     && autenticar.getSenha() == txtSenha.getText())) {
                 JOptionPane.showMessageDialog(this, "Login efetuado");
                 String queryInsert = String.format("INSERT INTO [dbo].[maquinas]" +
-                        "(hostname, serial_maquina, localidade_maquina, fk_funcionario)" +
+                        "(hostname, serial_maquina, localidade_maquina, fk_operacao)" +
                         "VALUES ('%s', '%s', 'Equipe 2', 4);", info.getHardware().getComputerSystem().getHardwareUUID(),
                         info.getHardware().getComputerSystem().getSerialNumber());
                 template.update(queryInsert);
