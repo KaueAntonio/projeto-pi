@@ -259,7 +259,6 @@ public class Login extends javax.swing.JFrame {
 
             SelectLogin autenticar = template.queryForObject(query, new LoginMapper());
             SystemInfo info = new SystemInfo();
-            Looca looca = new Looca();
             if (!(autenticar.getNome() == txtLogin.getText()
                     && autenticar.getSenha() == txtSenha.getText())) {
                 JOptionPane.showMessageDialog(this, "Login efetuado");
