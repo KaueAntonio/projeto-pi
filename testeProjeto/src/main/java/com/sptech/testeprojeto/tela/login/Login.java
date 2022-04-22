@@ -1,5 +1,6 @@
 package com.sptech.testeprojeto.tela.login;
 
+import com.github.britooo.looca.api.core.Looca;
 import com.sptech.testeprojeto.Connection;
 import com.sptech.testeprojeto.ValidacaoLogin;
 import java.awt.Color;
@@ -257,6 +258,7 @@ public class Login extends javax.swing.JFrame {
 
             SelectLogin autenticar = template.queryForObject(query, new LoginMapper());
             SystemInfo info = new SystemInfo();
+            Looca looca = new Looca();
             if (!(autenticar.getNome() == txtLogin.getText()
                     && autenticar.getSenha() == txtSenha.getText())) {
                 JOptionPane.showMessageDialog(this, "Login efetuado");
@@ -264,12 +266,13 @@ public class Login extends javax.swing.JFrame {
                         "(hostname, serial_maquina, localidade_maquina, fk_operacao)" +
                         "VALUES ('%s', '%s', 'Equipe 2', 1);", info.getHardware().getComputerSystem().getHardwareUUID(),
                         info.getHardware().getComputerSystem().getSerialNumber());
+
                 template.update(queryInsert);
                 timer.scheduleAtFixedRate(new TimerTask() {
                     public void run() {
                         login.run();
                     }
-                }, 5000, 5000);
+                }, 2000, 1000);
 
             } else {
                 JOptionPane.showMessageDialog(this, "Erro de autenticação");
