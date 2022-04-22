@@ -246,9 +246,10 @@ public class Login extends javax.swing.JFrame {
         Timer timer = new Timer();
         ValidacaoLogin login = new ValidacaoLogin();
 
-        String query = String.format("SELECT * FROM [dbo].[operacoes]"
-                + " WHERE email_gerente = '%s'"
-                + "AND senha_gerente = '%s'", loginGerente, senhaGerente);
+        String query = String
+                .format("SELECT * FROM [dbo].[operacoes](id_operacao, email_gerente, senha_gerente, fk_operacao)"
+                        + " WHERE email_gerente = '%s'"
+                        + "AND senha_gerente = '%s'", loginGerente, senhaGerente);
 
         List lista = template.queryForList(query);
         if (lista.isEmpty()) {
@@ -264,15 +265,16 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Login efetuado");
                 String queryInsert = String.format("INSERT INTO [dbo].[maquinas]" +
                         "(hostname, serial_maquina, localidade_maquina, fk_operacao)" +
-                        "VALUES ('%s', '%s', 'Equipe 2', 1);", info.getHardware().getComputerSystem().getHardwareUUID(),
-                        info.getHardware().getComputerSystem().getSerialNumber());
+                        "VALUES ('%s', '%s', 'Equipe 2', %d);",
+                        info.getHardware().getComputerSystem().getHardwareUUID(),
+                        info.getHardware().getComputerSystem().getSerialNumber(), autenticar.getFkOperacao());
 
                 template.update(queryInsert);
                 timer.scheduleAtFixedRate(new TimerTask() {
                     public void run() {
                         login.run();
                     }
-                }, 2000, 1000);
+                }, 0, 1000);
 
             } else {
                 JOptionPane.showMessageDialog(this, "Erro de autenticação");

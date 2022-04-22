@@ -1,11 +1,19 @@
 
 package com.sptech.testeprojeto.tela.login;
 
-
 public class SelectLogin {
     private Integer id;
     private String nome;
     private String senha;
+    private Integer fkOperacao;
+
+    public Integer getFkOperacao() {
+        return fkOperacao;
+    }
+
+    public void setFkOperacao(Integer fkOperacao) {
+        this.fkOperacao = fkOperacao;
+    }
 
     public Integer getId() {
         return id;
@@ -30,5 +38,5 @@ public class SelectLogin {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
+
 }
