@@ -13,7 +13,6 @@ import java.util.TimerTask;
 import oshi.SystemInfo;
 
 public class Login extends javax.swing.JFrame {
-        
 
     private final Point point = new Point();
 
@@ -263,7 +262,7 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Login efetuado");
                 String queryInsert = String.format("INSERT INTO [dbo].[maquinas]" +
                         "(hostname, serial_maquina, localidade_maquina, fk_operacao)" +
-                        "VALUES ('%s', '%s', 'Equipe 2', 4);", info.getHardware().getComputerSystem().getHardwareUUID(),
+                        "VALUES ('%s', '%s', 'Equipe 2', 1);", info.getHardware().getComputerSystem().getHardwareUUID(),
                         info.getHardware().getComputerSystem().getSerialNumber());
                 template.update(queryInsert);
                 timer.scheduleAtFixedRate(new TimerTask() {

@@ -2,168 +2,76 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Página Principal</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous" />
-    <script src="https://kit.fontawesome.com/ea8cfd2902.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="./Imagens/logo.png" />
-    <link rel="stylesheet" href="site.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <!-- Start of  Zendesk Widget script -->
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=76a02d93-e792-4874-accf-3433c092ca07"> </script>
-<!-- End of  Zendesk Widget script -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartSac | Dashboards</title>
+
+
+    <script src="../assets/js/funcoes.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- scripts do Chart.js -->
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="validarSessao()">
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-            <div class="container">
-                <img id="iconesumir" class="icone" src="./Imagens/Icone-depositphotos-bgremover.png" alt="" />
-                <a class="navbar-brand" href="#"><img src="" alt="" /></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <img
-              class="icone"
-              src="./Imagens/Icone-depositphotos-bgremover.png"
-              alt=""
-            />
-            <span class="navbar-toggler-icon"></span>
-          </button>
+<body>
+    <div class="janela">
+        <div class="header-left">
+            <h1>SmartSac</h1>
 
-                <div class="align">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-lg-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#quemsomos">Quem Somos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#nossavisao">Nosso Objetivo</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#faleconosco">Fale Conosco</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#resultados">Avaliações</a>
-                            </li>
-                            <li class="nav-item">
-                                <div class="dropdown">
-                                    <button class="btn-conta dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      Conta
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a id="hrefLogin" style="display: none;" class="dropdown-item" href="./login.html">Login</a>
-                                        <a id="hrefEditar" style="display: none;" class="dropdown-item" href="./editar.html">Editar</a>
-                                        <a id="hrefSair" style="display: none;" class="dropdown-item" onclick="botaoCadastro(sessionStorage.ESTADO_PAGE)" href="./index.html">Sair</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+            <div class="hello">
+                <h3>Olá <span id="b_usuario"></span>!</h3>
+            </div>
+
+            <div class="btn-nav">
+
+                <h3>Cards</h3>
+
+                <div class="btn-logout" onclick="limparSessao()">
+                    <h3>Sair</h3>
                 </div>
+
             </div>
+
+            <div class="dash">
+                <div class="btns-dash">
+
+                    <button class="btn-chart" onclick="(1)">
+                        <img src="Micro.png"> Máquina 1</button>
+                    <button class="btn-chart" onclick="(2)">
+                        <img src="Micro.png"> Máquina 2</button>
+                    <button class="btn-chart" onclick="(3)">
+                        <img src="Micro.png"> Máquina 3</button>
+                    <button class="btn-chart" onclick="(4)">
+                        <img src="Micro.png"> Máquina 4</button>
+                    <button class="btn-chart" onclick="(5)">
+                        <img src="Micro.png"> Máquina 5</button>
+                    <button class="btn-chart" onclick="(6)">
+                        <img src="Micro.png"> Máquina 6</button>
+                    <button class="btn-chart" onclick="(7)">
+                        <img src="Micro.png"> Máquina 7</button>
+                    <button class="btn-chart" onclick="(8)">
+                        <img src="Micro.png"> Máquina 8</button>
+                    <button class="btn-chart" onclick="(9)">
+                        <img src="Micro.png"> Máquina 9</button>
+                    <button class="btn-chart" onclick="(10)">
+                        <img src="Micro.png"> Máquina 10</button>
+                    <button class="btn-chart" onclick="(11)">
+                        <img src="Micro.png"> Máquina 11</button>
+                    <button class="btn-chart" onclick="(12)">
+                        <img src="Micro.png"> Máquina 12</button>
+                </div>
+
             </div>
-            </div>
-        </nav>
-    </header>
-    <div class="jumbotron jumbotron-fluid height100p banner" id="home">
-    </div>
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <ul class="sci">
-              <li>
-                <a href="https://www.facebook.com/"
-                  ><i class="fab fa-facebook"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://mail.google.com/mail/"
-                  ><i class="fa fa-google-plus"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/"
-                  ><i class="fa fa-linkedin"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/ "
-                  ><i class="fa fa-instagram"></i
-                ></a>
-              </li>
-            </ul>
-            <p class="crypt">
-              <a href="#">Copyright (C) Site - Todos os Direitos Reservados</a>
-            </p>
-          </div>
         </div>
-      </div>
-    </footer>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
 
-    <script type="text/javascript">
-      $(document).scroll(function () {
-        $(".navbar").toggleClass(
-          "scrolled",
-          $(this).scrollTop() > $(".navbar").height()
-        );
-      });
-    </script>
-  </body>
+
+</body>
+
 </html>
-<script>
-  
-
-  function validarSessao() {
-    if (sessionStorage.ESTADO_PAGE != "logado") {
-      hrefLogin.style.display = 'none';
-      hrefSair.style.display = 'block';
-      hrefEditar.style.display = 'block';
-    } else {
-      hrefLogin.style.display = 'block';
-      hrefSair.style.display = 'none';
-      hrefEditar.style.display = 'none';
-      alert("Não Há Usuário Logado!");
-      window.location = 'index.html';
-    }
-  }
-
-  function botaoCadastro(estado) {
-    if (estado == "logado") {
-      sessionStorage.ESTADO_PAGE = "deslogado";
-      sessionStorage.EMAIL_USUARIO = undefined;
-      sessionStorage.NOME_USUARIO = undefined;
-      sessionStorage.ID_USUARIO = undefined;
-      validarSessao();
-      alert('Login Encerrado');
-      window.location.href = "login.html";
-    } else {
-      window.location.href = "login.html";
-    }
-  }
-</script>
-<script src="./avaliacoes.js"></script>
