@@ -42,19 +42,18 @@ public class ValidacaoLogin {
 
     String sistemaOperacional = looca.getSistema().getSistemaOperacional();
 
-    int delay = 5000;
-    int interval = 5000;
     SystemInfo info = new SystemInfo();
-    String queryIdentificarMaquina = String.format("SELECT * FROM [dbo].[maquinas] WHERE hostname = '%s'",
-            info.getHardware().getComputerSystem().getHardwareUUID());
-
-    Maquina identificarMaquina = template.queryForObject(queryIdentificarMaquina, new MaquinaMapper());
+    
 
     Timer timer = new Timer();
     int cont = 1;
     int cont2 = 1;
 
     public void run() {
+        String queryIdentificarMaquina = String.format("SELECT * FROM [dbo].[maquinas] WHERE hostname = '%s'",
+        info.getHardware().getComputerSystem().getHardwareUUID());
+
+        Maquina identificarMaquina = template.queryForObject(queryIdentificarMaquina, new MaquinaMapper());
         Double usoCPU = looca.getProcessador().getUso();
         Long freqCPU = looca.getProcessador().getFrequencia();
 

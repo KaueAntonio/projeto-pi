@@ -5,6 +5,7 @@ import com.sptech.testeprojeto.Connection;
 import com.sptech.testeprojeto.ValidacaoLogin;
 import java.awt.Color;
 import java.awt.Point;
+import java.io.Console;
 import java.awt.FlowLayout;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -247,14 +248,13 @@ public class Login extends javax.swing.JFrame {
         ValidacaoLogin login = new ValidacaoLogin();
 
         String query = String
-                .format("SELECT * FROM [dbo].[operacoes](id_operacao, email_gerente, senha_gerente, fk_operacao)"
+                .format("SELECT id_operacao, email_gerente, senha_gerente, fk_empresa FROM [dbo].[operacoes]"
                         + " WHERE email_gerente = '%s'"
                         + "AND senha_gerente = '%s'", loginGerente, senhaGerente);
 
         List lista = template.queryForList(query);
         if (lista.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Usuário ou Senha Incorretos!");
-
         } else {
 
             SelectLogin autenticar = template.queryForObject(query, new LoginMapper());
@@ -266,7 +266,7 @@ public class Login extends javax.swing.JFrame {
                         "(hostname, serial_maquina, localidade_maquina, fk_operacao)" +
                         "VALUES ('%s', '%s', 'Equipe 2', %d);",
                         info.getHardware().getComputerSystem().getHardwareUUID(),
-                        info.getHardware().getComputerSystem().getSerialNumber(), autenticar.getFkOperacao());
+                        info.getHardware().getComputerSystem().getSerialNumber(), autenticar.getId());
 
                 template.update(queryInsert);
                 timer.scheduleAtFixedRate(new TimerTask() {

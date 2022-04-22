@@ -11,7 +11,7 @@ public class LoginMapper implements RowMapper<SelectLogin> {
         login.setId(rs.getInt("id_operacao"));
         login.setNome(rs.getString("email_gerente"));
         login.setSenha(rs.getString("senha_gerente"));
-        login.setFkOperacao(rs.getInt("fk_operacao"));
+        login.setFkOperacao(rs.getInt("fk_empresa"));
 
         return login;
 
