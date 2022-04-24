@@ -102,12 +102,13 @@ public class ValidacaoLogin {
                     + "Uso CPU: %.2f \n"
                     + "%s, %s, $s, %s", usoCPU, maquina, localidade, operacao, gerente);
 
-//                String idRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 10.0 AND uso <= 20.0 ORDER BY id_registro DESC";
- 
+                String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 10.0 AND uso <= 20.0 ORDER BY id_registro DESC";
+            Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
+            
             template.update("INSERT INTO [dbo].[log_alertas] (codigo_urgencia, descricao, fk_registro) VALUES (?, ?, ?)",
                     codigoUrgencia,
                     descricao,
-                    300
+                    idRegistro.getId()
             );
 
 
