@@ -6,6 +6,7 @@
 package com.sptech.testeprojeto;
 
 import com.github.britooo.looca.api.core.Looca;
+import com.mysql.cj.Query;
 import java.util.List;
 import java.util.Timer;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -88,41 +89,77 @@ public class ValidacaoLogin {
         // usoDisco, discoDisponivel, freqDisco, 5);
 
         String codigoUrgencia;
-        if (usoCPU > 2.0 && usoCPU <= 30.0) {
-//            List maquina = template.queryForList("SELECT TOP (1) hostname FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 2.0 AND uso <= 20.0 ORDER BY id_registro DESC");
-//            List localidade = template.queryForList("SELECT TOP (1) localidade_maquina FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 2.0 AND uso <= 20.0 ORDER BY id_registro DESC");
-//            List operacao = template.queryForList("SELECT TOP (1) nome_operacao FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 2.0 AND uso <= 20.0 ORDER BY id_registro DESC");
-//            List gerente = template.queryForList("SELECT TOP (1) nome_gerente FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 2.0 AND uso <= 20.0 ORDER BY id_registro DESC");
+        if (usoCPU > 30.0 && usoCPU <= 50.0) {
+            List maquina = template.queryForList("SELECT TOP (1) hostname FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 30.0 AND uso <= 50.0 ORDER BY id_registro DESC");
+            List localidade = template.queryForList("SELECT TOP (1) localidade_maquina FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 30.0 AND uso <= 50.0 ORDER BY id_registro DESC");
+            List operacao = template.queryForList("SELECT TOP (1) nome_operacao FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 30.0 AND uso <= 50.0 ORDER BY id_registro DESC");
+            List gerente = template.queryForList("SELECT TOP (1) nome_gerente FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 30.0 AND uso <= 50.0 ORDER BY id_registro DESC");
 
             codigoUrgencia = "Alerta";
-            String descricao = "O estado da CPU da máquina está em alerta. Favor verificar.";
+            String descricao = "";
+            descricao = String.format("O estado da CPU da máquina está em alerta."
+                    + " Favor verificar. \n"
+                    + "Uso CPU: %.2f \n"
+                    + "%s, %s, $s, %s", usoCPU, maquina, localidade, operacao, gerente);
 
-
-                
-            List idRegistro = template.queryForList("SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 10.0 AND uso <= 20.0 ORDER BY id_registro DESC");
-           
-            
-            
-            String registro = "";
-            for (Object rgs : idRegistro){
-                registro+=idRegistro;
-            }
-           
-            System.out.println(registro);
-            
-
+//                String idRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 10.0 AND uso <= 20.0 ORDER BY id_registro DESC";
+ 
             template.update("INSERT INTO [dbo].[log_alertas] (codigo_urgencia, descricao, fk_registro) VALUES (?, ?, ?)",
                     codigoUrgencia,
-                    "descricao",
-                    registro.toString()
+                    descricao,
+                    300
             );
 
-//            template.update(insertAlerta);
 
-//            System.out.println(template.queryForList("SELECT TOP (1) hostname FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 2.0 AND uso <= 20.0 ORDER BY id_registro DESC"));
+
+        } else if (usoCPU > 2.0 && usoCPU <= 75.0){
+            List maquina = template.queryForList("SELECT TOP (1) hostname FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 50.0 AND uso <= 75.0 ORDER BY id_registro DESC");
+            List localidade = template.queryForList("SELECT TOP (1) localidade_maquina FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 50.0 AND uso <= 75.0 ORDER BY id_registro DESC");
+            List operacao = template.queryForList("SELECT TOP (1) nome_operacao FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 50.0 AND uso <= 75.0 ORDER BY id_registro DESC");
+            List gerente = template.queryForList("SELECT TOP (1) nome_gerente FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 50.0 AND uso <= 75.0 ORDER BY id_registro DESC");
+
+            codigoUrgencia = "Emergência";
+            String descricao = "";
+            descricao = String.format("CPU em estado emergencial."
+                    + " Favor verificar. \n"
+                    + "Uso CPU: %.2f \n"
+                    + "%s, %s, %s, %s", usoCPU, maquina, localidade, operacao, gerente);
+
+//                String idRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 10.0 AND uso <= 20.0 ORDER BY id_registro DESC";
+ 
+            template.update("INSERT INTO [dbo].[log_alertas] (codigo_urgencia, descricao, fk_registro) VALUES (?, ?, ?)",
+                    codigoUrgencia,
+                    descricao,
+                    300
+            );
+        }else if (usoCPU > 75.0){
+            List maquina = template.queryForList("SELECT TOP (1) hostname FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 75.0 ORDER BY id_registro DESC");
+            List localidade = template.queryForList("SELECT TOP (1) localidade_maquina FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 75.0 ORDER BY id_registro DESC");
+            List operacao = template.queryForList("SELECT TOP (1) nome_operacao FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 75.0 ORDER BY id_registro DESC");
+            List gerente = template.queryForList("SELECT TOP (1) nome_gerente FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 75.0 ORDER BY id_registro DESC");
+
+            codigoUrgencia = "Crítico";
+            String descricao = "";
+            descricao = String.format("O estado da CPU da máquina está crítico!"
+                    + " Favor verificar. \n"
+                    + "Uso CPU: %.2f \n"
+                    + "%s, %s, $s, %s", usoCPU, maquina, localidade, operacao, gerente);
+
+ 
+            template.update("INSERT INTO [dbo].[log_alertas] (codigo_urgencia, descricao, fk_registro) VALUES (?, ?, ?)",
+                    codigoUrgencia,
+                    descricao,
+                    300
+            );
         }
+        
+        if (usoRAM > 10){
+            
+        }
+        
+        
 
-    }
+    } 
 
 }
 
