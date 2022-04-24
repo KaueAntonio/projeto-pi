@@ -9,6 +9,7 @@ com\sptech\testeprojeto\integracao\slack\IntegracaoSlack.class
 com\sptech\testeprojeto\tela\trayicon\IconeNoTray$3.class
 com\sptech\testeprojeto\tela\trayicon\JFramePrincipal.class
 com\sptech\testeprojeto\tela\login\Login.class
+.netbeans_automatic_build
 com\sptech\testeprojeto\tela\login\SelectLogin.class
 com\sptech\testeprojeto\ValidacaoLogin.class
 com\sptech\testeprojeto\tela\login\Login$6.class
