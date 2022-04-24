@@ -1,6 +1,7 @@
 com\sptech\testeprojeto\tela\monitoramento\Tela.class
 com\sptech\testeprojeto\Connection.class
 com\sptech\testeprojeto\tela\login\Login$5.class
+com\sptech\testeprojeto\RegistroMapper.class
 com\sptech\testeprojeto\tela\login\Login$3.class
 com\sptech\testeprojeto\tela\login\Maquina.class
 com\sptech\testeprojeto\tela\trayicon\IconeNoTray$1.class
@@ -9,7 +10,6 @@ com\sptech\testeprojeto\integracao\slack\IntegracaoSlack.class
 com\sptech\testeprojeto\tela\trayicon\IconeNoTray$3.class
 com\sptech\testeprojeto\tela\trayicon\JFramePrincipal.class
 com\sptech\testeprojeto\tela\login\Login.class
-.netbeans_automatic_build
 com\sptech\testeprojeto\tela\login\SelectLogin.class
 com\sptech\testeprojeto\ValidacaoLogin.class
 com\sptech\testeprojeto\tela\login\Login$6.class
@@ -24,3 +24,4 @@ com\sptech\testeprojeto\Aplicacao.class
 com\sptech\testeprojeto\tela\login\Login$4.class
 com\sptech\testeprojeto\tela\login\Login$2.class
 com\sptech\testeprojeto\tela\login\Login$7.class
+com\sptech\testeprojeto\Registro.class
