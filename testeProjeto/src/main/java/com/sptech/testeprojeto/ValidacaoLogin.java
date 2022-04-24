@@ -15,12 +15,13 @@ import oshi.hardware.GlobalMemory;
 import oshi.hardware.Sensors;
 import com.sptech.testeprojeto.tela.login.Maquina;
 import com.sptech.testeprojeto.tela.login.MaquinaMapper;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
  * @author wall
  */
-
 // INSERIR TIMER E DELAY PARA CAPTURA DE DADOS A CADA 5
 public class ValidacaoLogin {
 
@@ -43,7 +44,6 @@ public class ValidacaoLogin {
     String sistemaOperacional = looca.getSistema().getSistemaOperacional();
 
     SystemInfo info = new SystemInfo();
-    
 
     Timer timer = new Timer();
     int cont = 1;
@@ -51,7 +51,7 @@ public class ValidacaoLogin {
 
     public void run() {
         String queryIdentificarMaquina = String.format("SELECT * FROM [dbo].[maquinas] WHERE hostname = '%s'",
-        info.getHardware().getComputerSystem().getHardwareUUID());
+                info.getHardware().getComputerSystem().getHardwareUUID());
 
         Maquina identificarMaquina = template.queryForObject(queryIdentificarMaquina, new MaquinaMapper());
         Double usoCPU = looca.getProcessador().getUso();
@@ -63,7 +63,7 @@ public class ValidacaoLogin {
 
         // insert de log da CPU
         template.update(
-                "INSERT INTO [dbo].[log_registros](uso, disponivel, frequencia, fk_maquina, fk_componente) VALUES (?, ?, ?, ?, ?)",
+                "INSERT INTO [dbo].[log_registros](uso, disponivel, frequencia, fk_maquina, fk_componente, data_hora) VALUES (?, ?, ?, ?, ?, GETDATE())",
                 usoCPU,
                 100 - usoCPU,
                 freqCPU,
@@ -74,7 +74,7 @@ public class ValidacaoLogin {
         cont = cont + 1;
         //// insert de log da RAM
         template.update(
-                "INSERT INTO [dbo].[log_registros](uso, disponivel, frequencia, fk_maquina, fk_componente) VALUES (?, ?, ?, ?, ?)",
+                "INSERT INTO [dbo].[log_registros](uso, disponivel, frequencia, fk_maquina, fk_componente, data_hora) VALUES (?, ?, ?, ?, ?, GETDATE())",
                 usoRAM,
                 ramDisponivel,
                 0,
@@ -86,6 +86,44 @@ public class ValidacaoLogin {
         // insert de log do disco
         // template.update("INSERT INTO log_registros VALUES (NULL, ?, ?, ?, NULL, ?",
         // usoDisco, discoDisponivel, freqDisco, 5);
+
+        String codigoUrgencia;
+        if (usoCPU > 2.0 && usoCPU <= 30.0) {
+//            List maquina = template.queryForList("SELECT TOP (1) hostname FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 2.0 AND uso <= 20.0 ORDER BY id_registro DESC");
+//            List localidade = template.queryForList("SELECT TOP (1) localidade_maquina FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 2.0 AND uso <= 20.0 ORDER BY id_registro DESC");
+//            List operacao = template.queryForList("SELECT TOP (1) nome_operacao FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 2.0 AND uso <= 20.0 ORDER BY id_registro DESC");
+//            List gerente = template.queryForList("SELECT TOP (1) nome_gerente FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 2.0 AND uso <= 20.0 ORDER BY id_registro DESC");
+
+            codigoUrgencia = "Alerta";
+            String descricao = "O estado da CPU da máquina está em alerta. Favor verificar.";
+
+
+                
+            List idRegistro = template.queryForList("SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 10.0 AND uso <= 20.0 ORDER BY id_registro DESC");
+           
+            
+            
+            String registro = "";
+            for (Object rgs : idRegistro){
+                registro+=idRegistro;
+            }
+           
+            System.out.println(registro);
+            
+
+            template.update("INSERT INTO [dbo].[log_alertas] (codigo_urgencia, descricao, fk_registro) VALUES (?, ?, ?)",
+                    codigoUrgencia,
+                    "descricao",
+                    registro.toString()
+            );
+
+//            template.update(insertAlerta);
+
+//            System.out.println(template.queryForList("SELECT TOP (1) hostname FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 2.0 AND uso <= 20.0 ORDER BY id_registro DESC"));
+        }
+
     }
 
 }
+
+
