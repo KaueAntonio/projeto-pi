@@ -7,9 +7,8 @@ package com.sptech.testeprojeto;
 
 /**
  *
- * @author wende
+ * @author wall
  */
-import com.sptech.testeprojeto.tela.login.SelectLogin;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
