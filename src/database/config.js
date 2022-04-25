@@ -1,12 +1,12 @@
 var mysql = require("mysql2");
-var sql = require("mysql2");
+var sql = require('mssql');
 
 // (NUVEM)
 var sqlServerConfig = {
-    user: "",
-    password: "",
-    database: "",
-    server: "",
+    user: "smartsac",
+    password: "#Paysandu",
+    database: "bd-projeto-sac",
+    server: "projeto-sac.database.windows.net",
     pool: {
         max: 10,
         min: 0,
@@ -19,10 +19,17 @@ var sqlServerConfig = {
 
 // (LOCAL)
 var mySqlConfig = {
+<<<<<<< HEAD
     host: "localhost",
     user: "root",
     password: "Leolari@123",
     database: "smart_sac",
+=======
+    host: "projeto-sac.database.windows.net",
+    user: "smartsac",
+    password: "#Paysandu",
+    database: "bd-projeto-sac",
+>>>>>>> aa470e8befeb1f3307e2d58c1239acdb9f113c8d
     port: "3306",
 };
 

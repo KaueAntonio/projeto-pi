@@ -125,6 +125,8 @@
                         href="./editar.html"
                         >Editar</a
                       >
+                      <a id="hrefOperacao" style="display: none;" class="dropdown-item" href="./operacao.html">Operações</a>
+
                       <a
                         id="hrefSair"
                         style="display: none"
@@ -398,15 +400,15 @@
 
   function validarSessao() {
     if (sessionStorage.ESTADO_PAGE == "logado") {
-      hrefLogin.style.display = "none";
-      hrefSair.style.display = "block";
-      hrefEditar.style.display = "block";
+      hrefLogin.style.display = 'none';
+      hrefSair.style.display = 'block';
+      hrefEditar.style.display = 'block';
+      hrefOperacao.style.display = 'block';
     } else {
-      hrefLogin.style.display = "block";
-      hrefSair.style.display = "none";
-      hrefEditar.style.display = "none";
-      alert("Não Há Usuário Logado!");
-      window.location = "index.html";
+      hrefLogin.style.display = 'block';
+      hrefSair.style.display = 'none';
+      hrefEditar.style.display = 'none';
+      hrefOperacao.style.display = 'none';
     }
   }
 

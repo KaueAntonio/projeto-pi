@@ -8,19 +8,36 @@ package com.sptech.testeprojeto.integracao.slack;
 import com.github.seratch.jslack.Slack;
 import com.github.seratch.jslack.api.webhook.Payload;
 import com.github.seratch.jslack.api.webhook.WebhookResponse;
-
+import com.sptech.testeprojeto.Connection;
+import org.springframework.jdbc.core.JdbcTemplate;
+import com.sptech.testeprojeto.integracao.slack.SlackMapper;
+import com.sptech.testeprojeto.integracao.slack.SlackTest;
 /**
  *
  * @author wende
  */
 public class IntegracaoSlack {
-    private static  String webHookURL = "https://hooks.slack.com/services/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";
-    private static String slackChannel = "equipe-ti"; 
+    Connection config = new Connection();
+    JdbcTemplate template = new JdbcTemplate(config.getDataSource());
+    private String webHookURL = "https://hooks.slack.com/services/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";
+    private String slackChannel = "equipe-ti"; 
+    
+ 
+        String queryAlerta = "SELECT TOP(1) descricao FROM"
+                + "[dbo].[log_alertas] JOIN [dbo].[log_registros]"
+                + "ON = fk_registro = id_registro ORDER BY id_log_alerta DESC";
+        
+       
+//       SlackTest teste = template.queryForObject(queryAlerta, SlackMapper()); 
+        
+    
     public static void main(String[] args) {
-        enviarMensagem("Teste de notificação v2");
+//        String descricao = String.format("%s", teste.getDescricao());
+//        enviarMensagem(descricao);
+        
     }
     
-    public static void enviarMensagem(String message) {
+    public  void enviarMensagem(String message) {
         try {
             StringBuilder msgBuilder = new StringBuilder();
         
