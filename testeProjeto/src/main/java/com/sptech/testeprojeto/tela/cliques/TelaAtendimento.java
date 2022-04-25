@@ -262,7 +262,6 @@ public class TelaAtendimento extends javax.swing.JFrame {
         });
 
         label.setText("Cliques:");
-        label.setPreferredSize(new java.awt.Dimension(42, 16));
 
         teste.setText("0");
 
@@ -397,7 +396,7 @@ public class TelaAtendimento extends javax.swing.JFrame {
                         .addComponent(jLabel15)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label)
                             .addComponent(teste)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
