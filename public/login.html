@@ -57,6 +57,7 @@
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a id="hrefLogin" style="display: none;" class="dropdown-item" href="./login.html">Login</a>
                                         <a id="hrefEditar" style="display: none;" class="dropdown-item" href="./editar.html">Editar</a>
+                                        <a id="hrefOperacao" style="display: none;" class="dropdown-item" href="./operacao.html">Operações</a>
                                         <a id="hrefSair" style="display: none;" class="dropdown-item" onclick="botaoCadastro(sessionStorage.ESTADO_PAGE)" href="./index.html">Sair</a>
                                     </div>
                                 </div>
@@ -190,8 +191,8 @@
                     var teste = JSON.stringify(json);
 
                     sessionStorage.EMAIL_USUARIO = json[0].cnpj;
-                    sessionStorage.NOME_USUARIO = json[0].nome;
-                    sessionStorage.ID_USUARIO = json[0].idEmpresa;
+                    sessionStorage.NOME_USUARIO = json[0].nome_empresa;
+                    sessionStorage.ID_USUARIO = json[0].id_empresa;
                     sessionStorage.ESTADO_PAGE = "logado";
          
                     setTimeout(function () {
@@ -220,10 +221,12 @@
       hrefLogin.style.display = 'none';
       hrefSair.style.display = 'block';
       hrefEditar.style.display = 'block';
+      hrefOperacao.style.display = 'block';
     } else {
       hrefLogin.style.display = 'block';
       hrefSair.style.display = 'none';
       hrefEditar.style.display = 'none';
+      hrefOperacao.style.display = 'none';
     }
   }
 

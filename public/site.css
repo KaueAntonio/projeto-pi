@@ -620,6 +620,11 @@ h3 {
     font-weight: bolder;
 }
 
+.botaoExcluir {
+    margin: 10px;
+    padding: 5px;
+}
+
 .botaoExcluir:hover {
     cursor: pointer;
 }
