@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+C:\Users\LEONARDO\Desktop\OFICIAL\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\integracao\slack\IntegracaoSlack.java
+C:\Users\LEONARDO\Desktop\OFICIAL\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\tela\login\MaquinaMapper.java
+C:\Users\LEONARDO\Desktop\OFICIAL\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\tela\monitoramento\Tela.java
+C:\Users\LEONARDO\Desktop\OFICIAL\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\tela\login\Login.java
+C:\Users\LEONARDO\Desktop\OFICIAL\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\tela\trayicon\JFramePrincipal.java
+C:\Users\LEONARDO\Desktop\OFICIAL\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\tela\login\SelectLogin.java
+C:\Users\LEONARDO\Desktop\OFICIAL\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\tela\trayicon\IconeNoTray.java
+C:\Users\LEONARDO\Desktop\OFICIAL\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\tela\login\LoginMapper.java
+C:\Users\LEONARDO\Desktop\OFICIAL\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\ValidacaoLogin.java
+C:\Users\LEONARDO\Desktop\OFICIAL\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\tela\login\Maquina.java
+C:\Users\LEONARDO\Desktop\OFICIAL\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\Aplicacao.java
+C:\Users\LEONARDO\Desktop\OFICIAL\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\Connection.java
+=======
 C:\Users\wende\Documents\Wall\Projeto P&I\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\tela\login\Maquina.java
 C:\Users\wende\Documents\Wall\Projeto P&I\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\tela\trayicon\JFramePrincipal.java
 C:\Users\wende\Documents\Wall\Projeto P&I\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\Connection.java
@@ -10,3 +24,4 @@ C:\Users\wende\Documents\Wall\Projeto P&I\projeto-pi\testeProjeto\src\main\java\
 C:\Users\wende\Documents\Wall\Projeto P&I\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\Aplicacao.java
 C:\Users\wende\Documents\Wall\Projeto P&I\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\integracao\slack\IntegracaoSlack.java
 C:\Users\wende\Documents\Wall\Projeto P&I\projeto-pi\testeProjeto\src\main\java\com\sptech\testeprojeto\ValidacaoLogin.java
+>>>>>>> e3a5bcc550af8194f7ff0383a337d207087c2935
