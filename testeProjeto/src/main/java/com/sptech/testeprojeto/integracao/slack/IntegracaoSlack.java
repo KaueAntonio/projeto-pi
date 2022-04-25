@@ -28,12 +28,12 @@ public class IntegracaoSlack {
                 + "ON = fk_registro = id_registro ORDER BY id_log_alerta DESC";
         
        
-       SlackTest teste = template.queryForObject(queryAlerta, SlackMapper()); 
+//       SlackTest teste = template.queryForObject(queryAlerta, SlackMapper()); 
         
     
     public static void main(String[] args) {
-        String descricao = String.format("%s", teste.getDescricao());
-        enviarMensagem(descricao);
+//        String descricao = String.format("%s", teste.getDescricao());
+//        enviarMensagem(descricao);
         
     }
     
