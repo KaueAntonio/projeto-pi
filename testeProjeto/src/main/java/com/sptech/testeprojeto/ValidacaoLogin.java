@@ -6,7 +6,6 @@
 package com.sptech.testeprojeto;
 
 import com.github.britooo.looca.api.core.Looca;
-import com.mysql.cj.Query;
 import java.util.List;
 import java.util.Timer;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -16,8 +15,7 @@ import oshi.hardware.GlobalMemory;
 import oshi.hardware.Sensors;
 import com.sptech.testeprojeto.tela.login.Maquina;
 import com.sptech.testeprojeto.tela.login.MaquinaMapper;
-import java.sql.ResultSet;
-import java.sql.Statement;
+
 
 /**
  *
@@ -126,10 +124,7 @@ public class ValidacaoLogin {
                     + "Uso CPU: %.2f \n"
                     + "%s, %s, %s, %s", usoCPU, maquina, localidade, operacao, gerente);
 
-            descricao = String.format("O estado da CPU da máquina está em alerta."
-                    + " Favor verificar. \n"
-                    + "Uso CPU: %.2f \n"
-                    + "%s, %s, $s, %s", usoCPU, maquina, localidade, operacao, gerente);
+         
 
             String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 10.0 AND uso <= 20.0 ORDER BY id_registro DESC";
             Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
@@ -146,10 +141,7 @@ public class ValidacaoLogin {
 
             codigoUrgencia = "Crítico";
             String descricao = "";
-            descricao = String.format("O estado da CPU da máquina está crítico!"
-                    + " Favor verificar. \n"
-                    + "Uso CPU: %.2f \n"
-                    + "%s, %s, $s, %s", usoCPU, maquina, localidade, operacao, gerente);
+            
 
             descricao = String.format("O estado da CPU da máquina está em alerta."
                     + " Favor verificar. \n"
@@ -166,7 +158,7 @@ public class ValidacaoLogin {
         }
         
         
-        if (percentualRAM > 85.0) {
+        if (percentualRAM >= 85.0) {
             List maquina = template.queryForList("SELECT TOP (1) hostname FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Memoria Ram' AND uso > 85.0  ORDER BY id_registro DESC");
             List localidade = template.queryForList("SELECT TOP (1) localidade_maquina FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Memoria Ram' AND uso > 85.0  ORDER BY id_registro DESC");
             List operacao = template.queryForList("SELECT TOP (1) nome_operacao FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Memoria Ram' AND uso > 85.0 ORDER BY id_registro DESC");
@@ -174,15 +166,12 @@ public class ValidacaoLogin {
 
             codigoUrgencia = "Emergência";
             String descricao = "";
-            descricao = String.format("CPU em estado emergencial."
-                    + " Favor verificar. \n"
-                    + "Uso CPU: %.2f \n"
-                    + "%s, %s, %s, %s", usoCPU, maquina, localidade, operacao, gerente);
+          
 
-            descricao = String.format("O estado da CPU da máquina está em alerta."
+            descricao = String.format("O estado da Memoria RAM da máquina está muito acima do normal."
                     + " Favor verificar. \n"
-                    + "Uso CPU: %.2f \n"
-                    + "%s, %s, $s, %s", usoCPU, maquina, localidade, operacao, gerente);
+                    + "Uso RAM (%): %.2f %%\n"
+                    + "%s, %s, $s, %s", percentualRAM, maquina, localidade, operacao, gerente);
 
             String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Memoria Ram' AND uso > 85.0 ORDER BY id_registro DESC";
             Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
