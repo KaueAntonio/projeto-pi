@@ -9,9 +9,14 @@ package com.sptech.testeprojeto.tela.cliques;
  *
  * @author LEONARDO
  */
+import org.springframework.jdbc.core.JdbcTemplate;
+import com.sptech.testeprojeto.Connection;
+
 public class TelaAtendimento extends javax.swing.JFrame {
-    
+
     Integer cliques = 0;
+    Connection config = new Connection();
+    JdbcTemplate template = new JdbcTemplate(config.getDataSource());
 
     /**
      * Creates new form TelaAtendimento
@@ -458,66 +463,79 @@ public class TelaAtendimento extends javax.swing.JFrame {
 
     private void ProtocoloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProtocoloMouseClicked
         cliques++;
+        template.update("INSERT INTO [dbo].[log_cliques](cliques) values ('clicou');");
         teste.setText(String.format("%d", cliques));// TODO add your handling code here:
     }//GEN-LAST:event_ProtocoloMouseClicked
 
     private void DataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DataMouseClicked
         cliques++;
+        template.update("INSERT INTO [dbo].[log_cliques](cliques) values ('clicou');");
         teste.setText(String.format("%d", cliques));// TODO add your handling code here:
     }//GEN-LAST:event_DataMouseClicked
 
     private void HoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HoraMouseClicked
         cliques++;
+        template.update("INSERT INTO [dbo].[log_cliques](cliques) values ('clicou');");
         teste.setText(String.format("%d", cliques));// TODO add your handling code here:
     }//GEN-LAST:event_HoraMouseClicked
 
     private void NomeClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NomeClienteMouseClicked
         cliques++;
+        template.update("INSERT INTO [dbo].[log_cliques](cliques) values ('clicou');");
         teste.setText(String.format("%d", cliques));// TODO add your handling code here:
     }//GEN-LAST:event_NomeClienteMouseClicked
 
     private void PlanoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PlanoClienteMouseClicked
         cliques++;
+        template.update("INSERT INTO [dbo].[log_cliques](cliques) values ('clicou');");
         teste.setText(String.format("%d", cliques));// TODO add your handling code here:
     }//GEN-LAST:event_PlanoClienteMouseClicked
 
     private void TipoAbertoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TipoAbertoMouseClicked
         cliques++;
+        template.update("INSERT INTO [dbo].[log_cliques](cliques) values ('clicou');");
         teste.setText(String.format("%d", cliques));// TODO add your handling code here:
     }//GEN-LAST:event_TipoAbertoMouseClicked
 
     private void NomeCriadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NomeCriadorMouseClicked
         cliques++;
+        template.update("INSERT INTO [dbo].[log_cliques](cliques) values ('clicou');");
         teste.setText(String.format("%d", cliques));// TODO add your handling code here:
     }//GEN-LAST:event_NomeCriadorMouseClicked
 
     private void DestinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DestinoMouseClicked
         cliques++;
+        template.update("INSERT INTO [dbo].[log_cliques](cliques) values ('clicou');");
         teste.setText(String.format("%d", cliques));// TODO add your handling code here:
     }//GEN-LAST:event_DestinoMouseClicked
 
     private void PrioridadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrioridadeMouseClicked
         cliques++;
+        template.update("INSERT INTO [dbo].[log_cliques](cliques) values ('clicou');");
         teste.setText(String.format("%d", cliques));// TODO add your handling code here:
     }//GEN-LAST:event_PrioridadeMouseClicked
 
     private void NívelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NívelMouseClicked
         cliques++;
+        template.update("INSERT INTO [dbo].[log_cliques](cliques) values ('clicou');");
         teste.setText(String.format("%d", cliques));// TODO add your handling code here:
     }//GEN-LAST:event_NívelMouseClicked
 
     private void StatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StatusMouseClicked
         cliques++;
+        template.update("INSERT INTO [dbo].[log_cliques](cliques) values ('clicou');");
         teste.setText(String.format("%d", cliques));// TODO add your handling code here:
     }//GEN-LAST:event_StatusMouseClicked
 
     private void MotivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MotivoMouseClicked
         cliques++;
+        template.update("INSERT INTO [dbo].[log_cliques](cliques) values ('clicou');");
         teste.setText(String.format("%d", cliques));// TODO add your handling code here:
     }//GEN-LAST:event_MotivoMouseClicked
 
     private void btnProsseguirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProsseguirMouseClicked
         cliques++;
+        template.update("INSERT INTO [dbo].[log_cliques](cliques) values ('clicou');");
         teste.setText(String.format("%d", cliques));// TODO add your handling code here:
     }//GEN-LAST:event_btnProsseguirMouseClicked
 
