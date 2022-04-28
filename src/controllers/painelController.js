@@ -42,7 +42,7 @@ function getDados(req, res) {
 
   function getCliques(req, res) {
     painelModel
-      .getRegistros()
+      .getCliques()
       .then(function (resultado) {
         if (resultado.length > 0) {
           res.status(200).json(resultado);

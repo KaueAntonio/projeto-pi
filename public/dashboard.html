@@ -102,7 +102,8 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3 margintop"><strong>Olá, </strong> <span id="nomeGerente"></span>. Seja Bem Vindo!</h1>
+					<h1 class="h3 mb-3 margintop"><strong>Olá, </strong> <span id="nomeGerente"></span>. Seja Bem Vindo!
+					</h1>
 
 					<div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
@@ -424,67 +425,7 @@
 
 	<script src="js/app.js"></script>
 
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
-			var gradient = ctx.createLinearGradient(0, 0, 0, 225);
-			gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
-			gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
-			// Line chart
-			new Chart(document.getElementById("chartjs-dashboard-line"), {
-				type: "line",
-				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					datasets: [{
-						label: "Sales ($)",
-						fill: true,
-						backgroundColor: gradient,
-						borderColor: window.theme.primary,
-						data: [dadosMesesCliques[0], dadosMesesCliques[1], 
-						dadosMesesCliques[2], dadosMesesCliques[3], dadosMesesCliques[4], dadosMesesCliques[5], 
-						dadosMesesCliques[6], dadosMesesCliques[7], dadosMesesCliques[8], dadosMesesCliques[9], 
-						dadosMesesCliques[10], dadosMesesCliques[11]
-						]
-					}]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					tooltips: {
-						intersect: false
-					},
-					hover: {
-						intersect: true
-					},
-					plugins: {
-						filler: {
-							propagate: false
-						}
-					},
-					scales: {
-						xAxes: [{
-							reverse: true,
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}],
-						yAxes: [{
-							ticks: {
-								stepSize: 1000
-							},
-							display: true,
-							borderDash: [3, 3],
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}]
-					}
-				}
-			});
-		});
-	</script>
+
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
 			// Pie chart
@@ -644,7 +585,7 @@
 
 	function validarSessao() {
 		if (sessionStorage.ESTADO_PAGE_PAINEL == 'logado') {
-		}else{
+		} else {
 			alert("Logue-se Para Continuar!!")
 			window.location = "loginPainel.html";
 		}
@@ -669,9 +610,9 @@
 	})
 		.then(function (resposta) {
 			resposta.json().then(function (data) {
-				for(let i = 0; i < data.length; i++){
+				for (let i = 0; i < data.length; i++) {
 					let posicao = data[i];
-					if(posicao.id_operacao == sessionStorage.ID_OPERACAO_PAINEL){
+					if (posicao.id_operacao == sessionStorage.ID_OPERACAO_PAINEL) {
 						document.getElementById("nomeGerente").innerHTML = posicao.nome_gerente;
 					}
 				}
@@ -684,24 +625,80 @@
 	//-------------------------------------------------------
 
 	//GET DADOS DE CLIQUES ----------------------------------
-	var dadosMesesCliques = [];
+	var dadosMesesCliques1 = 0;
+	var dadosMesesCliques2 = 0;
+	var dadosMesesCliques3 = 0;
+	var dadosMesesCliques4 = 0;
+	var dadosMesesCliques5 = 0;
+	var dadosMesesCliques6 = 0;
+	var dadosMesesCliques7 = 0;
+	var dadosMesesCliques8 = 0;
+	var dadosMesesCliques9 = 0;
+	var dadosMesesCliques10 = 0;
+	var dadosMesesCliques11 = 0;
+	var dadosMesesCliques12 = 0;
 
-		fetch("/painel/getCliques", {
-			method: "GET",
-		})
-			.then(function (resposta) {
-				resposta.json().then(function (data) {
-					return data;
-				});
-			})
-			.catch(function (error) {
-				console.error(`ERROR`, error);
+	fetch("/painel/getCliques", {
+		method: "GET",
+	})
+		.then(function (resposta) {
+			resposta.json().then(function (data) {
+				for (let i = 0; i < data.length; i++) {
+					let posicao = data[i]
+					let axData = posicao.data_clique;
+					let mesClique = String(axData[5]) + String(axData[6]);
+					if (mesClique < 10) {
+						mesClique = mesClique[0] + mesClique[1];
+					}
+					switch (Number(mesClique)) {
+						case 1:
+							dadosMesesCliques1++;
+							break;
+						case 2:
+							dadosMesesCliques2++;
+							break;
+						case 3:
+							dadosMesesCliques3++;
+							break;
+						case 4:
+							dadosMesesCliques4++;
+							break;
+						case 5:
+							dadosMesesCliques5++;
+							break;
+						case 6:
+							dadosMesesCliques6++;
+							break;
+						case 7:
+							dadosMesesCliques7++;
+							break;
+						case 8:
+							dadosMesesCliques8++;
+							break;
+						case 9:
+							dadosMesesCliques9++;
+							break;
+						case 10:
+							dadosMesesCliques10++;
+							break;
+						case 11:
+							dadosMesesCliques11++;
+							break;
+						case 12:
+							dadosMesesCliques12++;
+							break;
+					}
+				}
+				graficoCliques()
 			});
-	
+		})
+		.catch(function (error) {
+			console.error(`ERROR`, error);
+		});
 
 	//-------------------------------------------------------
 
-	function getRegistros() {
+	function getRegistros(valor) {
 		fetch("/painel/getRegistros", {
 			method: "GET",
 		})
@@ -715,4 +712,60 @@
 			});
 	}
 
+	function graficoCliques() {
+
+		var context3 = document.getElementById("chartjs-dashboard-line").getContext("2d");
+		context3.canvas.width = 1000;
+		context3.canvas.height = 500;
+
+		var configuration3 = {
+			type: 'line',
+			data: {
+				labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+				datasets: [{
+					label: "CLIQUES",
+					backgroundColor: '#fff',
+					borderColor: window.theme.primary,
+					hoverBackgroundColor: window.theme.primary,
+					hoverBorderColor: window.theme.primary,
+					data: [dadosMesesCliques1, dadosMesesCliques2, dadosMesesCliques3, dadosMesesCliques4, dadosMesesCliques5, 
+					dadosMesesCliques6, dadosMesesCliques7, dadosMesesCliques8, dadosMesesCliques9, dadosMesesCliques10, 
+					dadosMesesCliques11, dadosMesesCliques12],
+					barPercentage: .75,
+					categoryPercentage: .5
+				}]
+			},
+			options: {
+				title: {
+					display: true,
+				},
+				maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+				scales: {
+					xAxes: [{
+						stacked: false,
+						gridLines: {
+							color: "transparent"
+						}
+					}],
+					yAxes: [{
+							gridLines: {
+								display: false
+							},
+							stacked: false,
+							ticks: {
+								stepSize: 20
+							}
+						}]
+				},
+				animation: {
+					duration: 0
+				}
+			}
+		};
+
+		var chart3 = new Chart(context3, configuration3);
+	}
 </script>

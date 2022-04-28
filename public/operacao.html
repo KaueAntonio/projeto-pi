@@ -1,349 +1,197 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Operações</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
-      integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/ea8cfd2902.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="icon" href="./Imagens/logo.png" />
-    <link rel="stylesheet" href="site.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <!-- Start of  Zendesk Widget script -->
-    <script
-      id="ze-snippet"
-      src="https://static.zdassets.com/ekr/snippet.js?key=76a02d93-e792-4874-accf-3433c092ca07"
-    ></script>
-    <!-- End of  Zendesk Widget script -->
-  </head>
 
-  <body
-    data-spy="scroll"
-    data-target=".navbar"
-    data-offset="50"
-    onload="validarSessao()"
-  >
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-          <img
-            id="iconesumir"
-            class="icone"
-            src="./Imagens/Icone-depositphotos-bgremover.png"
-            alt=""
-          />
-          <a class="navbar-brand" href="#"><img src="" alt="" /></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <img
-              class="icone"
-              src="./Imagens/Icone-depositphotos-bgremover.png"
-              alt=""
-            />
-            <span class="navbar-toggler-icon"></span>
-          </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operações</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+    integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/ea8cfd2902.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="./Imagens/logo.png" />
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- Start of  Zendesk Widget script -->
+  <script id="ze-snippet"
+    src="https://static.zdassets.com/ekr/snippet.js?key=76a02d93-e792-4874-accf-3433c092ca07"></script>
+  <!-- End of  Zendesk Widget script -->
+</head>
 
-          <div class="align">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-lg-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="./index.html#home"
-                    >Home <span class="sr-only">(current)</span></a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./index.html#quemsomos"
-                    >Quem Somos</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./index.html#nossavisao"
-                    >Nosso Objetivo</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./index.html#faleconosco"
-                    >Fale Conosco</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./index.html#resultados"
-                    >Avaliações</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./loginPainel.html">Painel</a>
-                </li>
-                <li class="nav-item">
-                  <div class="dropdown">
-                    <button
-                      class="btn-conta dropdown-toggle"
-                      id="dropdownMenuButton"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      Conta
-                    </button>
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
-                      <a
-                        id="hrefLogin"
-                        style="display: none"
-                        class="dropdown-item"
-                        href="./login.html"
-                        >Login</a
-                      >
-                      <a
-                        id="hrefEditar"
-                        style="display: none"
-                        class="dropdown-item"
-                        href="./editar.html"
-                        >Editar</a
-                      >
-                      <a
-                        id="hrefOperacao"
-                        style="display: none"
-                        class="dropdown-item"
-                        href="./operacao.html"
-                        >Operações</a
-                      >
-
-                      <a
-                        id="hrefSair"
-                        style="display: none"
-                        class="dropdown-item"
-                        onclick="botaoCadastro(sessionStorage.ESTADO_PAGE)"
-                        href="./index.html"
-                        >Sair</a
-                      >
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <section class="cadastro" id="faleconosco">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="validarSessao()">
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="headertextoCadastro text-center">
-              <h2
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-aos-duration="1000"
-              >
-                Operações
-              </h2>
-              <p
-                data-aos="fade-up"
-                data-aos-delay="100"
-                data-aos-duration="1000"
-              >
-                <a
-                  id="bAdicionar"
-                  class="botaoExcluir"
-                  onclick="estado('adicionar')"
-                  >Adicionar</a
-                >
-                <a id="bEditar" class="botaoExcluir" onclick="estado('editar')"
-                  >Editar</a
-                >
-                <a
-                  id="bExcluir"
-                  class="botaoExcluir"
-                  onclick="estado('excluir')"
-                  >Excluir</a
-                >
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="row clearfix">
-          <div class="offset-sm-2 col-sm-8">
-            <form
-              action=""
-              data-aos="fade-up"
-              data-aos-delay="500"
-              data-aos-duration="1000"
-              class="register-form"
-              id="form_operacao"
-            ><div class="form-group" id="select_nome">
-                <label for="">Selecione A Operação</label>
-                <select
-                name="selectNome"
-                id="selectNome"
-                type="text"
-                placeholder="Bradesco"
-                class="form-control">
-                <option value="0">Selecione Uma Operação</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="">Nome Da Operação</label>
-                <input
-                  name="nome"
-                  type="text"
-                  placeholder="Bradesco"
-                  class="form-control"
-                />
-              </div>
-              <div id="label_localidade" class="form-group">
-                <label for="">Localidade</label>
-                <input
-                  name="localidade"
-                  type="text"
-                  placeholder="5º Andar"
-                  class="form-control"
-                />
-              </div>
-              <div id="label_nomeGerente" class="form-group">
-                <label for="">Nome Do Gerente</label>
-                <input
-                  name="nome_gerente"
-                  type="text"
-                  placeholder="Gerente"
-                  class="form-control"
-                />
-              </div>
-              <div class="form-group">
-                <label for="">Email Do Gerente</label>
-                <input
-                  name="email_gerente"
-                  type="text"
-                  placeholder="Gerente"
-                  class="form-control"
-                />
-              </div>
-              <div class="form-group">
-                <label for="">Senha Do Gerente</label>
-                <input
-                  name="senha_gerente"
-                  type="password"
-                  placeholder="******"
-                  class="form-control"
-                />
-                <input
-                  name="idEmpresa"
-                  id="id_empresa"
-                  type="number"
-                  style="display: none"
-                />
-              </div>
-            </form>
-            <div class="botoes">
-              <div class="form-group text-center">
-                <button class="btn-editar" onclick="confirmar()">
-                  Confirmar
-                </button>
-              </div>
-            </div>
+        <img id="iconesumir" class="icone" src="./Imagens/Icone-depositphotos-bgremover.png" alt="" />
+        <a class="navbar-brand" href="#"><img src="" alt="" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <img class="icone" src="./Imagens/Icone-depositphotos-bgremover.png" alt="" />
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="align">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-lg-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html#home">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html#quemsomos">Quem Somos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html#nossavisao">Nosso Objetivo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html#faleconosco">Fale Conosco</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html#resultados">Avaliações</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./loginPainel.html">Painel</a>
+              </li>
+              <li class="nav-item">
+                <div class="dropdown">
+                  <button class="btn-conta dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Conta
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a id="hrefLogin" style="display: none" class="dropdown-item" href="./login.html">Login</a>
+                    <a id="hrefEditar" style="display: none" class="dropdown-item" href="./editar.html">Editar</a>
+                    <a id="hrefOperacao" style="display: none" class="dropdown-item"
+                      href="./operacao.html">Operações</a>
+
+                    <a id="hrefSair" style="display: none" class="dropdown-item"
+                      onclick="botaoCadastro(sessionStorage.ESTADO_PAGE)" href="./index.html">Sair</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <div
-        id="resultados"
-        style="
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          margin-top: 30px;
-        "
-        data-aos="fade-up"
-        data-aos-delay="500"
-        data-aos-duration="1000"
-      ></div>
-    </section>
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <ul class="sci">
-              <li>
-                <a href="https://www.facebook.com/"
-                  ><i class="fab fa-facebook"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://mail.google.com/mail/"
-                  ><i class="fa fa-google-plus"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/"
-                  ><i class="fa fa-linkedin"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/ "
-                  ><i class="fa fa-instagram"></i
-                ></a>
-              </li>
-            </ul>
-            <p class="crypt">
-              <a href="#">Copyright (C) Site - Todos os Direitos Reservados</a>
+    </nav>
+  </header>
+  <section class="cadastro" id="faleconosco">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="headertextoCadastro text-center">
+            <h2 data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000">
+              Operações
+            </h2>
+            <p data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+              <a id="bAdicionar" class="botaoExcluir" onclick="estado('adicionar')">Adicionar</a>
+              <a id="bEditar" class="botaoExcluir" onclick="estado('editar')">Editar</a>
+              <a id="bExcluir" class="botaoExcluir" onclick="estado('excluir')">Excluir</a>
             </p>
           </div>
         </div>
       </div>
-    </footer>
+      <div class="row clearfix">
+        <div class="offset-sm-2 col-sm-8">
+          <form action="" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000" class="register-form"
+            id="form_operacao">
+            <div class="form-group" id="select_nome">
+              <label for="">Selecione A Operação</label>
+              <select name="selectNome" id="selectNome" type="text" placeholder="Bradesco" class="form-control">
+                <option value="0">Selecione Uma Operação</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Nome Da Operação</label>
+              <input name="nome" type="text" placeholder="Bradesco" class="form-control" />
+            </div>
+            <div id="label_localidade" class="form-group">
+              <label for="">Localidade</label>
+              <input name="localidade" type="text" placeholder="5º Andar" class="form-control" />
+            </div>
+            <div id="label_nomeGerente" class="form-group">
+              <label for="">Nome Do Gerente</label>
+              <input name="nome_gerente" type="text" placeholder="Gerente" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="">Email Do Gerente</label>
+              <input name="email_gerente" type="text" placeholder="Gerente" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="">Senha Do Gerente</label>
+              <input name="senha_gerente" type="password" placeholder="******" class="form-control" />
+              <input name="idEmpresa" id="id_empresa" type="number" style="display: none" />
+            </div>
+          </form>
+          <div class="botoes">
+            <div class="form-group text-center">
+              <button class="btn-editar" onclick="confirmar()">
+                Confirmar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="resultados" style="
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin-top: 30px;
+        " data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000"></div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <ul class="sci">
+            <li>
+              <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="https://mail.google.com/mail/"><i class="fa fa-google-plus"></i></a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/ "><i class="fa fa-instagram"></i></a>
+            </li>
+          </ul>
+          <p class="crypt">
+            <a href="#">Copyright (C) Site - Todos os Direitos Reservados</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 
-    <script type="text/javascript">
-      $(document).scroll(function () {
-        $(".navbar").toggleClass(
-          "scrolled",
-          $(this).scrollTop() > $(".navbar").height()
-        );
-      });
-    </script>
-  </body>
+  <script type="text/javascript">
+    $(document).scroll(function () {
+      $(".navbar").toggleClass(
+        "scrolled",
+        $(this).scrollTop() > $(".navbar").height()
+      );
+    });
+  </script>
+</body>
+
 </html>
 <script>
 
@@ -435,7 +283,7 @@
     var select = formulario.get("selectNome");
 
     if (
-        nome_operacao == "" ||
+      nome_operacao == "" ||
       localidade == "" ||
       email_gerente == "" ||
       nome_gerente == "" ||
@@ -481,11 +329,11 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            alert("Operação Editada!");
+          alert("Operação Editada!");
           window.location = "index.html";
 
         } else {
-            alert('Houve um erro ao editar!');
+          alert('Houve um erro ao editar!');
           throw "Houve um erro ao tentar realizar a edição!";
         }
       })
@@ -506,7 +354,7 @@
     var id_empresa = formulario.get("idEmpresa");
 
     if (
-        nome_operacao == "" ||
+      nome_operacao == "" ||
       localidade == "" ||
       email_gerente == "" ||
       nome_gerente == "" ||
@@ -547,11 +395,11 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            alert("Operação Adicionada!");
+          alert("Operação Adicionada!");
           window.location = "index.html";
 
         } else {
-            alert('Houve um erro ao adicionar!');
+          alert('Houve um erro ao adicionar!');
           throw "Houve um erro ao tentar realizar a adição!";
         }
       })
@@ -573,7 +421,7 @@
     var id_empresa = formulario.get("idEmpresa");
 
     if (
-        nome_operacao == "" ||
+      nome_operacao == "" ||
       email_gerente == "" ||
       senha_gerente == ""
     ) {
@@ -612,11 +460,11 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            alert("Se As Opções Forem Corretas, A Operação será Excluída!");
+          alert("Se As Opções Forem Corretas, A Operação será Excluída!");
           window.location = "index.html";
 
         } else {
-            alert('Houve um erro ao excluir!');
+          alert('Houve um erro ao excluir!');
           throw "Houve um erro ao tentar realizar a edição!";
         }
       })
@@ -626,22 +474,22 @@
   }
 
   fetch("/operacao/listar", {
-        method: "GET",
-    }).then(function (resposta) {
+    method: "GET",
+  }).then(function (resposta) {
 
 
-        resposta.json().then(function (data) {
+    resposta.json().then(function (data) {
 
-let len = data.length;
-for (let i = 0; i <= len; i++) {
-    let arquivo = data[i];
-    if (arquivo.fk_empresa == sessionStorage.ID_USUARIO){
-        selectNome.innerHTML += (`<option value=${arquivo.id_operacao}>${arquivo.nome_operacao}</option>`);
-    }
-}
-});
-}).catch(function (error) {
-console.error(`ERROR`, error);
-});
+      let len = data.length;
+      for (let i = 0; i <= len; i++) {
+        let arquivo = data[i];
+        if (arquivo.fk_empresa == sessionStorage.ID_USUARIO) {
+          selectNome.innerHTML += (`<option value=${arquivo.id_operacao}>${arquivo.nome_operacao}</option>`);
+        }
+      }
+    });
+  }).catch(function (error) {
+    console.error(`ERROR`, error);
+  });
 
 </script>
