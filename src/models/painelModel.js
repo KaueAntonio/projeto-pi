@@ -15,8 +15,14 @@ function getRegistros() {
   return database.executar(instrucao);
 }
 
+function getMaquinas(){
+  var instrucao = "SELECT COUNT(hostname) AS maquinas, fk_operacao FROM [dbo].[maquinas] GROUP BY fk_operacao";
+  return database.executar(instrucao);
+}
+
 module.exports = {
   getDados,
   getCliques,
-  getRegistros
+  getRegistros,
+  getMaquinas
 };

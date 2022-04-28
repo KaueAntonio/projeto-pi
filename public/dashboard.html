@@ -114,7 +114,7 @@
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Sales</h5>
+														<h5 class="card-title">Total De Máquinas</h5>
 													</div>
 
 													<div class="col-auto">
@@ -123,7 +123,7 @@
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3">2.382</h1>
+												<h1 id="totalMaquinas" class="mt-1 mb-3">2.382</h1>
 												<div class="mb-0">
 													<span class="text-danger"> <i
 															class="mdi mdi-arrow-bottom-right"></i> -3.65% </span>
@@ -595,20 +595,22 @@
 
 	//-------------------------------------------------------
 
-	function getRegistros(valor) {
-		fetch("/painel/getRegistros", {
-			method: "GET",
-		})
-			.then(function (resposta) {
-				resposta.json().then(function (data) {
-					return data;
-				});
-			})
-			.catch(function (error) {
-				console.error(`ERROR`, error);
-			});
-	}
 
+	//GET DE TOTAL DE MAQUINAS ------------------------------
+
+	fetch("/painel/getMaquinas", {
+		method: "GET",
+	})
+		.then(function (resposta) {
+			resposta.json().then(function (data) {
+				document.getElementById("totalMaquinas").innerHTML = data[1].maquinas;
+			});
+		})
+		.catch(function (error) {
+			console.error(`ERROR`, error);
+		});
+
+	//-------------------------------------------------------
 	function graficoCliques() {
 
 		var context3 = document.getElementById("chartjs-dashboard-line").getContext("2d");
@@ -625,9 +627,9 @@
 					borderColor: window.theme.primary,
 					hoverBackgroundColor: window.theme.primary,
 					hoverBorderColor: window.theme.primary,
-					data: [dadosMesesCliques1, dadosMesesCliques2, dadosMesesCliques3, dadosMesesCliques4, dadosMesesCliques5, 
-					dadosMesesCliques6, dadosMesesCliques7, dadosMesesCliques8, dadosMesesCliques9, dadosMesesCliques10, 
-					dadosMesesCliques11, dadosMesesCliques12],
+					data: [dadosMesesCliques1, dadosMesesCliques2, dadosMesesCliques3, dadosMesesCliques4, dadosMesesCliques5,
+						dadosMesesCliques6, dadosMesesCliques7, dadosMesesCliques8, dadosMesesCliques9, dadosMesesCliques10,
+						dadosMesesCliques11, dadosMesesCliques12],
 					barPercentage: .75,
 					categoryPercentage: .5
 				}]
@@ -637,9 +639,9 @@
 					display: true,
 				},
 				maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
+				legend: {
+					display: false
+				},
 				scales: {
 					xAxes: [{
 						stacked: false,
@@ -648,14 +650,14 @@
 						}
 					}],
 					yAxes: [{
-							gridLines: {
-								display: false
-							},
-							stacked: false,
-							ticks: {
-								stepSize: 20
-							}
-						}]
+						gridLines: {
+							display: false
+						},
+						stacked: false,
+						ticks: {
+							stepSize: 20
+						}
+					}]
 				},
 				animation: {
 					duration: 0

@@ -15,4 +15,8 @@ router.get("/getDados", function (req, res) {
     painelController.getDados(req, res);
 });
 
+router.get("/getMaquinas", function (req, res) {
+    painelController.getMaquinas(req, res);
+});
+
 module.exports = router;
