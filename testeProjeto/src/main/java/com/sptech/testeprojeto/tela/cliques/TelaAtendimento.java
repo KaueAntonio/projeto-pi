@@ -633,9 +633,15 @@ public class TelaAtendimento extends javax.swing.JFrame {
         String queryIdentificarMaquina = String.format("SELECT * FROM [dbo].[maquinas] WHERE hostname = '%s'",
                 info.getHardware().getComputerSystem().getHardwareUUID());
 
+        long millis = System.currentTimeMillis();
+
+        // creating a new object of the class Date
+        java.sql.Date date = new java.sql.Date(millis);
+
         Maquina identificarMaquina = template.queryForObject(queryIdentificarMaquina, new MaquinaMapper());
         template.update(
-                "INSERT INTO [dbo].[log_cliques](cliques, fk_maquina) values ('clicou', " + identificarMaquina.getId()
+                "INSERT INTO [dbo].[log_cliques](cliques, data_clique, fk_maquina) values ('clicou', '" + date + "' , "
+                        + identificarMaquina.getId()
                         + ");");
     }
 
