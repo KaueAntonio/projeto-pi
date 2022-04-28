@@ -32,6 +32,7 @@
 	<script id="ze-snippet"
 		src="https://static.zdassets.com/ekr/snippet.js?key=76a02d93-e792-4874-accf-3433c092ca07"> </script>
 	<!-- End of  Zendesk Widget script -->
+	<script src="./js/dash.js"></script>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" onload="validarSessao()">
@@ -65,9 +66,6 @@
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="./index.html#resultados">Avaliações</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="http://localhost:3000">Painel</a>
 							</li>
 							<li class="nav-item">
 								<div class="dropdown">
@@ -104,7 +102,7 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3 margintop"><strong>Analytics</strong> Dashboard</h1>
+					<h1 class="h3 mb-3 margintop"><strong>Olá, </strong> <span id="nomeGerente"></span>. Seja Bem Vindo!</h1>
 
 					<div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
@@ -208,7 +206,7 @@
 							<div class="card flex-fill w-100">
 								<div class="card-header">
 
-									<h5 class="card-title mb-0">Recent Movement</h5>
+									<h5 class="card-title mb-0">Cliques Anuais</h5>
 								</div>
 								<div class="card-body py-3">
 									<div class="chart chart-sm">
@@ -442,19 +440,10 @@
 						fill: true,
 						backgroundColor: gradient,
 						borderColor: window.theme.primary,
-						data: [
-							2115,
-							1562,
-							1584,
-							1892,
-							1587,
-							1923,
-							2566,
-							2448,
-							2805,
-							3438,
-							2917,
-							3327
+						data: [dadosMesesCliques[0], dadosMesesCliques[1], 
+						dadosMesesCliques[2], dadosMesesCliques[3], dadosMesesCliques[4], dadosMesesCliques[5], 
+						dadosMesesCliques[6], dadosMesesCliques[7], dadosMesesCliques[8], dadosMesesCliques[9], 
+						dadosMesesCliques[10], dadosMesesCliques[11]
 						]
 					}]
 				},
@@ -651,3 +640,79 @@
 </body>
 
 </html>
+<script>
+
+	function validarSessao() {
+		if (sessionStorage.ESTADO_PAGE_PAINEL == 'logado') {
+		}else{
+			alert("Logue-se Para Continuar!!")
+			window.location = "loginPainel.html";
+		}
+		if (sessionStorage.ESTADO_PAGE == "logado") {
+			hrefLogin.style.display = 'none';
+			hrefSair.style.display = 'block';
+			hrefEditar.style.display = 'block';
+			hrefOperacao.style.display = 'block';
+		} else {
+			hrefLogin.style.display = 'block';
+			hrefSair.style.display = 'none';
+			hrefEditar.style.display = 'none';
+			hrefOperacao.style.display = 'none';
+		}
+	}
+</script>
+<script>
+
+	//GET DE DADOS DO GERENTE -------------------------------
+	fetch("/painel/getDados", {
+		method: "GET",
+	})
+		.then(function (resposta) {
+			resposta.json().then(function (data) {
+				for(let i = 0; i < data.length; i++){
+					let posicao = data[i];
+					if(posicao.id_operacao == sessionStorage.ID_OPERACAO_PAINEL){
+						document.getElementById("nomeGerente").innerHTML = posicao.nome_gerente;
+					}
+				}
+			});
+		})
+		.catch(function (error) {
+			console.error(`ERROR`, error);
+		});
+
+	//-------------------------------------------------------
+
+	//GET DADOS DE CLIQUES ----------------------------------
+	var dadosMesesCliques = [];
+
+		fetch("/painel/getCliques", {
+			method: "GET",
+		})
+			.then(function (resposta) {
+				resposta.json().then(function (data) {
+					return data;
+				});
+			})
+			.catch(function (error) {
+				console.error(`ERROR`, error);
+			});
+	
+
+	//-------------------------------------------------------
+
+	function getRegistros() {
+		fetch("/painel/getRegistros", {
+			method: "GET",
+		})
+			.then(function (resposta) {
+				resposta.json().then(function (data) {
+					return data;
+				});
+			})
+			.catch(function (error) {
+				console.error(`ERROR`, error);
+			});
+	}
+
+</script>

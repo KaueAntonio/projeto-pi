@@ -5,10 +5,15 @@ function cadastrar(nome, email, senha) {
     insert into tabela(nome, email, senha) values
     ('${nome}', '${email}', '${senha}');
     `;
-  console.log("Listando Usuários");
+  return database.executar(instrucao);
+}
+
+function login(email, senha){
+  var instrucao = `SELECT * FROM [dbo].[operacoes] WHERE email_gerente = '${email}' AND senha_gerente = '${senha}'`;
   return database.executar(instrucao);
 }
 
 module.exports = {
   cadastrar,
+  login
 };
