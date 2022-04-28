@@ -6,7 +6,6 @@
 package com.sptech.testeprojeto;
 
 import com.github.britooo.looca.api.core.Looca;
-import java.util.List;
 import java.util.Timer;
 import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;

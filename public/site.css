@@ -628,3 +628,7 @@ h3 {
 .botaoExcluir:hover {
     cursor: pointer;
 }
+
+.margintop {
+    margin-top: 5%;
+}
