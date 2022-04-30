@@ -11,7 +11,6 @@
 		content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
@@ -74,14 +73,15 @@
 										Conta
 									</button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										<a id="hrefLogin" style="display: none" class="dropdown-item"
+										<a id="hrefLogin" style="display: none;" class="dropdown-item"
 											href="./login.html">Login</a>
-										<a id="hrefEditar" style="display: none" class="dropdown-item"
+										<a id="hrefEditar" style="display: none;" class="dropdown-item"
 											href="./editar.html">Editar</a>
 										<a id="hrefOperacao" style="display: none;" class="dropdown-item"
 											href="./operacao.html">Operações</a>
-
-										<a id="hrefSair" style="display: none" class="dropdown-item"
+										<a id="hrefPainel" style="display: none;" class="dropdown-item"
+											href="./loginPainel.html">Painel</a>
+										<a id="hrefSair" style="display: none;" class="dropdown-item"
 											onclick="botaoCadastro(sessionStorage.ESTADO_PAGE)"
 											href="./index.html">Sair</a>
 									</div>
@@ -131,10 +131,10 @@
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Visitors</h5>
+														<h5 class="card-title">Média De Cliques Por Dia</h5>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3">14.212</h1>
+												<h1 class="mt-1 mb-3" id="mediaCliques">0</h1>
 												<div class="mb-0">
 													<span class="text-success"> <i
 															class="mdi mdi-arrow-bottom-right"></i> 5.25% </span>
@@ -467,11 +467,14 @@
 			hrefSair.style.display = 'block';
 			hrefEditar.style.display = 'block';
 			hrefOperacao.style.display = 'block';
+			hrefPainel.style.display = 'block';
 		} else {
 			hrefLogin.style.display = 'block';
 			hrefSair.style.display = 'none';
 			hrefEditar.style.display = 'none';
 			hrefOperacao.style.display = 'none';
+			hrefPainel.style.display = 'none';
+
 		}
 	}
 </script>
@@ -498,19 +501,6 @@
 	//-------------------------------------------------------
 
 	//GET DADOS DE CLIQUES ----------------------------------
-	var dadosMesesCliques1 = 0;
-	var dadosMesesCliques2 = 0;
-	var dadosMesesCliques3 = 0;
-	var dadosMesesCliques4 = 0;
-	var dadosMesesCliques5 = 0;
-	var dadosMesesCliques6 = 0;
-	var dadosMesesCliques7 = 0;
-	var dadosMesesCliques8 = 0;
-	var dadosMesesCliques9 = 0;
-	var dadosMesesCliques10 = 0;
-	var dadosMesesCliques11 = 0;
-	var dadosMesesCliques12 = 0;
-
 	fetch("/painel/getCliques", {
 		method: "GET",
 	})
@@ -579,7 +569,11 @@
 	})
 		.then(function (resposta) {
 			resposta.json().then(function (data) {
-				document.getElementById("totalMaquinas").innerHTML = data[1].maquinas;
+				for (let i = 0; i < data.length; i++) {
+					if (data[i].fk_operacao == sessionStorage.ID_OPERACAO_PAINEL) {
+						document.getElementById("totalMaquinas").innerHTML = data[i].maquinas;
+					}
+				}
 			});
 		})
 		.catch(function (error) {
@@ -591,7 +585,7 @@
 
 		var context3 = document.getElementById("chartjs-dashboard-line").getContext("2d");
 		context3.canvas.width = 1000;
-		context3.canvas.height = 480;
+		context3.canvas.height = 324;
 
 		var configuration3 = {
 			type: 'line',

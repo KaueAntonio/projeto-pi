@@ -47,9 +47,6 @@
                                 <a class="nav-link" href="./index.html#resultados">Avaliações</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./loginPainel.html">Painel</a>
-                            </li>
-                            <li class="nav-item">
                                 <div class="dropdown">
                                     <button class="btn-conta dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                       Conta
@@ -57,6 +54,8 @@
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a id="hrefLogin" style="display: none;" class="dropdown-item" href="./login.html">Login</a>
                                         <a id="hrefEditar" style="display: none;" class="dropdown-item" href="./editar.html">Editar</a>
+                                        <a id="hrefOperacao" style="display: none;" class="dropdown-item" href="./operacao.html">Operações</a>
+                                        <a id="hrefPainel" style="display: none;" class="dropdown-item" href="./loginPainel.html">Painel</a>
                                         <a id="hrefSair" style="display: none;" class="dropdown-item" onclick="botaoCadastro(sessionStorage.ESTADO_PAGE)" href="./index.html">Sair</a>
                                     </div>
                                 </div>
@@ -219,10 +218,14 @@
       hrefLogin.style.display = 'none';
       hrefSair.style.display = 'block';
       hrefEditar.style.display = 'block';
+      hrefOperacao.style.display = 'block';
+      hrefPainel.style.display = 'block';
     } else {
       hrefLogin.style.display = 'block';
       hrefSair.style.display = 'none';
       hrefEditar.style.display = 'none';
+      hrefOperacao.style.display = 'none';
+      hrefPainel.style.display = 'none';
     }
   }
 
