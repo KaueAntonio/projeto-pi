@@ -483,6 +483,7 @@
 <script>
 	var tMaquinas = 0;
 	var mSelecionada = 0;
+	var tCliques = 0;
 
 	//GET DE DADOS DO GERENTE -------------------------------
 	fetch("/painel/getDados", {
@@ -521,7 +522,7 @@
 						mesClique = mesClique[0] + mesClique[1];
 					}
 					if(posicao.id_maquina == mSelecionada){
-						
+						tCliques++;
 					switch (Number(mesClique)) {
 						case 1:
 							dadosMesesCliques1++;
@@ -563,6 +564,7 @@
 				}
 			}
 				graficoCliques()
+				mediaCliques.innerHTML = (tCliques / new Date().getDate()).toFixed(2);
 			});
 		})
 		.catch(function (error) {
