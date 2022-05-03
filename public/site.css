@@ -632,3 +632,19 @@ h3 {
 .margintop {
     margin-top: 5%;
 }
+
+#maquinaSelecionada {
+    margin-bottom: 1rem;
+    margin-top: 0.0rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    font-size: 2.5rem;
+    width: 4rem;
+    border: none;
+}
+
+#maquinaSelecionada:hover {
+    cursor: pointer;
+}

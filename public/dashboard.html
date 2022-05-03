@@ -148,10 +148,12 @@
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Earnings</h5>
+														<h5 class="card-title">Máquina Selecionada</h5>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3">$21.300</h1>
+												<select id="maquinaSelecionada" onchange="selecionarMaquina()">
+
+												</select>
 												<div class="mb-0">
 													<span class="text-success"> <i
 															class="mdi mdi-arrow-bottom-right"></i> 6.65% </span>
@@ -479,6 +481,8 @@
 	}
 </script>
 <script>
+	var tMaquinas = 0;
+	var mSelecionada = 0;
 
 	//GET DE DADOS DO GERENTE -------------------------------
 	fetch("/painel/getDados", {
@@ -501,6 +505,9 @@
 	//-------------------------------------------------------
 
 	//GET DADOS DE CLIQUES ----------------------------------
+	getCliques();
+	function getCliques(){
+		zerar();
 	fetch("/painel/getCliques", {
 		method: "GET",
 	})
@@ -513,6 +520,8 @@
 					if (mesClique < 10) {
 						mesClique = mesClique[0] + mesClique[1];
 					}
+					if(posicao.id_maquina == mSelecionada){
+						
 					switch (Number(mesClique)) {
 						case 1:
 							dadosMesesCliques1++;
@@ -552,13 +561,14 @@
 							break;
 					}
 				}
+			}
 				graficoCliques()
 			});
 		})
 		.catch(function (error) {
 			console.error(`ERROR`, error);
 		});
-
+	}
 	//-------------------------------------------------------
 
 
@@ -571,7 +581,9 @@
 			resposta.json().then(function (data) {
 				for (let i = 0; i < data.length; i++) {
 					if (data[i].fk_operacao == sessionStorage.ID_OPERACAO_PAINEL) {
-						document.getElementById("totalMaquinas").innerHTML = data[i].maquinas;
+						document.getElementById("maquinaSelecionada").innerHTML += (`<option value=${data[i].id_maquina}>${data[i].id_maquina}</option>`);
+						tMaquinas++;
+						totalMaquinas.innerHTML = tMaquinas;
 					}
 				}
 			});
@@ -579,7 +591,12 @@
 		.catch(function (error) {
 			console.error(`ERROR`, error);
 		});
-
+		selecionarMaquina();
+		function selecionarMaquina(){
+			mSelecionada = maquinaSelecionada.value;
+			getCliques();
+		}
+		
 	//-------------------------------------------------------
 	function graficoCliques() {
 

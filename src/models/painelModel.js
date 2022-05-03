@@ -6,7 +6,7 @@ function getDados() {
 }
 
 function getCliques() {
-  var instrucao = "SELECT * FROM [dbo].[log_cliques]";
+  var instrucao = "SELECT * FROM [dbo].[log_cliques] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[operacoes] ON id_operacao = fk_operacao";
   return database.executar(instrucao);
 }
 
@@ -16,7 +16,7 @@ function getRegistros() {
 }
 
 function getMaquinas(){
-  var instrucao = "SELECT COUNT(hostname) AS maquinas, fk_operacao FROM [dbo].[maquinas] GROUP BY fk_operacao";
+  var instrucao = "SELECT * FROM [dbo].[maquinas] JOIN [dbo].[operacoes] ON id_operacao = fk_operacao";
   return database.executar(instrucao);
 }
 
