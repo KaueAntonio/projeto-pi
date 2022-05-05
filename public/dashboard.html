@@ -32,6 +32,7 @@
 		src="https://static.zdassets.com/ekr/snippet.js?key=76a02d93-e792-4874-accf-3433c092ca07"> </script>
 	<!-- End of  Zendesk Widget script -->
 	<script src="./js/dash.js"></script>
+	<script src="./js/mascara.js"></script>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" onload="validarSessao()">
@@ -165,10 +166,10 @@
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Orders</h5>
+														<h5 class="card-title">Cliques Totais</h5>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3">64</h1>
+												<h1 class="mt-1 mb-3" id="cliquesTotais">0</h1>
 												<div class="mb-0">
 													<span class="text-danger"> <i
 															class="mdi mdi-arrow-bottom-right"></i> -2.25% </span>
@@ -424,6 +425,7 @@
 	//GET DADOS DE CLIQUES ----------------------------------
 	getCliques();
 	function getCliques() {
+		tCliques = 0;
 		zerar();
 		fetch("/painel/getCliques", {
 			method: "GET",
@@ -481,6 +483,7 @@
 					}
 					graficoCliques()
 					mediaCliques.innerHTML = (tCliques / new Date().getDate()).toFixed(2);
+					cliquesTotais.innerHTML = tCliques;
 				});
 			})
 			.catch(function (error) {
