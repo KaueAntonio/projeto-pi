@@ -99,6 +99,7 @@ function excluir(req, res) {
   var senha_gerente = req.body.senha_gerente;
   var localidade = req.body.localidade;
   var id_empresa = req.body.idEmpresa;
+  var idOperacao = req.body.selectNome;
 
   if (nome_operacao == undefined) {
     res.status(400).send("nome_operacao está undefined!");
@@ -112,7 +113,9 @@ function excluir(req, res) {
     res.status(400).send("localidade está undefined!");
   } else if (id_empresa == undefined) {
     res.status(400).send("id_empresa está undefined!");
-  } else {
+  } else if (idOperacao == undefined) {
+    res.status(400).send("idOPeracao está undefined!");
+  } else{
     operacaoModel
       .excluir(
         nome_operacao,
@@ -120,7 +123,8 @@ function excluir(req, res) {
         email_gerente,
         senha_gerente,
         localidade,
-        id_empresa
+        id_empresa,
+        idOperacao
       )
       .then(function (resultado) {
         res.json(resultado);

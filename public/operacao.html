@@ -94,29 +94,29 @@
           <form action="" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000" class="register-form"
             id="form_operacao">
             <div class="form-group" id="select_nome">
-              <label for="">Selecione A Operação</label>
+              <label>Selecione A Operação</label>
               <select name="selectNome" id="selectNome" type="text" placeholder="Bradesco" class="form-control">
                 <option value="0">Selecione Uma Operação</option>
               </select>
             </div>
-            <div class="form-group">
-              <label for="">Nome Da Operação</label>
+            <div id="label_nomeOperacao" class="form-group">
+              <label>Nome Da Operação</label>
               <input name="nome" type="text" placeholder="Bradesco" class="form-control" />
             </div>
             <div id="label_localidade" class="form-group">
-              <label for="">Localidade</label>
+              <label>Localidade</label>
               <input name="localidade" type="text" placeholder="5º Andar" class="form-control" />
             </div>
             <div id="label_nomeGerente" class="form-group">
-              <label for="">Nome Do Gerente</label>
+              <label>Nome Do Gerente</label>
               <input name="nome_gerente" type="text" placeholder="Gerente" class="form-control" />
             </div>
             <div class="form-group">
-              <label for="">Email Do Gerente</label>
-              <input name="email_gerente" type="text" placeholder="Gerente" class="form-control" />
+              <label>Email Do Gerente</label>
+              <input name="email_gerente" type="text" placeholder="Gerente@gmail.com" class="form-control" />
             </div>
             <div class="form-group">
-              <label for="">Senha Do Gerente</label>
+              <label>Senha Do Gerente</label>
               <input name="senha_gerente" type="password" placeholder="******" class="form-control" />
               <input name="idEmpresa" id="id_empresa" type="number" style="display: none" />
             </div>
@@ -248,6 +248,7 @@
       label_nomeGerente.style.display = "block";
       label_localidade.style.display = "block";
       select_nome.style.display = 'none';
+      label_nomeOperacao.style.display = 'block';
     } else if (sessionStorage.ESTADO_OPERACAO == "editar") {
       bAdicionar.style.borderBottom = "none";
       bEditar.style.borderBottom = "2px solid black";
@@ -255,13 +256,15 @@
       label_nomeGerente.style.display = "block";
       label_localidade.style.display = "block";
       select_nome.style.display = 'block';
+      label_nomeOperacao.style.display = 'none';
     } else if (sessionStorage.ESTADO_OPERACAO == "excluir") {
       bAdicionar.style.borderBottom = "none";
       bEditar.style.borderBottom = "none";
       bExcluir.style.borderBottom = "2px solid black";
       label_nomeGerente.style.display = "none";
       label_localidade.style.display = "none";
-      select_nome.style.display = 'none';
+      select_nome.style.display = 'block';
+      label_nomeOperacao.style.display = 'none';
     }
   }
 
@@ -279,6 +282,11 @@
     var senha_gerente = formulario.get("senha_gerente");
     var id_empresa = formulario.get("idEmpresa");
     var select = formulario.get("selectNome");
+
+    if(selectNome.value == 0){
+      alert('Nenhuma Operação Selecionada')
+      return false;
+    }
 
     if (
       nome_operacao == "" ||
@@ -417,17 +425,18 @@
     var nome_gerente = formulario.get("nome_gerente");
     var senha_gerente = formulario.get("senha_gerente");
     var id_empresa = formulario.get("idEmpresa");
+    var select = formulario.get("selectNome");
+
+    if(selectNome.value == 0){
+      alert('Nenhuma Operação Selecionada')
+      return false;
+    }
 
     if (
-      nome_operacao == "" ||
       email_gerente == "" ||
       senha_gerente == ""
     ) {
       window.alert("Preencha todos os campos para prosseguir!");
-      if (nome_operacao == "") {
-        alert("nome da operação está em branco");
-        return false;
-      }
       if (localidade == "") {
         alert("localidade está em branco");
         return false;

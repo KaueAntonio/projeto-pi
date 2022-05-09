@@ -32,7 +32,6 @@
 		src="https://static.zdassets.com/ekr/snippet.js?key=76a02d93-e792-4874-accf-3433c092ca07"> </script>
 	<!-- End of  Zendesk Widget script -->
 	<script src="./js/dash.js"></script>
-	<script src="./js/mascara.js"></script>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" onload="validarSessao()">
@@ -153,12 +152,13 @@
 													</div>
 												</div>
 												<select id="maquinaSelecionada" onchange="selecionarMaquina()">
-
+													<option value="-1">--</option>
 												</select>
 												<div class="mb-0">
 													<span class="text-success"> <i
-															class="mdi mdi-arrow-bottom-right"></i> 6.65% </span>
-													<span class="text-muted">Since last week</span>
+															class="mdi mdi-arrow-bottom-right"></i></span>
+													<span class="text-muted" id="span_nomeMaquina">Nenhuma Máquina
+														Selecionada</span>
 												</div>
 											</div>
 										</div>
@@ -494,28 +494,51 @@
 
 
 	//GET DE TOTAL DE MAQUINAS ------------------------------
-
-	fetch("/painel/getMaquinas", {
-		method: "GET",
-	})
-		.then(function (resposta) {
-			resposta.json().then(function (data) {
-				for (let i = 0; i < data.length; i++) {
-					if (data[i].fk_operacao == sessionStorage.ID_OPERACAO_PAINEL) {
-						document.getElementById("maquinaSelecionada").innerHTML += (`<option value=${data[i].id_maquina}>${data[i].id_maquina}</option>`);
-						tMaquinas++;
-						totalMaquinas.innerHTML = tMaquinas;
-					}
-				}
-			});
+	getMaquinas(0)
+	var nMaquina;
+	function getMaquinas(param_maquina) {
+		fetch("/painel/getMaquinas", {
+			method: "GET",
 		})
-		.catch(function (error) {
-			console.error(`ERROR`, error);
-		});
+			.then(function (resposta) {
+				resposta.json().then(function (data) {
+					for (let i = 0; i < data.length; i++) {
+						if (data[i].fk_operacao == sessionStorage.ID_OPERACAO_PAINEL) {
+							if(param_maquina == -1){
+								return nomeMaquina(undefined);
+							}
+							if (!(param_maquina == 0)) {
+								if (data[i].id_maquina == param_maquina) {
+									console.log(data[i].serial_maquina)
+									return nomeMaquina(data[i].serial_maquina);
+								}
+							} else {
+								document.getElementById("maquinaSelecionada").innerHTML += (`<option value=${data[i].id_maquina}>${data[i].id_maquina}</option>`);
+								tMaquinas++;
+								totalMaquinas.innerHTML = tMaquinas;
+							}
+						}
+					}
+				});
+			})
+			.catch(function (error) {
+				console.error(`ERROR`, error);
+			});
+	}
 	selecionarMaquina();
 	function selecionarMaquina() {
 		mSelecionada = maquinaSelecionada.value;
+		getMaquinas(mSelecionada)
 		getCliques();
+	}
+
+	function nomeMaquina(nome) {
+		if (nome == undefined) {
+			return document.getElementById("span_nomeMaquina").innerHTML = "Nenhuma Máquina Selecionada";
+		} else {
+			return document.getElementById("span_nomeMaquina").innerHTML = nome;
+		}
+		return document.getElementById("span_nomeMaquina").innerHTML = "Nenhuma Máquina Selecionada";
 	}
 
 	//-------------------------------------------------------
@@ -523,7 +546,7 @@
 
 		var context3 = document.getElementById("chartjs-dashboard-line").getContext("2d");
 		context3.canvas.width = 1000;
-		context3.canvas.height = 480;
+		context3.canvas.height = 503;
 
 		var configuration3 = {
 			type: 'line',
@@ -582,7 +605,7 @@
 
 		var context4 = document.getElementById("chartjs-dashboard-line-registros").getContext("2d");
 		context4.canvas.width = 1000;
-		context4.canvas.height = 480;
+		context4.canvas.height = 503;
 
 		var configuration4 = {
 			type: 'line',

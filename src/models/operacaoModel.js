@@ -51,10 +51,14 @@ function editar(
     email_gerente,
     senha_gerente,
     localidade,
-    id_empresa
+    id_empresa,
+    idOperacao
   ) {
+    var instrucao = `DELETE FROM [dbo].[log_registros] WHERE fk_maquina = (SELECT )`;
+    var instrucao = `DELETE FROM [dbo].[maquinas] WHERE fk_operacao = ${idOperacao}`;
+    database.executar(instrucao);
     var instrucao = `
-      DELETE FROM [dbo].[operacoes] WHERE nome_operacao = '${nome_operacao}' AND email_gerente = '${email_gerente}' AND senha_gerente = '${senha_gerente}' AND fk_empresa = '${id_empresa}';
+      DELETE FROM [dbo].[operacoes] WHERE id_operacao = '${idOperacao}' AND email_gerente = '${email_gerente}' AND senha_gerente = '${senha_gerente}' AND fk_empresa = '${id_empresa}';
       `;
     return database.executar(instrucao);
   }

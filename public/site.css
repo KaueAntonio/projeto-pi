@@ -644,6 +644,7 @@ h3 {
     width: 4rem;
     border: none;
     overflow-y: scroll;
+    background-color: white;
 }
 
 #maquinaSelecionada:hover {
@@ -669,6 +670,7 @@ h3 {
     width: 4rem;
     border: none;
     overflow-y: scroll;
+    background-color: white;
 }
 
 .maquinaSelecionada:hover {
