@@ -203,10 +203,10 @@
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Total De Máquinas</h5>
+														<h5 class="card-title">Processador (Uso Em Tempo Real)</h5>
 													</div>
 												</div>
-												<h1 id="" class="mt-1 mb-3">0</h1>
+												<h1 id="" class="mt-1 mb-3"><span id="span_dadosProcessador"></span>%</h1>
 												<div class="mb-0">
 													<span class="text-danger"> <i
 															class="mdi mdi-arrow-bottom-right"></i> -3.65% </span>
@@ -237,12 +237,10 @@
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Máquina Selecionada</h5>
+														<h5 class="card-title">RAM (Uso Em Tempo Real)</h5>
 													</div>
 												</div>
-												<select class="maquinaSelecionada">
-
-												</select>
+												<h1 class="mt-1 mb-3" id=""><span id="span_dadosRam"></span>%</h1>
 												<div class="mb-0">
 													<span class="text-success"> <i
 															class="mdi mdi-arrow-bottom-right"></i> 6.65% </span>
@@ -420,6 +418,37 @@
 			console.error(`ERROR`, error);
 		});
 
+	//-------------------------------------------------------
+
+	//GET DE REGISTROS DOS COMPONENTES ----------------------
+	var resultadoGetRegistros;
+	var lastDadoRam;
+	var lastDadoProcessador;
+	function getRegistros(){
+	fetch("/painel/getRegistros", {
+		method: "GET",
+	})
+		.then(function (resposta) {
+			resposta.json().then(function (data) {
+				for(let i = 0; i < data.length; i++){
+					let posicao = data[i];
+					if(posicao.fk_componente == 10 && posicao.fk_maquina == nMaquina){
+						lastDadoProcessador = posicao.uso;
+					}
+					if(posicao.fk_componente == 11 && posicao.fk_maquina == nMaquina){
+						let total = posicao.uso + posicao.disponivel;
+						lastDadoRam = (100 * posicao.uso) / total;
+					}
+				}
+			});
+		})
+		.catch(function (error) {
+			console.error(`ERROR`, error);
+		});
+		document.getElementById("span_dadosRam").innerHTML = `${lastDadoRam.toFixed(2)}`;
+		document.getElementById("span_dadosProcessador").innerHTML = `${lastDadoProcessador.toFixed(2)}`;
+	}
+	setInterval(getRegistros, 1000);
 	//-------------------------------------------------------
 
 	//GET DADOS DE CLIQUES ----------------------------------
