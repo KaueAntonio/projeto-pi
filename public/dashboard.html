@@ -206,7 +206,8 @@
 														<h5 class="card-title">Processador (Uso Em Tempo Real)</h5>
 													</div>
 												</div>
-												<h1 id="" class="mt-1 mb-3"><span id="span_dadosProcessador"></span>%</h1>
+												<h1 id="" class="mt-1 mb-3"><span id="span_dadosProcessador"></span>%
+												</h1>
 												<div class="mb-0">
 													<span class="text-danger"> <i
 															class="mdi mdi-arrow-bottom-right"></i> -3.65% </span>
@@ -422,31 +423,34 @@
 
 	//GET DE REGISTROS DOS COMPONENTES ----------------------
 	var resultadoGetRegistros;
-	var lastDadoRam;
-	var lastDadoProcessador;
-	function getRegistros(){
-	fetch("/painel/getRegistros", {
-		method: "GET",
-	})
-		.then(function (resposta) {
-			resposta.json().then(function (data) {
-				for(let i = 0; i < data.length; i++){
-					let posicao = data[i];
-					if(posicao.fk_componente == 10 && posicao.fk_maquina == nMaquina){
-						lastDadoProcessador = posicao.uso;
-					}
-					if(posicao.fk_componente == 11 && posicao.fk_maquina == nMaquina){
-						let total = posicao.uso + posicao.disponivel;
-						lastDadoRam = (100 * posicao.uso) / total;
-					}
-				}
-			});
+	var lastDadoRam = 0;
+	var lastDadoProcessado = 0;
+	function getRegistros() {
+		fetch("/painel/getRegistros", {
+			method: "GET",
 		})
-		.catch(function (error) {
-			console.error(`ERROR`, error);
-		});
-		document.getElementById("span_dadosRam").innerHTML = `${lastDadoRam.toFixed(2)}`;
-		document.getElementById("span_dadosProcessador").innerHTML = `${lastDadoProcessador.toFixed(2)}`;
+			.then(function (resposta) {
+				resposta.json().then(function (data) {
+					for (let i = 0; i < data.length; i++) {
+						let posicao = data[i];
+						if (posicao.fk_componente == 10 && posicao.fk_maquina == mSelecionada) {
+							lastDadoProcessador = posicao.uso;
+							console.log(posicao.uso)
+						}
+						if (posicao.fk_componente == 11 && posicao.fk_maquina == mSelecionada) {
+							let total = posicao.uso + posicao.disponivel;
+							lastDadoRam = (100 * posicao.uso) / total;
+							console.log(posicao.uso)
+						}
+					}
+				});
+			})
+			.catch(function (error) {
+				console.error(`ERROR`, error);
+			});
+			
+		document.getElementById("span_dadosRam").innerHTML = parseInt(lastDadoRam);
+		document.getElementById("span_dadosProcessador").innerHTML = parseInt(lastDadoProcessador);
 	}
 	setInterval(getRegistros, 1000);
 	//-------------------------------------------------------
@@ -533,7 +537,7 @@
 				resposta.json().then(function (data) {
 					for (let i = 0; i < data.length; i++) {
 						if (data[i].fk_operacao == sessionStorage.ID_OPERACAO_PAINEL) {
-							if(param_maquina == -1){
+							if (param_maquina == -1) {
 								return nomeMaquina(undefined);
 							}
 							if (!(param_maquina == 0)) {
@@ -554,7 +558,7 @@
 				console.error(`ERROR`, error);
 			});
 	}
-	selecionarMaquina();
+	setInterval(selecionarMaquina, 2000)
 	function selecionarMaquina() {
 		mSelecionada = maquinaSelecionada.value;
 		getMaquinas(mSelecionada)
@@ -575,7 +579,7 @@
 
 		var context3 = document.getElementById("chartjs-dashboard-line").getContext("2d");
 		context3.canvas.width = 1000;
-		context3.canvas.height = 503;
+		context3.canvas.height = 350;
 
 		var configuration3 = {
 			type: 'line',
@@ -618,6 +622,8 @@
 							stepSize: 20
 						}
 					}]
+				}, animation: {
+					duration: 0,
 				},
 			}
 		};
@@ -631,7 +637,7 @@
 
 		var context4 = document.getElementById("chartjs-dashboard-line-registros").getContext("2d");
 		context4.canvas.width = 1000;
-		context4.canvas.height = 503;
+		context4.canvas.height = 273;
 
 		var configuration4 = {
 			type: 'line',
