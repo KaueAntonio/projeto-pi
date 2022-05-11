@@ -1,19 +1,20 @@
-process.env.AMBIENTE_PROCESSO = "producao";
-// process.env.AMBIENTE_PROCESSO = "producao";
+const express = require("express");
+const http = require('http');
+const app = express();
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+const cors = require("cors");
+const path = require("path");
+const PORTA = 3450;
 
-var express = require("express");
-var cors = require("cors");
-var path = require("path");
-var PORTA = 3450;
 
-var app = express();
-
-var indexRouter = require("./src/routes/index");
-var usuarioRouter = require("./src/routes/usuarios");
-var empresaRouter = require("./src/routes/empresa");
-var operacaoRouter = require("./src/routes/operacao");
-var painelRouter = require("./src/routes/painel");
-var gerenteRouter = require("./src/routes/gerente");
+const indexRouter = require("./src/routes/index");
+const usuarioRouter = require("./src/routes/usuarios");
+const empresaRouter = require("./src/routes/empresa");
+const operacaoRouter = require("./src/routes/operacao");
+const painelRouter = require("./src/routes/painel");
+const gerenteRouter = require("./src/routes/gerente");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,6 +29,10 @@ app.use("/operacao", operacaoRouter);
 app.use("/painel", painelRouter);
 app.use("/gerente", gerenteRouter);
 
-app.listen(PORTA, function () {
+io.on('connection', (socket) => {
+  console.log('a user connected');
+});
+
+server.listen(PORTA, function () {
   console.log(`Aplicação Rodando`);
 });

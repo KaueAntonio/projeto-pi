@@ -32,6 +32,10 @@
 		src="https://static.zdassets.com/ekr/snippet.js?key=76a02d93-e792-4874-accf-3433c092ca07"> </script>
 	<!-- End of  Zendesk Widget script -->
 	<script src="./js/dash.js"></script>
+	<script src="../node_modules/socket.io/client-dist/socket.io.js"></script>
+	<script>
+		var socket = io();
+	</script>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" onload="validarSessao()">
@@ -424,7 +428,7 @@
 	//GET DE REGISTROS DOS COMPONENTES ----------------------
 	var resultadoGetRegistros;
 	var lastDadoRam = 0;
-	var lastDadoProcessado = 0;
+	var lastDadoProcessador = 0;
 	function getRegistros() {
 		fetch("/painel/getRegistros", {
 			method: "GET",
@@ -435,12 +439,10 @@
 						let posicao = data[i];
 						if (posicao.fk_componente == 10 && posicao.fk_maquina == mSelecionada) {
 							lastDadoProcessador = posicao.uso;
-							console.log(posicao.uso)
 						}
 						if (posicao.fk_componente == 11 && posicao.fk_maquina == mSelecionada) {
 							let total = posicao.uso + posicao.disponivel;
 							lastDadoRam = (100 * posicao.uso) / total;
-							console.log(posicao.uso)
 						}
 					}
 				});
@@ -448,11 +450,11 @@
 			.catch(function (error) {
 				console.error(`ERROR`, error);
 			});
-			
+
 		document.getElementById("span_dadosRam").innerHTML = parseInt(lastDadoRam);
 		document.getElementById("span_dadosProcessador").innerHTML = parseInt(lastDadoProcessador);
 	}
-	setInterval(getRegistros, 1000);
+	setInterval(getRegistros, 5000);
 	//-------------------------------------------------------
 
 	//GET DADOS DE CLIQUES ----------------------------------
@@ -542,7 +544,6 @@
 							}
 							if (!(param_maquina == 0)) {
 								if (data[i].id_maquina == param_maquina) {
-									console.log(data[i].serial_maquina)
 									return nomeMaquina(data[i].serial_maquina);
 								}
 							} else {
@@ -637,7 +638,7 @@
 
 		var context4 = document.getElementById("chartjs-dashboard-line-registros").getContext("2d");
 		context4.canvas.width = 1000;
-		context4.canvas.height = 273;
+		context4.canvas.height = 280;
 
 		var configuration4 = {
 			type: 'line',
@@ -686,4 +687,11 @@
 
 		var chart4 = new Chart(context4, configuration4);
 	}
+
+	io.on('connection', (socket) => {
+		console.log('a user connected');
+		socket.on('disconnect', () => {
+			console.log('user disconnected');
+		});
+	});
 </script>
