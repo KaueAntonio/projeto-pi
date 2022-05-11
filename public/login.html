@@ -200,7 +200,6 @@
             method: "POST",
             body: formulario
         }).then(function (resposta) {
-
             if (resposta.ok) {
 
                 resposta.json().then(json => {
@@ -215,24 +214,16 @@
                     sessionStorage.ID_USUARIO = json[0].id_empresa;
                     sessionStorage.ESTADO_PAGE = "logado";
 
-
                     alert(`Olá ${sessionStorage.NOME_USUARIO}, seja bem vindo!`);
                     window.location = "./index.html";
-
-
                 });
-
             } else {
-
                 alert("Houve um erro ao tentar realizar o login!, Tente Novamente");
-
                 resposta.text().then(texto => {
                 });
             }
-
         }).catch(function (erro) {
         })
-
         return false;
     }
 

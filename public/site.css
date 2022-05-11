@@ -127,6 +127,7 @@ p {
 .navbar-light .navbar-nav .nav-link {
     color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
+    text-align: center;
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
