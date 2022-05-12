@@ -454,7 +454,8 @@
 		document.getElementById("span_dadosRam").innerHTML = parseInt(lastDadoRam);
 		document.getElementById("span_dadosProcessador").innerHTML = parseInt(lastDadoProcessador);
 	}
-	setInterval(getRegistros, 5000);
+	//setInterval(getRegistros, 10000);
+	//getRegistros();
 	//-------------------------------------------------------
 
 	//GET DADOS DE CLIQUES ----------------------------------
@@ -564,6 +565,7 @@
 		mSelecionada = maquinaSelecionada.value;
 		getMaquinas(mSelecionada)
 		getCliques();
+		getRegistros()
 	}
 
 	function nomeMaquina(nome) {
