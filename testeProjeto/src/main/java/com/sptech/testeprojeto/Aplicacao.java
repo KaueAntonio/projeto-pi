@@ -6,6 +6,6 @@ import com.sptech.testeprojeto.tela.login.Login;
 public class Aplicacao {
     public static void main(String[] args) {
        Login.main(args);
-        IntegracaoSlack.main(args);
+//       IntegracaoSlack.main(args);
     }
 }
