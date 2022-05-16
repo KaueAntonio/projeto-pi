@@ -15,6 +15,7 @@ import com.sptech.testeprojeto.integracao.slack.SlackTest;
 import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
+
 /**
  *
  * @author wende
@@ -22,6 +23,11 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 public class IntegracaoSlack {
 
     public static void main(String[] args) {
+        
+//        String queryAlerta = "SELECT descricao FROM [dbo].[log_alertas]";
+        
+//        LogAlerta logAlerta = template.queryForObject(queryAlerta, new LogAlertaMapper());
+        
         Connection config = new Connection();
         JdbcTemplate template = new JdbcTemplate(config.getDataSource());
         String queryAlerta = "SELECT TOP(1) * FROM "
@@ -38,7 +44,7 @@ public class IntegracaoSlack {
 
     public static void enviarMensagem(String message) {
         try {
-            String webHookURL = "https://hooks.slack.com/services/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";
+            String webHookURL = "";
             String slackChannel = "equipe-ti";
             StringBuilder msgBuilder = new StringBuilder();
 

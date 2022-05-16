@@ -1,9 +1,12 @@
+/home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/tela/login/Operacao.java
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/tela/cliques/TelaAtendimento.java
+/home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/integracao/slack/LogAlertaMapper.java
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/tela/login/Login.java
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/tela/login/Maquina.java
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/tela/trayicon/IconeNoTray.java
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/tela/login/SelectLogin.java
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/integracao/slack/SlackMapper.java
+/home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/integracao/slack/LogAlerta.java
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/Connection.java
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/tela/login/MaquinaMapper.java
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/Aplicacao.java
@@ -12,6 +15,7 @@
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/tela/login/LoginMapper.java
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/integracao/slack/SlackTest.java
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/RegistroMapper.java
+/home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/tela/login/OperacaoMapper.java
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/tela/cliques/Cliques.java
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/tela/trayicon/JFramePrincipal.java
 /home/aluno/Desktop/wall/projeto-pi/testeProjeto/src/main/java/com/sptech/testeprojeto/ValidacaoLogin.java

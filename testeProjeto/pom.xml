@@ -100,6 +100,14 @@
             <artifactId>jslack</artifactId>
             <version>3.4.2</version>
         </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20220320</version>
+        </dependency>
+
     
     </dependencies>
 </project>
