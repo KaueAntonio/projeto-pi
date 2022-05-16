@@ -8,8 +8,8 @@ function cadastrar(nome, email, senha) {
   return database.executar(instrucao);
 }
 
-function login(email, senha){
-  var instrucao = `SELECT * FROM [dbo].[operacoes] WHERE email_gerente = '${email}' AND senha_gerente = '${senha}'`;
+function login(email, senha, idEmpresa){
+  var instrucao = `SELECT * FROM [dbo].[operacoes] WHERE email_gerente = '${email}' AND senha_gerente = '${senha}' AND fk_empresa = '${idEmpresa}';`;
   return database.executar(instrucao);
 }
 

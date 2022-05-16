@@ -82,14 +82,17 @@ function editar(req, res) {
 function login(req, res) {
   var email = req.body.email;
   var senha = req.body.senha;
+  var idEmpresa = req.body.id_empresa;
 
   if (email == undefined) {
     res.status(400).send("Seu email está undefined!");
   } else if (senha == undefined) {
     res.status(400).send("Sua senha está undefined!");
+  } else if (idEmpresa == undefined) {
+    res.status(400).send("Empresa está undefined!");
   } else {
     gerenteModel
-      .login(email, senha)
+      .login(email, senha, idEmpresa)
       .then(function (resultado) {
         res.json(resultado);
       })

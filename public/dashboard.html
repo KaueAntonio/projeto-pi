@@ -372,6 +372,7 @@
 		});
 	</script>
 	</script>
+	
 
 </body>
 
@@ -471,10 +472,12 @@
 					for (let i = 0; i < data.length; i++) {
 						let posicao = data[i]
 						let axData = posicao.data_clique;
+						
 						let mesClique = String(axData[5]) + String(axData[6]);
-						if (mesClique < 10) {
-							mesClique = mesClique[0] + mesClique[1];
-						}
+						
+						// if (mesClique < 10) {
+						// 	mesClique = mesClique[0] + mesClique[1];
+						// }
 						if (posicao.id_maquina == mSelecionada) {
 							tCliques++;
 							switch (Number(mesClique)) {
