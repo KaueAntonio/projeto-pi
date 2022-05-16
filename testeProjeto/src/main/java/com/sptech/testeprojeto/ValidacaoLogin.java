@@ -6,6 +6,7 @@
 package com.sptech.testeprojeto;
 
 import com.github.britooo.looca.api.core.Looca;
+import com.sptech.testeprojeto.integracao.slack.IntegracaoSlack;
 import java.util.Timer;
 import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;
@@ -58,14 +59,14 @@ public class ValidacaoLogin {
 
         Long usoRAM = looca.getMemoria().getEmUso();
         Long ramDisponivel = looca.getMemoria().getDisponivel();
-        Long totalRAM = usoRAM + ramDisponivel;
+        Double totalRAM = usoRAM.doubleValue() + ramDisponivel.doubleValue();
 
         Double percentualRAM = totalRAM.doubleValue() * (usoRAM / 100);
 
         String queryOperacao = String.format("SELECT * FROM [dbo].[operacoes]"
                 + " WHERE (SELECT fk_operacao FROM [dbo].[maquinas] WHERE id_maquina = %d)"
                 + "= id_operacao", identificarMaquina.getId());
-
+        
         Operacao operacao = template.queryForObject(queryOperacao, new OperacaoMapper());
 
         // insert de log da CPU
@@ -95,14 +96,13 @@ public class ValidacaoLogin {
         // usoDisco, discoDisponivel, freqDisco, 5);
 
         String codigoUrgencia;
-        if (usoCPU > 30.0 && usoCPU <= 50.0) {
-
+        if (usoCPU > 0.0 && usoCPU <= 50.0) {
             codigoUrgencia = "Atenção";
-            String descricao = String.format("A máquina %s está em %s."
-                    + "Uso de CPU: %.2f"
-                    + "Operação: %s"
-                    + "Localidade: %s"
-                    + "Nome do gerente: %s",
+            String descricao = String.format("A CPU da máquina %s está em %s."
+                    + "\nUso de CPU: %.2f"
+                    + "\nOperação: %s"
+                    + "\nLocalidade: %s"
+                    + "\nNome do gerente: %s",
                     identificarMaquina.getId(),
                     codigoUrgencia,
                     usoCPU,
@@ -118,15 +118,17 @@ public class ValidacaoLogin {
                     codigoUrgencia,
                     descricao,
                     idRegistro.getId());
+            
+            IntegracaoSlack.enviarMensagem(descricao);
 
         } else if (usoCPU > 50.0 && usoCPU <= 75.0) {
             codigoUrgencia = "Emergência";
 
-            String descricao = String.format("A máquina %s está em %s."
-                    + "Uso de CPU: %.2f"
-                    + "Operação: %s"
-                    + "Localidade: %s"
-                    + "Nome do gerente: %s",
+            String descricao = String.format("A CPU da máquina %s está em %s."
+                    + "\nUso de CPU: %.2f"
+                    + "\nOperação: %s"
+                    + "\nLocalidade: %s"
+                    + "\nNome do gerente: %s",
                     identificarMaquina.getId(),
                     codigoUrgencia,
                     usoCPU,
@@ -141,15 +143,16 @@ public class ValidacaoLogin {
                     codigoUrgencia,
                     descricao,
                     idRegistro.getId());
+            IntegracaoSlack.enviarMensagem(descricao);
 
         } else if (usoCPU > 75.0) {
 
             codigoUrgencia = "Crítico";
-            String descricao = String.format("A máquina %s está em %s."
-                    + "Uso de CPU: %.2f"
-                    + "Operação: %s"
-                    + "Localidade: %s"
-                    + "Nome do gerente: %s",
+            String descricao = String.format("A CPU máquina %s está em %s."
+                    + "\nUso de CPU: %.2f"
+                    + "\nOperação: %s"
+                    + "\nLocalidade: %s"
+                    + "\nNome do gerente: %s",
                     identificarMaquina.getId(),
                     codigoUrgencia,
                     usoCPU,
@@ -164,19 +167,20 @@ public class ValidacaoLogin {
                     codigoUrgencia,
                     descricao,
                     idRegistro.getId());
+            IntegracaoSlack.enviarMensagem(descricao);
         }
 
         if (percentualRAM >= 70.0 && percentualRAM < 80.0) {
             
             codigoUrgencia = "Alerta";
-            String descricao = String.format("A máquina %s está em %s."
-                    + "RAM: %.2f"
-                    + "Operação: %s"
-                    + "Localidade: %s"
-                    + "Nome do gerente: %s",
+            String descricao = String.format("A memória RAM da máquina %s está em %s."
+                    + "\nRAM: %.2f"
+                    + "\nOperação: %s"
+                    + "\nLocalidade: %s"
+                    + "\nNome do gerente: %s",
                     identificarMaquina.getId(),
                     codigoUrgencia,
-                    percentualRAM,
+                    (usoRAM.doubleValue()/100000),
                     operacao.getNome_operacao(),
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
@@ -189,17 +193,18 @@ public class ValidacaoLogin {
                     codigoUrgencia,
                     descricao,
                     idRegistro.getId());
+            IntegracaoSlack.enviarMensagem(descricao);
         } 
         else if (percentualRAM >= 80.0 && percentualRAM < 90){
             codigoUrgencia = "Emergência";
-            String descricao = String.format("A máquina %s está em nível de %s."
-                    + "RAM: %.2f"
-                    + "Operação: %s"
-                    + "Localidade: %s"
-                    + "Nome do gerente: %s",
+            String descricao = String.format("A memória RAM da máquina %s está em nível de %s."
+                    + "\nRAM: %.2f"
+                    + "\nOperação: %s"
+                    + "\nLocalidade: %s"
+                    + "\nNome do gerente: %s",
                     identificarMaquina.getId(),
                     codigoUrgencia,
-                    percentualRAM,
+                    usoRAM.doubleValue()/100000,
                     operacao.getNome_operacao(),
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
@@ -212,17 +217,18 @@ public class ValidacaoLogin {
                     codigoUrgencia,
                     descricao,
                     idRegistro.getId());
+            IntegracaoSlack.enviarMensagem(descricao);
         }
         else if (percentualRAM > 90.0){
             codigoUrgencia = "Crítico";
-            String descricao = String.format("A máquina %s está em nível %s."
-                    + "RAM: %.2f"
-                    + "Operação: %s"
-                    + "Localidade: %s"
-                    + "Nome do gerente: %s",
+            String descricao = String.format("A memória RAM da máquina %s está em nível %s."
+                    + "\nRAM: %.2f"
+                    + "\nOperação: %s"
+                    + "\nLocalidade: %s"
+                    + "\nNome do gerente: %s",
                     identificarMaquina.getId(),
                     codigoUrgencia,
-                    percentualRAM,
+                    usoRAM.doubleValue()/100000,
                     operacao.getNome_operacao(),
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
@@ -235,6 +241,8 @@ public class ValidacaoLogin {
                     codigoUrgencia,
                     descricao,
                     idRegistro.getId());
+            
+            IntegracaoSlack.enviarMensagem(descricao);
         }
 
     }
