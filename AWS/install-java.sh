@@ -1,3 +1,5 @@
+FROM ubuntu:latest
+
 RUN sudo add-apt-repository ppa:webupd8team/java -y
 RUN sudo apt update -y
 RUN sudo apt install default-jre ; apt install openjdk-11-jre-headless; -y
