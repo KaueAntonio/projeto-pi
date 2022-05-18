@@ -1,9 +1,4 @@
-#!/bin/bash
 
-PURPLE='0;35'
-NC='\033[0m' 
-VERSAO=11
-	
 echo  "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Olá Aluno, serei seu assistente para instalação do Java!;"
 sleep 2
 echo  "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Verificando aqui se você possui o Java instalado...;"
