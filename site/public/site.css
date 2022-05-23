@@ -1,0 +1,687 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap');
+@media (max-width: 991px) {
+    #iconesumir {
+        display: none;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none !important;
+    scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #72b6ffcc;
+    border-radius: 30px;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #fff;
+}
+.nav-item:hover {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    border-radius: 15px;
+    border-color: transparent;
+}
+
+.dropdown-item {
+    color: #000;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.dropdown-item:hover {
+    background-color: transparent;
+    border-radius: 10px;
+    margin-left: 10px;
+    width: 138px;
+}
+
+.btn-conta {
+    width: 100px;
+    height: 40px;
+    background-color: rgba(89, 182, 199, 0);
+    color: black;
+    display: inline-block;
+    border: none;
+    font-weight: 600;
+    border-radius: 50px;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn-conta:hover {
+    background-color: rgb(188, 215, 255);
+    border-radius: 50px;
+}
+
+header {
+    display: flex;
+    position: fixed;
+    z-index: 1000000;
+}
+
+p {
+    font-size: 1.15rem;
+}
+
+.icone {
+    margin-top: 5px;
+    margin-left: 10px;
+    justify-self: flex-start;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 60px;
+}
+
+.navbar {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+    transition: 0.5s;
+    font-weight: bold;
+}
+
+.navbar-brand img {
+    width: 150px;
+}
+
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show>.nav-link {
+    color: rgb(0, 0, 0);
+    background: rgb(188, 215, 255);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.navbar-light .navbar-nav .active>.nav-link:hover {
+    color: #000;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    text-align: center;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus {
+    color: rgb(0, 0, 0);
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.152) !important;
+    transition: 0.5s;
+}
+
+.banner {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: url("./Imagens/banner.png");
+    background-size: cover;
+    margin-bottom: 0;
+}
+
+.sec2::before,
+.contato::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(rgb(188, 215, 255), transparent);
+    pointer-events: none;
+}
+
+.cadastro::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(rgb(188, 215, 255), transparent);
+    pointer-events: none;
+}
+
+.cadastro::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(360deg, rgb(188, 215, 255), transparent);
+    pointer-events: none;
+}
+
+.contato::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(360deg, rgb(188, 215, 255), transparent);
+    pointer-events: none;
+}
+
+.banner::after,
+.sec2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(360deg, rgb(188, 215, 255), transparent);
+    pointer-events: none;
+}
+
+.height100p {
+    height: 100vh;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.contentBox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+}
+
+.contentBox h1 {
+    font-weight: 800;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    font-size: 5rem;
+}
+
+.contentBox p {
+    color: rgb(0, 0, 0);
+    font-size: 1.3rem;
+}
+
+.sec1 {
+    padding: 100px 0;
+    background: rgb(188, 215, 255);
+}
+
+.headertexto {
+    color: rgb(0, 0, 0);
+}
+
+.headertexto h2 {
+    font-size: 2.5rem;
+    color: rgb(0, 0, 0);
+    margin-bottom: 20px;
+}
+
+.headertextoCadastro h2 {
+    font-size: 2.5rem;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.placebox {
+    position: relative;
+    max-width: 350px;
+    height: 350px;
+    margin: 0 auto;
+    background: rgb(188, 215, 255);
+    margin-top: 30px;
+    border-radius: 20%;
+}
+
+.placebox .imgbx {
+    width: 100%;
+    height: 100%;
+}
+
+.placebox .imgbx img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.placebox .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: baseline;
+    align-items: flex-end;
+}
+
+.placebox .content h3 {
+    position: relative;
+    margin: 0;
+    padding: 10px;
+    background: rgb(188, 215, 255);
+    opacity: 0.7;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-weight: 600;
+    border-bottom-left-radius: 37%;
+    border-bottom-right-radius: 37%;
+}
+
+.sec2 {
+    position: relative;
+    background: url("");
+    background-size: cover;
+    height: 100vh;
+}
+
+.prop .container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.prop .container2 h2 {
+    color: rgb(0, 0, 0);
+    font-size: 50px;
+    z-index: 100;
+}
+
+.prop .container2 .mvv div img {
+    height: 250px;
+    width: 250px;
+}
+
+.prop .container2 .mvv {
+    margin-top: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 10;
+}
+
+.prop .container2 .mvv div {
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.prop .container2 .mvv div h3 {
+    color: rgb(0, 0, 0);
+    margin-bottom: 12%;
+}
+
+.prop .container2 .mvv div p {
+    color: rgb(0, 0, 0);
+}
+
+#flor {
+    width: 170px;
+    height: 150px;
+}
+
+#mao {
+    width: 170px;
+    height: 170px;
+}
+
+#plant {
+    width: 170px;
+    height: 150px;
+}
+
+#mis {
+    margin-top: 10%;
+}
+
+#val {
+    margin-top: 10%;
+}
+
+#vis {
+    margin-top: 7%;
+}
+
+.space {
+    width: 100%;
+    height: 10vh;
+    background: rgb(255, 255, 255);
+}
+
+.contato {
+    position: relative;
+    padding: 100px 0;
+    background: url("");
+    background-size: cover;
+    min-height: 100vh;
+    background-color: rgb(188, 215, 255);
+}
+
+.contato form {
+    position: relative;
+    z-index: 1000;
+}
+
+.contato .form-control {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.63);
+    height: 50px;
+    border-radius: 30px;
+    color: rgb(0, 0, 0);
+    font-size: 1.25rem;
+}
+
+.contato .form-control:focus,
+.contato .form-control:hover {
+    border: none;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    box-shadow: none;
+}
+
+.contato .textarea {
+    min-height: 100px;
+}
+
+.contato label {
+    color: rgb(0, 0, 0);
+    font-size: 1.25rem;
+}
+
+.login {
+    font-weight: bolder;
+}
+
+.cadastro {
+    position: relative;
+    padding: 100px 0;
+    background: url("");
+    background-size: cover;
+    min-height: 100vh;
+    background-color: white;
+}
+
+.cadastro form {
+    position: relative;
+    z-index: 1000;
+}
+
+.cadastro .form-control {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.63);
+    height: 40px;
+    border-radius: 30px;
+    color: rgb(0, 0, 0);
+    font-size: 1.15rem;
+}
+
+.cadastro .form-control:focus,
+.cadastro .form-control:hover {
+    border: none;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    box-shadow: none;
+}
+
+.cadastro .textarea {
+    min-height: 80px;
+}
+
+.cadastro label {
+    color: rgb(0, 0, 0);
+    font-size: 1.15rem;
+}
+
+footer {
+    background: #000;
+    padding: 20px 0 0;
+}
+
+.sci {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sci li {
+    list-style: none;
+    margin: 0 20px;
+}
+
+.sci li a {
+    color: #777;
+    font-size: 2em;
+    transition: 0.5s;
+}
+
+.sci li a:hover {
+    color: #777;
+}
+
+.crypt {
+    margin-top: 20px;
+    text-align: center;
+    color: #777;
+}
+
+.crypt a,
+.crypt a:hover {
+    color: #777;
+}
+
+
+/* Parte Login */
+
+.body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(#000, transparent);
+    pointer-events: none;
+}
+
+.body::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(360deg, #000, transparent);
+    pointer-events: none;
+}
+
+.body {
+    background: url("");
+    background-size: cover;
+}
+
+.h3,
+h3 {
+    font-size: 1.4rem;
+}
+
+.botoes {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.btn-excluir {
+    width: 200px;
+    height: 50px;
+    background-color: rgb(89, 182, 199);
+    color: black;
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 40px;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.63);
+    padding: 0.375rem 0.75rem;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn,
+.btn-editar {
+    width: 200px;
+    height: 50px;
+    margin-top: 50px;
+    background-color: rgb(89, 182, 199);
+    color: black;
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 40px;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.63);
+    padding: 0.375rem 0.75rem;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.container_avaliacao {
+    margin: 10px;
+    padding: 10px;
+    word-wrap: break-word;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    width: 500px;
+    height: auto;
+    background-color: rgba(243, 240, 235, 0.315);
+    z-index: 10000;
+}
+
+.avaliacao_estrela {
+    width: 20px;
+    height: 20px;
+    z-index: 10000;
+}
+
+.alinhamentoExcluir {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+}
+
+.botaoExcluir {
+    margin: 10px;
+    padding: 5px;
+}
+
+.botaoExcluir:hover {
+    cursor: pointer;
+}
+
+.margintop {
+    margin-top: 5%;
+}
+
+#maquinaSelecionada {
+    margin-bottom: 1rem;
+    margin-top: 0.0rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    font-size: 2.5rem;
+    width: auto;
+    border: none;
+    overflow-y: scroll;
+    background-color: white;
+}
+
+#maquinaSelecionada:hover {
+    cursor: pointer;
+}
+
+#maquinaSelecionada option {
+    font-size: 1.5rem;
+}
+
+#maquinaSelecionada option:hover {
+    font-weight: bolder;
+}
+
+.maquinaSelecionada {
+    margin-bottom: 1rem;
+    margin-top: 0.0rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    font-size: 2.5rem;
+    width: auto;
+    border: none;
+    overflow-y: scroll;
+    background-color: white;
+}
+
+.maquinaSelecionada:hover {
+    cursor: pointer;
+}
+
+.maquinaSelecionada option {
+    font-size: 1.5rem;
+}
+
+.maquinaSelecionada option:hover {
+    font-weight: bolder;
+}
