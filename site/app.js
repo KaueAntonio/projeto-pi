@@ -6,7 +6,7 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 const cors = require("cors");
 const path = require("path");
-const PORTA = 3450;
+const PORTA = 8080;
 
 
 const indexRouter = require("./src/routes/index");
