@@ -28,7 +28,7 @@ public class ServerCatch {
                                         info.getHardware().getComputerSystem().getHardwareUUID(),
                                         info.getHardware().getComputerSystem().getSerialNumber(), 10);
                         template.update(queryInsert);
-                        // template2.update(queryInsert);
+                        template2.update(queryInsert);
 
                         Timer timer = new Timer();
                         ValidacaoLogin login = new ValidacaoLogin();
