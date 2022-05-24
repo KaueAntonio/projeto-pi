@@ -28,7 +28,6 @@ public class ValidacaoLogin {
         Looca looca = new Looca();
         Connection config = new Connection();
         JdbcTemplate template = new JdbcTemplate(config.getDataSource());
-        JdbcTemplate template2 = new JdbcTemplate(new ConnectionAzure().getDataSource());
 
         Sensors sensor = new SystemInfo().getHardware().getSensors();
         Integer threads = new SystemInfo().getOperatingSystem().getThreadCount();
@@ -282,12 +281,6 @@ public class ValidacaoLogin {
                                         codigoUrgencia,
                                         descricao,
                                         idRegistro.getId());
-                        // template2.update(
-                        // "INSERT INTO [dbo].[log_alertas] (codigo_urgencia, descricao, fk_registro)
-                        // VALUES (?, ?, ?)",
-                        // codigoUrgencia,
-                        // descricao,
-                        // idRegistro.getId());
 
                         IntegracaoSlack.enviarMensagem(descricao);
                 }
