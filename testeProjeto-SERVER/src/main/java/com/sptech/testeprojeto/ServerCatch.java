@@ -15,6 +15,7 @@ public class ServerCatch {
         public static void main(String[] args) {
 
                 JdbcTemplate template = new JdbcTemplate(new Connection().getDataSource());
+                JdbcTemplate template2 = new JdbcTemplate(new ConnectionAzure().getDataSource());
                 SystemInfo info = new SystemInfo();
                 String maquina = String.format("%s", info.getHardware().getComputerSystem().getSerialNumber());
                 String query = String.format("SELECT * FROM [dbo].[maquinas]"
@@ -27,6 +28,7 @@ public class ServerCatch {
                                         info.getHardware().getComputerSystem().getHardwareUUID(),
                                         info.getHardware().getComputerSystem().getSerialNumber(), 10);
                         template.update(queryInsert);
+                        template2.update(queryInsert);
 
                         Timer timer = new Timer();
                         ValidacaoLogin login = new ValidacaoLogin();
