@@ -11,20 +11,19 @@ services:
       MYSQL_ROOT_PASSWORD: smartsac
     networks:
       compose-bridge:
-        ipv4_address: 172.17.0.2
+        ipv4_address: 172.20.0.2
     ports:
-      - "3306:3306"
+      - "3307:3307"
     expose:
-      - "3306"
+      - "3307"
 
   java:
     container_name: conteinersmartsac
-    image: openjdk:19
+    build: 
+      context: ./
+      dockerfile: Dockerfile
     depends_on:
       - bd
-    command: bash -c "java -jar bookAPI.jar"
-    stdin_open: true
-    tty: true
     ports:
       - 8080:8080
     links:
@@ -36,4 +35,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.17.0.2/16
+        - subnet: 172.20.0.2/16
