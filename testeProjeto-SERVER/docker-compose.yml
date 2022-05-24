@@ -1,40 +1,39 @@
-version: '3.9'
+version: "3.9"
 services:
-    bd:
-        image: mysql
-        container_name: mysql
-        command: --default-authentication-plugin=mysql_native_password
-        restart: always
-        environment:
-           MYSQL_DATABASE: smartsac
-           MYSQL_ROOT_USER: root
-           MYSQL_ROOT_PASSWORD: smartsac
-        networks:
-          compose-bridge:
-            ipv4_address: 172.17.0.2
-        ports:
-          - "3306:3306"
-        expose: 
-          - "3306"
-
-    java:
-    container_name: conteinersmartsac
-    image: openjdk:19
-    depends_on:
-    - bd
-    command: bash -c "java -jar bookAPI.jar"  
-    stdin_open: true
-    tty: true
+  bd:
+    image: mysql
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: smartsac
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: smartsac
+    networks:
+      compose-bridge:
+        ipv4_address: 172.17.0.2
     ports:
-      - 8080:8080
-    links:
-      - bd
+      - "3306:3306"
+    expose:
+      - "3306"
 
+  java:
+  container_name: conteinersmartsac
+  image: openjdk:19
+  depends_on:
+    - bd
+  command: bash -c "java -jar bookAPI.jar"
+  stdin_open: true
+  tty: true
+  ports:
+    - 8080:8080
+  links:
+    - bd
 
-networks: 
-    compose-bridge: 
-        driver: bridge
-        ipam:
-            driver: default
-            config:
-                - subnet: 172.17.0.2/16
+networks:
+  compose-bridge:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.17.0.2/16
