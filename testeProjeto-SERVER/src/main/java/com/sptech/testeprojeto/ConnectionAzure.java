@@ -10,7 +10,7 @@ public class ConnectionAzure {
 
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl(
-                "jdbc:mysql://172.20.0.2:3307/smartsac");
+                "jdbc:mysql://172.20.0.2:3306/smartsac");
         dataSource.setUsername("root");
         dataSource.setPassword("smartsac");
     }
