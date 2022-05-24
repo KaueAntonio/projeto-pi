@@ -18,17 +18,17 @@ services:
       - "3306"
 
   java:
-  container_name: conteinersmartsac
-  image: openjdk:19
-  depends_on:
-    - bd
-  command: bash -c "java -jar bookAPI.jar"
-  stdin_open: true
-  tty: true
-  ports:
-    - 8080:8080
-  links:
-    - bd
+    container_name: conteinersmartsac
+    image: openjdk:19
+    depends_on:
+      - bd
+    command: bash -c "java -jar bookAPI.jar"
+    stdin_open: true
+    tty: true
+    ports:
+      - 8080:8080
+    links:
+      - bd
 
 networks:
   compose-bridge:
