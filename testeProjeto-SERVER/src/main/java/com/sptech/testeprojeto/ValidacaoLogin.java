@@ -28,6 +28,7 @@ public class ValidacaoLogin {
         Looca looca = new Looca();
         Connection config = new Connection();
         JdbcTemplate template = new JdbcTemplate(config.getDataSource());
+        JdbcTemplate template2 = new JdbcTemplate(new ConnectionDocker().getDataSource());
 
         Sensors sensor = new SystemInfo().getHardware().getSensors();
         Integer threads = new SystemInfo().getOperatingSystem().getThreadCount();
@@ -77,11 +78,25 @@ public class ValidacaoLogin {
                                 freqCPU,
                                 identificarMaquina.getId(),
                                 10);
+                template2.update(
+                                "INSERT INTO [dbo].[log_registros](uso, disponivel, frequencia, fk_maquina, fk_componente, data_hora) VALUES (?, ?, ?, ?, ?, GETDATE())",
+                                usoCPU,
+                                100 - usoCPU,
+                                freqCPU,
+                                identificarMaquina.getId(),
+                                10);
 
                 System.out.println("\nDado De Processador Inserido -- x" + cont + "\n");
                 cont = cont + 1;
                 //// insert de log da RAM
                 template.update(
+                                "INSERT INTO [dbo].[log_registros](uso, disponivel, frequencia, fk_maquina, fk_componente, data_hora) VALUES (?, ?, ?, ?, ?, GETDATE())",
+                                usoRAM,
+                                ramDisponivel,
+                                0,
+                                identificarMaquina.getId(),
+                                11);
+                template2.update(
                                 "INSERT INTO [dbo].[log_registros](uso, disponivel, frequencia, fk_maquina, fk_componente, data_hora) VALUES (?, ?, ?, ?, ?, GETDATE())",
                                 usoRAM,
                                 ramDisponivel,
@@ -117,6 +132,10 @@ public class ValidacaoLogin {
                                         codigoUrgencia,
                                         descricao,
                                         idRegistro.getId());
+                        template2.update("INSERT INTO [dbo].[log_alertas] (codigo_urgencia, descricao, fk_registro) VALUES (?, ?, ?)",
+                                        codigoUrgencia,
+                                        descricao,
+                                        idRegistro.getId());
 
                         IntegracaoSlack.enviarMensagem(descricao);
 
@@ -142,6 +161,10 @@ public class ValidacaoLogin {
                                         descricao,
                                         idRegistro.getId());
 
+                        template2.update("INSERT INTO [dbo].[log_alertas] (codigo_urgencia, descricao, fk_registro) VALUES (?, ?, ?)",
+                                        codigoUrgencia,
+                                        descricao,
+                                        idRegistro.getId());
                         IntegracaoSlack.enviarMensagem(descricao);
 
                 } else if (usoCPU > 75.0) {
@@ -162,6 +185,10 @@ public class ValidacaoLogin {
                         String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 10.0 AND uso <= 20.0 ORDER BY id_registro DESC";
                         Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
                         template.update("INSERT INTO [dbo].[log_alertas] (codigo_urgencia, descricao, fk_registro) VALUES (?, ?, ?)",
+                                        codigoUrgencia,
+                                        descricao,
+                                        idRegistro.getId());
+                        template2.update("INSERT INTO [dbo].[log_alertas] (codigo_urgencia, descricao, fk_registro) VALUES (?, ?, ?)",
                                         codigoUrgencia,
                                         descricao,
                                         idRegistro.getId());
@@ -190,6 +217,10 @@ public class ValidacaoLogin {
                                         codigoUrgencia,
                                         descricao,
                                         idRegistro.getId());
+                        template2.update("INSERT INTO [dbo].[log_alertas] (codigo_urgencia, descricao, fk_registro) VALUES (?, ?, ?)",
+                                        codigoUrgencia,
+                                        descricao,
+                                        idRegistro.getId());
                         IntegracaoSlack.enviarMensagem(descricao);
                 } else if (percentualRAM >= 80.0 && percentualRAM < 90) {
                         codigoUrgencia = "Emergência";
@@ -211,6 +242,10 @@ public class ValidacaoLogin {
                                         codigoUrgencia,
                                         descricao,
                                         idRegistro.getId());
+                        template2.update("INSERT INTO [dbo].[log_alertas] (codigo_urgencia, descricao, fk_registro) VALUES (?, ?, ?)",
+                                        codigoUrgencia,
+                                        descricao,
+                                        idRegistro.getId());
                         IntegracaoSlack.enviarMensagem(descricao);
                 } else if (percentualRAM > 90.0) {
                         codigoUrgencia = "Crítico";
@@ -229,6 +264,10 @@ public class ValidacaoLogin {
                         String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Memoria Ram' AND uso > 85.0 ORDER BY id_registro DESC";
                         Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
                         template.update("INSERT INTO [dbo].[log_alertas] (codigo_urgencia, descricao, fk_registro) VALUES (?, ?, ?)",
+                                        codigoUrgencia,
+                                        descricao,
+                                        idRegistro.getId());
+                        template2.update("INSERT INTO [dbo].[log_alertas] (codigo_urgencia, descricao, fk_registro) VALUES (?, ?, ?)",
                                         codigoUrgencia,
                                         descricao,
                                         idRegistro.getId());
