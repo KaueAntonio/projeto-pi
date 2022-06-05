@@ -24,6 +24,7 @@ import com.sptech.testeprojeto.tela.login.OperacaoMapper;
  */
 // INSERIR TIMER E DELAY PARA CAPTURA DE DADOS A CADA 5
 public class ValidacaoLogin {
+
     Log log = new Log();
     Looca looca = new Looca();
     Connection config = new Connection();
@@ -66,7 +67,7 @@ public class ValidacaoLogin {
         String queryOperacao = String.format("SELECT * FROM [dbo].[operacoes]"
                 + " WHERE (SELECT fk_operacao FROM [dbo].[maquinas] WHERE id_maquina = %d)"
                 + "= id_operacao", identificarMaquina.getId());
-        
+
         Operacao operacao = template.queryForObject(queryOperacao, new OperacaoMapper());
 
         // insert de log da CPU
@@ -111,7 +112,7 @@ public class ValidacaoLogin {
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
             );
-                    log.criarLog(descricao);
+            log.criarLog(descricao);
 
             String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 10.0 AND uso <= 20.0 ORDER BY id_registro DESC";
             Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
@@ -120,7 +121,7 @@ public class ValidacaoLogin {
                     codigoUrgencia,
                     descricao,
                     idRegistro.getId());
-            
+
             IntegracaoSlack.enviarMensagem(descricao);
 
         } else if (usoCPU > 50.0 && usoCPU <= 75.0) {
@@ -138,7 +139,7 @@ public class ValidacaoLogin {
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
             );
-                    log.criarLog(descricao);
+            log.criarLog(descricao);
 
             String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 10.0 AND uso <= 20.0 ORDER BY id_registro DESC";
             Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
@@ -163,7 +164,7 @@ public class ValidacaoLogin {
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
             );
-                    log.criarLog(descricao);
+            log.criarLog(descricao);
 
             String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 10.0 AND uso <= 20.0 ORDER BY id_registro DESC";
             Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
@@ -175,7 +176,7 @@ public class ValidacaoLogin {
         }
 
         if (percentualRAM >= 70.0 && percentualRAM < 80.0) {
-            
+
             codigoUrgencia = "Alerta";
             String descricao = String.format("A memória RAM da máquina %s está em %s."
                     + "\nRAM: %.2f"
@@ -184,13 +185,12 @@ public class ValidacaoLogin {
                     + "\nNome do gerente: %s",
                     identificarMaquina.getId(),
                     codigoUrgencia,
-                    (usoRAM.doubleValue()/100000),
+                    (usoRAM.doubleValue() / 100000),
                     operacao.getNome_operacao(),
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
             );
-                    log.criarLog(descricao);
-
+            log.criarLog(descricao);
 
             String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Memoria Ram' AND uso > 85.0 ORDER BY id_registro DESC";
             Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
@@ -199,8 +199,7 @@ public class ValidacaoLogin {
                     descricao,
                     idRegistro.getId());
             IntegracaoSlack.enviarMensagem(descricao);
-        } 
-        else if (percentualRAM >= 80.0 && percentualRAM < 90){
+        } else if (percentualRAM >= 80.0 && percentualRAM < 90) {
             codigoUrgencia = "Emergência";
             String descricao = String.format("A memória RAM da máquina %s está em nível de %s."
                     + "\nRAM: %.2f"
@@ -209,12 +208,12 @@ public class ValidacaoLogin {
                     + "\nNome do gerente: %s",
                     identificarMaquina.getId(),
                     codigoUrgencia,
-                    usoRAM.doubleValue()/100000,
+                    usoRAM.doubleValue() / 100000,
                     operacao.getNome_operacao(),
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
             );
-                    log.criarLog(descricao);
+            log.criarLog(descricao);
 
             String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Memoria Ram' AND uso > 85.0 ORDER BY id_registro DESC";
             Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
@@ -223,8 +222,7 @@ public class ValidacaoLogin {
                     descricao,
                     idRegistro.getId());
             IntegracaoSlack.enviarMensagem(descricao);
-        }
-        else if (percentualRAM > 90.0){
+        } else if (percentualRAM > 90.0) {
             codigoUrgencia = "Crítico";
             String descricao = String.format("A memória RAM da máquina %s está em nível %s."
                     + "\nRAM: %.2f"
@@ -233,12 +231,12 @@ public class ValidacaoLogin {
                     + "\nNome do gerente: %s",
                     identificarMaquina.getId(),
                     codigoUrgencia,
-                    usoRAM.doubleValue()/100000,
+                    usoRAM.doubleValue() / 100000,
                     operacao.getNome_operacao(),
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
             );
-                    log.criarLog(descricao);
+            log.criarLog(descricao);
 
             String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Memoria Ram' AND uso > 85.0 ORDER BY id_registro DESC";
             Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
@@ -246,7 +244,7 @@ public class ValidacaoLogin {
                     codigoUrgencia,
                     descricao,
                     idRegistro.getId());
-            
+
             IntegracaoSlack.enviarMensagem(descricao);
         }
 

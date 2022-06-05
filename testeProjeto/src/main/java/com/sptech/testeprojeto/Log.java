@@ -5,14 +5,13 @@
 package com.sptech.testeprojeto;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 public class Log {
+    
     private DateTimeFormatter dateTimeLog = DateTimeFormatter.ofPattern("[yyyy/MM/dd HH:mm:ss]");
    
     private DateTimeFormatter dateTimeName = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -27,7 +26,7 @@ public class Log {
             BufferedWriter buffer = new BufferedWriter(criarArquivo);
             PrintWriter gravarArq = new PrintWriter(buffer)
             ){
-            gravarArq.append(String.format("%s --: %s\n", dataLog, message));
+            gravarArq.append(String.format("Data: %s Mensagem: %s\n", dataLog, message));
         } catch (IOException e) {
             System.out.println(e);
         }

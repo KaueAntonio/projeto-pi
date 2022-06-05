@@ -251,6 +251,7 @@ public class Login extends javax.swing.JFrame {
     }// GEN-LAST:event_btnEntrarActionPerformed
 
     public void logar(String loginGerente, String senhaGerente) {
+        log.criarLog("******** validação login ********");
         Timer timer = new Timer();
         ValidacaoLogin login = new ValidacaoLogin();
 
@@ -262,6 +263,7 @@ public class Login extends javax.swing.JFrame {
         List lista = template.queryForList(query);
         if (lista.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Usuário ou Senha Incorretos!");
+            log.criarLog("usuário ou senha incorretos");
         } else {
 
             SelectLogin autenticar = template.queryForObject(query, new LoginMapper());

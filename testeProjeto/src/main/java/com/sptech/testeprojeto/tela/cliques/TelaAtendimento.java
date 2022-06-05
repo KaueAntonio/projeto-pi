@@ -14,11 +14,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;
 
 import com.sptech.testeprojeto.Connection;
+import com.sptech.testeprojeto.Log;
 import com.sptech.testeprojeto.tela.login.Maquina;
 import com.sptech.testeprojeto.tela.login.MaquinaMapper;
 
 public class TelaAtendimento extends javax.swing.JFrame {
-
+    Log log = new Log();
     Integer cliques = 0;
     Connection config = new Connection();
     JdbcTemplate template = new JdbcTemplate(config.getDataSource());
@@ -546,7 +547,9 @@ public class TelaAtendimento extends javax.swing.JFrame {
     }// GEN-LAST:event_btnProsseguirMouseClicked
 
     void enviar() {
-        SystemInfo info = new SystemInfo();
+        log.criarLog("********* cliques **********");
+        try{
+            SystemInfo info = new SystemInfo();
         String queryIdentificarMaquina = String.format("SELECT * FROM [dbo].[maquinas] WHERE hostname = '%s'",
                 info.getHardware().getComputerSystem().getHardwareUUID());
 
@@ -560,6 +563,10 @@ public class TelaAtendimento extends javax.swing.JFrame {
                 "INSERT INTO [dbo].[log_cliques](cliques, data_clique, fk_maquina) values ('clicou', '" + date + "' , "
                         + identificarMaquina.getId()
                         + ");");
+        } catch (Exception e){
+            log.criarLog("Erro ao inserir clique no banco de dados");
+        }
+        
     }
 
     /**
