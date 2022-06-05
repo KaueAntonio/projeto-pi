@@ -33,9 +33,6 @@
 	<!-- End of  Zendesk Widget script -->
 	<script src="./js/dash.js"></script>
 	<script src="../node_modules/socket.io/client-dist/socket.io.js"></script>
-	<script>
-		var socket = io();
-	</script>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" onload="validarSessao()">
@@ -122,11 +119,6 @@
 													</div>
 												</div>
 												<h1 id="totalMaquinas" class="mt-1 mb-3">0</h1>
-												<div class="mb-0">
-													<span class="text-danger"> <i
-															class="mdi mdi-arrow-bottom-right"></i> -3.65% </span>
-													<span class="text-muted">Since last week</span>
-												</div>
 											</div>
 										</div>
 
@@ -139,11 +131,6 @@
 													</div>
 												</div>
 												<h1 class="mt-1 mb-3" id="mediaCliques">0</h1>
-												<div class="mb-0">
-													<span class="text-success"> <i
-															class="mdi mdi-arrow-bottom-right"></i> 5.25% </span>
-													<span class="text-muted">Since last week</span>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -158,12 +145,6 @@
 												<select id="maquinaSelecionada" onchange="selecionarMaquina()">
 													<option value="-1">--</option>
 												</select>
-												<div class="mb-0">
-													<span class="text-success"> <i
-															class="mdi mdi-arrow-bottom-right"></i></span>
-													<span class="text-muted" id="span_nomeMaquina">Nenhuma Máquina
-														Selecionada</span>
-												</div>
 											</div>
 										</div>
 										<div class="card">
@@ -174,11 +155,6 @@
 													</div>
 												</div>
 												<h1 class="mt-1 mb-3" id="cliquesTotais">0</h1>
-												<div class="mb-0">
-													<span class="text-danger"> <i
-															class="mdi mdi-arrow-bottom-right"></i> -2.25% </span>
-													<span class="text-muted">Since last week</span>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -207,16 +183,11 @@
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Processador (Uso Em Tempo Real)</h5>
+														<h5 class="card-title">Uso Em Tempo Real(Processador)</h5>
 													</div>
 												</div>
 												<h1 id="" class="mt-1 mb-3"><span id="span_dadosProcessador"></span>%
 												</h1>
-												<div class="mb-0">
-													<span class="text-danger"> <i
-															class="mdi mdi-arrow-bottom-right"></i> -3.65% </span>
-													<span class="text-muted">Since last week</span>
-												</div>
 											</div>
 										</div>
 
@@ -225,15 +196,10 @@
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Média De Cliques Por Dia</h5>
+														<h5 class="card-title">Maior Valor Registrado(Processador)</h5>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3" id="">0</h1>
-												<div class="mb-0">
-													<span class="text-success"> <i
-															class="mdi mdi-arrow-bottom-right"></i> 5.25% </span>
-													<span class="text-muted">Since last week</span>
-												</div>
+												<h1 class="mt-1 mb-3" id=""><span id="span_maiorDadoProcessador"></span>%</h1>
 											</div>
 										</div>
 									</div>
@@ -242,30 +208,20 @@
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">RAM (Uso Em Tempo Real)</h5>
+														<h5 class="card-title">Uso Em Tempo Real(RAM)</h5>
 													</div>
 												</div>
 												<h1 class="mt-1 mb-3" id=""><span id="span_dadosRam"></span>%</h1>
-												<div class="mb-0">
-													<span class="text-success"> <i
-															class="mdi mdi-arrow-bottom-right"></i> 6.65% </span>
-													<span class="text-muted">Since last week</span>
-												</div>
 											</div>
 										</div>
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Orders</h5>
+														<h5 class="card-title">Maior Valor Registrado(RAM)</h5>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3">64</h1>
-												<div class="mb-0">
-													<span class="text-danger"> <i
-															class="mdi mdi-arrow-bottom-right"></i> -2.25% </span>
-													<span class="text-muted">Since last week</span>
-												</div>
+												<h1 class="mt-1 mb-3"><span id="span_maiorDadoRam"></span>%</h1>
 											</div>
 										</div>
 									</div>
@@ -317,6 +273,14 @@
 			</div>
 		</div>
 	</footer>
+	<a onclick="modal('abrir')">Open Modal</a>
+
+	<div id="divModal" class="modal">
+		<a onclick="modal('fechar')" title="Fechar" class="fechar">x</a>
+		<h2>Janela Modal</h2>
+		<p>Esta é uma simples janela de modal.</p>
+		<p>Você pode fazer qualquer coisa aqui, página de Login, pop-ups, ou formulários</p>
+	</div>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
@@ -372,7 +336,7 @@
 		});
 	</script>
 	</script>
-	
+
 
 </body>
 
@@ -427,9 +391,17 @@
 	//-------------------------------------------------------
 
 	//GET DE REGISTROS DOS COMPONENTES ----------------------
+	graficoRegistros()
+	var umaVez = 0;
+	var time = [];
+	var chart4;
 	var resultadoGetRegistros;
 	var lastDadoRam = 0;
 	var lastDadoProcessador = 0;
+	var lastDadosProcessador = [];
+	var lastDadosRam = [];
+	var maiorDadoProcessador = 0;
+	var maiorDadoRam = 0;
 	function getRegistros() {
 		fetch("/painel/getRegistros", {
 			method: "GET",
@@ -440,10 +412,19 @@
 						let posicao = data[i];
 						if (posicao.fk_componente == 10 && posicao.fk_maquina == mSelecionada) {
 							lastDadoProcessador = posicao.uso;
+							lastDadosProcessador.push(parseInt(posicao.uso));
+							time.push(posicao.data_hora);
+							if(maiorDadoProcessador < posicao.uso){
+								maiorDadoProcessador = posicao.uso;
+							}
 						}
 						if (posicao.fk_componente == 11 && posicao.fk_maquina == mSelecionada) {
 							let total = posicao.uso + posicao.disponivel;
 							lastDadoRam = (100 * posicao.uso) / total;
+							lastDadosRam.push(parseInt((100 * posicao.uso) / total));
+							if(maiorDadoRam < parseInt((100 * posicao.uso) / total)){
+								maiorDadoRam = parseInt((100 * posicao.uso) / total);
+							}
 						}
 					}
 				});
@@ -451,9 +432,30 @@
 			.catch(function (error) {
 				console.error(`ERROR`, error);
 			});
+			var lp = lastDadosProcessador.length;
+			var lr = lastDadosRam.length;
+			var lt = time.length;
+
+			if(chart4.data.labels.length == 10 && chart4.data.datasets[0].data.length == 10){
+				chart4.data.labels.shift();
+            	chart4.data.datasets[0].data.shift();
+            	chart4.data.datasets[1].data.shift();
+			}
+			var tempo = time[lt - 1];
+			var tempoFormatado = `${tempo[8]}${tempo[9]}/${tempo[5]}${tempo[6]}\n${tempo[11]}${tempo[12]}:${tempo[14]}${tempo[15]}`
+			chart4.data.labels.push(tempoFormatado);
+			chart4.data.datasets[0].data.push(parseInt(lastDadoProcessador));
+			chart4.data.datasets[1].data.push(parseInt(lastDadoRam));
+			chart4.update();
+		
+
+
+
 
 		document.getElementById("span_dadosRam").innerHTML = parseInt(lastDadoRam);
+		document.getElementById("span_maiorDadoRam").innerHTML = parseInt(maiorDadoRam);
 		document.getElementById("span_dadosProcessador").innerHTML = parseInt(lastDadoProcessador);
+		document.getElementById("span_maiorDadoProcessador").innerHTML = parseInt(maiorDadoProcessador);
 	}
 	//setInterval(getRegistros, 10000);
 	//getRegistros();
@@ -472,9 +474,9 @@
 					for (let i = 0; i < data.length; i++) {
 						let posicao = data[i]
 						let axData = posicao.data_clique;
-						
+
 						let mesClique = String(axData[5]) + String(axData[6]);
-						
+
 						// if (mesClique < 10) {
 						// 	mesClique = mesClique[0] + mesClique[1];
 						// }
@@ -543,13 +545,7 @@
 				resposta.json().then(function (data) {
 					for (let i = 0; i < data.length; i++) {
 						if (data[i].fk_operacao == sessionStorage.ID_OPERACAO_PAINEL) {
-							if (param_maquina == -1) {
-								return nomeMaquina(undefined);
-							}
 							if (!(param_maquina == 0)) {
-								if (data[i].id_maquina == param_maquina) {
-									return nomeMaquina(data[i].serial_maquina);
-								}
 							} else {
 								document.getElementById("maquinaSelecionada").innerHTML += (`<option value=${data[i].id_maquina}>${data[i].id_maquina}</option>`);
 								tMaquinas++;
@@ -563,21 +559,13 @@
 				console.error(`ERROR`, error);
 			});
 	}
-	setInterval(selecionarMaquina, 2000)
+	setInterval(selecionarMaquina, 5000)
 	function selecionarMaquina() {
+		
 		mSelecionada = maquinaSelecionada.value;
 		getMaquinas(mSelecionada)
 		getCliques();
 		getRegistros()
-	}
-
-	function nomeMaquina(nome) {
-		if (nome == undefined) {
-			return document.getElementById("span_nomeMaquina").innerHTML = "Nenhuma Máquina Selecionada";
-		} else {
-			return document.getElementById("span_nomeMaquina").innerHTML = nome;
-		}
-		return document.getElementById("span_nomeMaquina").innerHTML = "Nenhuma Máquina Selecionada";
 	}
 
 	//-------------------------------------------------------
@@ -585,7 +573,7 @@
 
 		var context3 = document.getElementById("chartjs-dashboard-line").getContext("2d");
 		context3.canvas.width = 1000;
-		context3.canvas.height = 273;
+		context3.canvas.height = 300;
 
 		var configuration3 = {
 			type: 'line',
@@ -638,26 +626,33 @@
 	}
 
 
-	graficoRegistros()
+
 	function graficoRegistros() {
 
 		var context4 = document.getElementById("chartjs-dashboard-line-registros").getContext("2d");
 		context4.canvas.width = 1000;
-		context4.canvas.height = 275;
+		context4.canvas.height = 300;
 
 		var configuration4 = {
 			type: 'line',
 			data: {
-				labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+				labels: ['', '', '', '', ''],
 				datasets: [{
-					label: "CLIQUES",
+					label: "Processador",
 					backgroundColor: '#fff',
 					borderColor: window.theme.primary,
 					hoverBackgroundColor: window.theme.primary,
 					hoverBorderColor: window.theme.primary,
-					data: [dadosMesesCliques1, dadosMesesCliques2, dadosMesesCliques3, dadosMesesCliques4, dadosMesesCliques5,
-						dadosMesesCliques6, dadosMesesCliques7, dadosMesesCliques8, dadosMesesCliques9, dadosMesesCliques10,
-						dadosMesesCliques11, dadosMesesCliques12],
+					data: [0, 0, 0, 0, 0],
+					barPercentage: .75,
+					categoryPercentage: .5
+				}, {
+					label: "Memória Ram",
+					backgroundColor: '#fff',
+					borderColor: window.theme.success,
+					hoverBackgroundColor: window.theme.success,
+					hoverBorderColor: window.theme.success,
+					data: [0, 0, 0, 0, 0],
 					barPercentage: .75,
 					categoryPercentage: .5
 				}]
@@ -690,13 +685,16 @@
 			}
 		};
 
-		var chart4 = new Chart(context4, configuration4);
+		chart4 = new Chart(context4, configuration4);
+	}
+	function modal(param) {
+		if (param == 'abrir') {
+			divModal.style.display = 'block'
+		}
+		if (param == 'fechar') {
+			divModal.style.display = 'none'
+		}
 	}
 
-	io.on('connection', (socket) => {
-		console.log('a user connected');
-		socket.on('disconnect', () => {
-			console.log('user disconnected');
-		});
-	});
+
 </script>
