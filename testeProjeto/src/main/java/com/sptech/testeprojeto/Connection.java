@@ -2,11 +2,11 @@
 package com.sptech.testeprojeto;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-
 public class Connection {
     private BasicDataSource dataSource;
 
     public Connection() {
+        
         dataSource = new BasicDataSource();
         
         dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
