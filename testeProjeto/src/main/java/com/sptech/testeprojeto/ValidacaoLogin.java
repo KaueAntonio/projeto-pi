@@ -24,7 +24,7 @@ import com.sptech.testeprojeto.tela.login.OperacaoMapper;
  */
 // INSERIR TIMER E DELAY PARA CAPTURA DE DADOS A CADA 5
 public class ValidacaoLogin {
-
+    Log log = new Log();
     Looca looca = new Looca();
     Connection config = new Connection();
     JdbcTemplate template = new JdbcTemplate(config.getDataSource());
@@ -70,6 +70,7 @@ public class ValidacaoLogin {
         Operacao operacao = template.queryForObject(queryOperacao, new OperacaoMapper());
 
         // insert de log da CPU
+        log.criarLog("Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco");
         template.update(
                 "INSERT INTO [dbo].[log_registros](uso, disponivel, frequencia, fk_maquina, fk_componente, data_hora) VALUES (?, ?, ?, ?, ?, GETDATE())",
                 usoCPU,
@@ -98,7 +99,7 @@ public class ValidacaoLogin {
         String codigoUrgencia;
         if (usoCPU > 0.0 && usoCPU <= 50.0) {
             codigoUrgencia = "Atenção";
-            String descricao = String.format("A CPU da máquina %s está em %s."
+            String descricao = String.format("A CPU da máquina %s está em %s monitorar o uso de CPU."
                     + "\nUso de CPU: %.2f"
                     + "\nOperação: %s"
                     + "\nLocalidade: %s"
@@ -110,6 +111,7 @@ public class ValidacaoLogin {
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
             );
+                    log.criarLog(descricao);
 
             String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 10.0 AND uso <= 20.0 ORDER BY id_registro DESC";
             Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
@@ -136,6 +138,7 @@ public class ValidacaoLogin {
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
             );
+                    log.criarLog(descricao);
 
             String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 10.0 AND uso <= 20.0 ORDER BY id_registro DESC";
             Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
@@ -160,6 +163,7 @@ public class ValidacaoLogin {
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
             );
+                    log.criarLog(descricao);
 
             String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Processador' AND uso > 10.0 AND uso <= 20.0 ORDER BY id_registro DESC";
             Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
@@ -185,6 +189,7 @@ public class ValidacaoLogin {
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
             );
+                    log.criarLog(descricao);
 
 
             String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Memoria Ram' AND uso > 85.0 ORDER BY id_registro DESC";
@@ -209,7 +214,7 @@ public class ValidacaoLogin {
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
             );
-
+                    log.criarLog(descricao);
 
             String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Memoria Ram' AND uso > 85.0 ORDER BY id_registro DESC";
             Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());
@@ -233,7 +238,7 @@ public class ValidacaoLogin {
                     operacao.getLocalidade(),
                     operacao.getNome_gerente()
             );
-
+                    log.criarLog(descricao);
 
             String fkRegistro = "SELECT TOP (1) id_registro FROM [dbo].[log_registros] JOIN [dbo].[maquinas] ON id_maquina = fk_maquina JOIN [dbo].[componentes] ON id_componente = fk_componente JOIN [dbo].[operacoes] ON id_operacao = fk_operacao WHERE tipo = 'Memoria Ram' AND uso > 85.0 ORDER BY id_registro DESC";
             Registro idRegistro = template.queryForObject(fkRegistro, new RegistroMapper());

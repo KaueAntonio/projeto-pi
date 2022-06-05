@@ -10,6 +10,7 @@ package com.sptech.testeprojeto;
  * @author wende
  */
 public class Registro {
+    
     private Integer id;
 
     public Integer getId() {
@@ -18,6 +19,7 @@ public class Registro {
 
     public void setId(Integer id) {
         this.id = id;
+        
     }
     
 }

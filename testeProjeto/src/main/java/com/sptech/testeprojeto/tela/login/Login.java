@@ -2,6 +2,7 @@ package com.sptech.testeprojeto.tela.login;
 
 import com.github.britooo.looca.api.core.Looca;
 import com.sptech.testeprojeto.Connection;
+import com.sptech.testeprojeto.Log;
 import com.sptech.testeprojeto.ValidacaoLogin;
 import com.sptech.testeprojeto.tela.cliques.TelaAtendimento;
 import com.sptech.testeprojeto.tela.monitoramento.Tela;
@@ -20,7 +21,7 @@ import java.util.TimerTask;
 import oshi.SystemInfo;
 
 public class Login extends javax.swing.JFrame {
-
+    Log log = new Log(); 
     private final Point point = new Point();
 
     Connection config = new Connection();
@@ -382,6 +383,7 @@ public class Login extends javax.swing.JFrame {
                 tela.setDefaultCloseOperation(EXIT_ON_CLOSE);
             } else {
                 new Login(false);
+                
             }
         });
     }
