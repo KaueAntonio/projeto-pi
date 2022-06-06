@@ -402,6 +402,8 @@
 	var lastDadosRam = [];
 	var maiorDadoProcessador = 0;
 	var maiorDadoRam = 0;
+	var tempoFormatado;
+
 	function getRegistros() {
 		fetch("/painel/getRegistros", {
 			method: "GET",
@@ -442,8 +444,20 @@
             	chart4.data.datasets[1].data.shift();
 			}
 			var tempo = time[lt - 1];
-			var tempoFormatado = `${tempo[8]}${tempo[9]}/${tempo[5]}${tempo[6]}\n${tempo[11]}${tempo[12]}:${tempo[14]}${tempo[15]}`
-			chart4.data.labels.push(tempoFormatado);
+			tempoFormatado = `${tempo[8]}${tempo[9]}/${tempo[5]}${tempo[6]} ${tempo[11]}${tempo[12]}:${tempo[14]}${tempo[15]}`
+			function tempoFormatadoComFusoHorario() {
+				let horas = Number(`${tempoFormatado[6]}${tempoFormatado[7]}`);
+				if(horas < 3){
+					return (`${tempoFormatado[0]}${tempoFormatado[1]}/${tempoFormatado[3]}${tempoFormatado[4]}\n${Number((horas - 3) + 24)}:${tempoFormatado[9]}${tempoFormatado[10]}`);
+					
+				}else{
+					return (`${tempoFormatado[0]}${tempoFormatado[1]}/${tempoFormatado[3]}${tempoFormatado[4]}\n${Number(horas - 3)}:${tempoFormatado[9]}${tempoFormatado[10]}`);
+					
+				}
+			
+			
+			}
+			chart4.data.labels.push(tempoFormatadoComFusoHorario());
 			chart4.data.datasets[0].data.push(parseInt(lastDadoProcessador));
 			chart4.data.datasets[1].data.push(parseInt(lastDadoRam));
 			chart4.update();
