@@ -17,7 +17,7 @@ public class Log {
     private DateTimeFormatter dateTimeName = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private String dataLog = dateTimeLog.format(LocalDateTime.now());
     private String dataNomeLog = dateTimeName.format(LocalDateTime.now());
-    private String nomeLog = String.format("src/main/resources/%slogs.txt", dataNomeLog);
+    private String nomeLog = String.format("./%slogs.txt", dataNomeLog);
 
 
     public void criarLog(String message){
@@ -26,10 +26,9 @@ public class Log {
             BufferedWriter buffer = new BufferedWriter(criarArquivo);
             PrintWriter gravarArq = new PrintWriter(buffer)
             ){
-            gravarArq.append(String.format("Data: %s Mensagem: %s\n", dataLog, message));
+            gravarArq.append(String.format("-==-==-==-\nData: %s \nMensagem: %s\n-==-==-==-\n", dataLog, message));
         } catch (IOException e) {
             System.out.println(e);
         }
     }
 }
-

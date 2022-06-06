@@ -547,7 +547,6 @@ public class TelaAtendimento extends javax.swing.JFrame {
     }// GEN-LAST:event_btnProsseguirMouseClicked
 
     void enviar() {
-        log.criarLog("********* cliques **********");
         try{
             SystemInfo info = new SystemInfo();
         String queryIdentificarMaquina = String.format("SELECT * FROM [dbo].[maquinas] WHERE hostname = '%s'",

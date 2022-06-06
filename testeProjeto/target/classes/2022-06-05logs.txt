@@ -1,0 +1,296 @@
+Data: 2022/06/05 21:53:40 Mensagem: ********* cliques **********
+Data: 2022/06/05 21:53:40 Mensagem: ********* cliques **********
+Data: 2022/06/05 21:53:39 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:53:39 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 23,17
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:53:39 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 38506,37
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:53:39 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:53:39 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 37,47
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:53:39 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 38710,27
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:53:39 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:53:39 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 42,53
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:53:39 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 38939,40
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:53:39 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:53:39 Mensagem: A CPU da máquina 8 está em Emergência.
+Uso de CPU: 75,00
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:53:39 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 38945,30
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:53:39 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:53:39 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 36,41
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:53:39 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 39040,53
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:53:39 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:53:39 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 27,97
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:53:39 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 38571,95
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: ********* cliques **********
+Data: 2022/06/05 21:58:50 Mensagem: ********* cliques **********
+Data: 2022/06/05 21:58:50 Mensagem: ********* cliques **********
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Emergência.
+Uso de CPU: 55,57
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 38082,52
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: ********* cliques **********
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Emergência.
+Uso de CPU: 74,29
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: ********* cliques **********
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 38695,53
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: ********* cliques **********
+Data: 2022/06/05 21:58:50 Mensagem: ********* cliques **********
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Emergência.
+Uso de CPU: 52,93
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 38230,75
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 31,73
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 38671,85
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 27,63
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 38192,78
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 22,40
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 38129,25
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 29,14
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 38186,80
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 14,38
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 38126,88
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 44,88
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 36709,58
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 13,42
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 36160,68
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 25,38
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 36638,88
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 49,63
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 37082,36
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Emergência.
+Uso de CPU: 54,42
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 37289,37
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 30,59
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 37068,35
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 21,66
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 37093,91
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 24,33
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 37100,95
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 40,81
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 37848,60
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Emergência.
+Uso de CPU: 58,44
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 37923,23
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 10,08
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 37905,94
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco
+Data: 2022/06/05 21:58:50 Mensagem: A CPU da máquina 8 está em Atenção monitorar o uso de CPU.
+Uso de CPU: 18,18
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: A memória RAM da máquina 8 está em nível Crítico.
+RAM: 37930,76
+Operação: Itau
+Localidade: 3º Andar
+Nome do gerente: Gerson
+Data: 2022/06/05 21:58:50 Mensagem: Inserindo dados de Hardware (Coletaados do Looca), demais dados coletados do Banco

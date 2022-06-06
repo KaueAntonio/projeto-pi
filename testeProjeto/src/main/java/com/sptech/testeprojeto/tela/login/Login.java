@@ -369,9 +369,9 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             SystemInfo info = new SystemInfo();
-            String maquina = String.format("%s", info.getHardware().getComputerSystem().getSerialNumber());
+            String maquina = String.format("%s", info.getHardware().getComputerSystem().getHardwareUUID());
             String query = String.format("SELECT * FROM [dbo].[maquinas]"
-                    + " WHERE serial_maquina = '%s'", maquina);
+                    + " WHERE hostname = '%s'", maquina);
             JdbcTemplate template = new JdbcTemplate(new Connection().getDataSource());
             List lista = template.queryForList(query);
             if (lista.isEmpty()) {
